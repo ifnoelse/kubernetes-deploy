@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vm_num = 1
+vm_num = 3
 vm_name_prefix = "node-"
 vm_ip_prefix = "192.168.100.10"
 
