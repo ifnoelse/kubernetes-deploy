@@ -1,10 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vms = {"192.168.1.1" => "node-1",
-       "192.168.1.2" => "node-2",
-       "192.168.1.3" => "node-3",
-       "192.168.1.4" => "node-4"}
+vms = {"192.168.100.101" => "node-1",
+       "192.168.100.102" => "node-2",
+       "192.168.100.103" => "node-3",
+       "192.168.100.104" => "node-4"}
 
 Vagrant.configure("2") do |config|
 
@@ -44,8 +44,7 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        wget -q -O - https://bootstrap.pypa.io/get-pip.py|sudo python
-        sudo pip install ansible
+        # [ "node-1" == "#{vm_name}" ] && wget -q -O - https://bootstrap.pypa.io/get-pip.py|python && pip install ansible
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
