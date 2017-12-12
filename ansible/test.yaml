@@ -1,0 +1,11 @@
+- hosts: all.yaml
+  tasks:
+  - name: show msg
+    debug: msg="result is {{k}}}"
+    when: ansible_hostname == "node-2"
+#    notify:
+#       - restart nginx
+#  handlers:
+#  - name: restart nginx
+#    become: true
+#    service: name=nginx state=restarted

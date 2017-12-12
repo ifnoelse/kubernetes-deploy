@@ -5,3 +5,6 @@ all:
         node-1:
         node-2:
         node-3:
+  vars:
+    ntp_server: ntp.atlanta.example.com
+    proxy: proxy.atlanta.example.com
