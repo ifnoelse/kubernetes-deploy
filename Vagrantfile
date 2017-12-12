@@ -43,6 +43,11 @@ Vagrant.configure("2") do |config|
 
         # 添加本地hosts解析
         for i in {1..#{vm_num}};do echo "#{vm_ip_prefix}${i}	#{vm_name_prefix}${i}">>/etc/hosts;done
+
+        sed -i '1d' /etc/hosts
+
+        wget -q -O - https://bootstrap.pypa.io/get-pip.py|sudo python
+        sudo pip install ansible
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
