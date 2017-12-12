@@ -1,16 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vm_num = 3
-vm_name_prefix = "node-"
-vm_ip_prefix = "192.168.100.10"
+vms = {"192.168.1.1" => "node-1",
+       "192.168.1.2" => "node-2",
+       "192.168.1.3" => "node-3",
+       "192.168.1.4" => "node-4"}
 
 Vagrant.configure("2") do |config|
 
-  (1..vm_num).each do |i|
-
-    vm_name = "#{vm_name_prefix}#{i}"
-    vm_ip = "#{vm_ip_prefix}#{i}"
+  vms.each do |vm_ip, vm_name|
 
     config.vm.define vm_name do |node|
 
@@ -42,7 +40,7 @@ Vagrant.configure("2") do |config|
         echo "#{vm_name}">/etc/hostname
 
         # 添加本地hosts解析
-        for i in {1..#{vm_num}};do echo "#{vm_ip_prefix}${i}	#{vm_name_prefix}${i}">>/etc/hosts;done
+        for i in "#{vms.map{|k,v|"#{k}    #{v}"}.join('" "')}";do echo $i>>/etc/hosts;done
 
         sed -i '1d' /etc/hosts
 
