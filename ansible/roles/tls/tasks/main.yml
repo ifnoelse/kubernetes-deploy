@@ -6,3 +6,13 @@
     owner: root
     group: root
     mode: 0755
+
+- name: 创建TLS临时目录
+  file:
+    path: "{{tmp_tls_dir}}"
+    state: directory
+
+- name: 复制文件测试
+- template:
+    src: ca-config.json.j2
+    dest: /etc/file.conf

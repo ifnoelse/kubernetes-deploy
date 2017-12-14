@@ -18,6 +18,7 @@ all:
     tmp_dir: "{{base_dir}}/tmp"
     tmp_unzip_dir: "{{tmp_dir}}/unzip"
     tmp_bin_dir: "{{tmp_dir}}/bin"
+    tmp_tls_dir: "{{tmp_dir}}/tls"
     bin_files:
       docker:
       - docker
