@@ -1,2 +1,2 @@
 - name: show msg
-  debug: msg="hello {{p}}"
+  debug: msg="hello"
