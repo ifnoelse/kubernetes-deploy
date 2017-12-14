@@ -11,7 +11,9 @@
     src: "{{item}}"
     dest: "{{tmp_unzip_dir}}"
   with_fileglob:
-    - "{{res_dir}}/*gz"
+  - "{{res_dir}}/*gz"
+  tags:
+  - unzip_res
 
 - name: 复制可执行文件
   shell: "cp `find {{tmp_unzip_dir}} -type f -name {{item}}` {{tmp_bin_dir}}"
@@ -21,3 +23,5 @@
   - "{{bin_files.flannel}}"
   - "{{bin_files.k8s_master}}"
   - "{{bin_files.k8s_node}}"
+  tags:
+  - copy_res
