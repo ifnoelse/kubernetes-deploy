@@ -3,13 +3,13 @@
 #  shell: "for i in {{bin_files|join(' ')}};do cp `find {{tmp_dir}} -name $i` ~/bin;done"
 #  register: res
 
-- name: Include variables
-  include_vars: "test_vars.yaml"
-
-- include_tasks: "test_task.yaml"
+#- name: Include variables
+#  include_vars: "test_vars.yaml"
+#
+#- include_tasks: "test_task.yaml"
 
 - name: show msg
-  debug: msg="hello {{p}}"
+  debug: msg="hello {{abc}}"
 
 #- name: 复制文件测试
 #  become: true
