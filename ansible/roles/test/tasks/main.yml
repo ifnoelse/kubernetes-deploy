@@ -9,7 +9,7 @@
 #- include_tasks: "test_task.yaml"
 
 - name: show msg
-  debug: msg="hello {{abc}}"
+  debug: msg="hello"
 
 #- name: 复制文件测试
 #  become: true

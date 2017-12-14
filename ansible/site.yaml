@@ -1,0 +1,23 @@
+- name: "资源准备任务"
+  hosts: deploy
+  gather_facts: no
+  roles:
+  - res
+  tags:
+  - res
+
+- name: "TLS任务"
+  hosts: deploy
+  gather_facts: no
+  roles:
+  - tls
+  tags:
+  - tls
+
+- name: "测试任务"
+  hosts: test
+  gather_facts: no
+  roles:
+  - test
+  tags:
+  - test
