@@ -3,8 +3,7 @@
 
 vms = {"192.168.100.101" => "node-1",
        "192.168.100.102" => "node-2",
-       "192.168.100.103" => "node-3",
-       "192.168.100.104" => "node-4"}
+       "192.168.100.103" => "node-3"}
 
 Vagrant.configure("2") do |config|
 
@@ -44,7 +43,9 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        # [ "node-1" == "#{vm_name}" ] && wget -q -O - https://bootstrap.pypa.io/get-pip.py|python && pip install ansible
+        if [ "node-1" == "#{vm_name}" ];then wget -q -O - https://bootstrap.pypa.io/get-pip.py|python;pip install ansible;fi
+
+        rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
