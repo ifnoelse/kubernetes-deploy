@@ -45,8 +45,7 @@ Vagrant.configure("2") do |config|
 
         if [ "node-1" == "#{vm_name}" ];then wget -q -O - https://bootstrap.pypa.io/get-pip.py|python;pip install ansible;fi
 
-        rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-      SHELL
+        rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm      SHELL
       # node.ssh.private_key_path = ".setting/private_key"
       # node.ssh.username = "ifnoelse"
     end

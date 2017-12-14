@@ -1,0 +1,23 @@
+- name: 创建临时目录
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - "{{tmp_bin_dir}}"
+  - "{{tmp_unzip_dir}}"
+
+- name: 解压相关文件
+  unarchive:
+    src: "{{item}}"
+    dest: "{{tmp_unzip_dir}}"
+  with_fileglob:
+    - "{{res_dir}}/*gz"
+
+- name: 复制可执行文件
+  shell: "cp `find {{tmp_unzip_dir}} -type f -name {{item}}` {{tmp_bin_dir}}"
+  with_items:
+  - "{{bin_files.docker}}"
+  - "{{bin_files.etcd}}"
+  - "{{bin_files.flannel}}"
+  - "{{bin_files.k8s_master}}"
+  - "{{bin_files.k8s_node}}"

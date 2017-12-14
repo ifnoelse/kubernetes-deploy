@@ -1,3 +1,3 @@
 - hosts: deploy
   roles:
-  - test
+  - prepare_res

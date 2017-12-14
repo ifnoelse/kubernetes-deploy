@@ -1,0 +1,8 @@
+#- name: 检查执行文件路径
+#  shell: "for i in {{bin_files|join(' ')}};do cp `find {{tmp_dir}} -name $i` ~/bin;done"
+#  register: res
+
+- name: show msg
+  debug: msg="hello {{item}} "
+  with_items:
+    - "{{bin_files}}"

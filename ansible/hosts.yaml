@@ -1,10 +1,41 @@
 all:
   children:
+    deploy:
+      hosts:
+        node-1:
     etcd:
       hosts:
         node-1:
         node-2:
         node-3:
   vars:
-    ntp_server: ntp.atlanta.example.com
-    proxy: proxy.atlanta.example.com
+    bin_dir: /usr/local/bin
+    base_dir: "~"
+    res_dir: "{{base_dir}}/res"
+    tmp_dir: "{{base_dir}}/tmp"
+    tmp_unzip_dir: "{{tmp_dir}}/unzip"
+    tmp_bin_dir: "{{tmp_dir}}/bin"
+    bin_files:
+      docker:
+      - docker
+      - docker-containerd
+      - docker-containerd-ctr
+      - docker-containerd-shim
+      - dockerd
+      - docker-init
+      - docker-proxy
+      - docker-runc
+      etcd:
+      - etcd
+      - etcdctl
+      flannel:
+      - flanneld
+      - mk-docker-opts.sh
+      k8s_master:
+      - kube-apiserver
+      - kube-controller-manager
+      - kube-scheduler
+      - kubectl
+      k8s_node:
+      - kube-proxy
+      - kubelet
