@@ -1,5 +1,8 @@
 all:
   children:
+    test:
+      hosts:
+        node-1:
     deploy:
       hosts:
         node-1:
