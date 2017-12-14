@@ -1,8 +1,0 @@
-- name: 安装 cfssl
-  become: true
-  copy:
-    src: "{{res_dir}}/cfssl_linux-amd64"
-    dest: "{{bin_dir}}/cfssl"
-    owner: root
-    group: root
-    mode: 0755
