@@ -1,0 +1,17 @@
+#- name: 检查执行文件路径
+#  shell: "for i in {{bin_files|join(' ')}};do cp `find {{tmp_dir}} -name $i` ~/bin;done"
+#  register: res
+
+- name: show msg
+  debug: msg="hello {{item}} "
+  with_items:
+    - "{{bin_files}}"
+
+#- name: 复制文件测试
+#  become: true
+#  copy:
+#    src: "{{res_dir}}/cfssl_linux-amd64"
+#    dest: "{{bin_dir}}/cfssl"
+#    owner: root
+#    group: root
+#    mode: 0755
