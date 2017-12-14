@@ -1,4 +1,4 @@
-- name: 安装 cfssl
+- name: 安装cfssl
   become: true
   copy:
     src: "{{res_dir}}/cfssl_linux-amd64"
@@ -6,13 +6,10 @@
     owner: root
     group: root
     mode: 0755
+  tags:
+  - install_cfssl
 
-- name: 创建TLS临时目录
-  file:
-    path: "{{tmp_tls_dir}}"
-    state: directory
-
-- name: 复制文件测试
-- template:
-    src: ca-config.json.j2
-    dest: /etc/file.conf
+- name: 生成ca证书
+  include_tasks: ca.yaml
+  tags:
+  - ca

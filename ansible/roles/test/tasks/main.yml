@@ -1,11 +1,15 @@
+
 #- name: 检查执行文件路径
 #  shell: "for i in {{bin_files|join(' ')}};do cp `find {{tmp_dir}} -name $i` ~/bin;done"
 #  register: res
 
-#- name: show msg
-#  debug: msg="hello {{item}} "
-#  with_items:
-#    - "{{bin_files}}"
+- name: Include variables
+  include_vars: "test_vars.yaml"
+
+- include_tasks: "test_task.yaml"
+
+- name: show msg
+  debug: msg="hello {{p}}"
 
 #- name: 复制文件测试
 #  become: true
@@ -16,7 +20,7 @@
 #    group: root
 #    mode: 0755
 
-- name: 复制文件测试
-  copy:
-    src: ca-config.json
-    dest: "~"
+#- name: 复制文件测试
+#  copy:
+#    src: ca-config.json
+#    dest: "~"
