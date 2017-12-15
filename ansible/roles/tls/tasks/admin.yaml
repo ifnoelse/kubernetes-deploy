@@ -3,15 +3,15 @@
     path: "{{tmp_tls_dir}}"
     state: directory
 
-- name: 创建 etcd-csr.json
+- name: 创建 admin-csr.json
   template:
-    src: etcd-csr.json.j2
-    dest: "{{tmp_tls_dir}}/etcd-csr.json"
+    src: admin-csr.json.j2
+    dest: "{{tmp_tls_dir}}/admin-csr.json"
 
-- name: 生成etcd证书
+- name: 生成admin证书
   shell: "cfssl gencert -ca={{tmp_tls_dir}}/ca.pem \
                      -ca-key={{tmp_tls_dir}}/ca-key.pem \
                      -config={{tmp_tls_dir}}/ca-config.json \
-                     -profile=kubernetes etcd-csr.json | cfssljson -bare etcd"
+                     -profile=kubernetes admin-csr.json | cfssljson -bare admin"
   args:
     chdir: "{{tmp_tls_dir}}"
