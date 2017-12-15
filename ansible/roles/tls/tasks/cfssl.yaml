@@ -1,0 +1,10 @@
+- name: 安装cfssl cfssljson cfssl-certinfo
+  become: true
+  get_url:
+    url: "https://pkg.cfssl.org/R1.2/{{item}}_linux-amd64"
+    dest: "{{bin_dir}}/{{item}}"
+    mode: 0755
+  with_items:
+  - cfssl
+  - cfssljson
+  - cfssl-certinfo
