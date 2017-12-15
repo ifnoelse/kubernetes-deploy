@@ -1,4 +1,4 @@
-- name: 安装cfssl
+- name: 安装TLS工具
   include_tasks: cfssl.yaml
   tags:
   - install_cfssl
@@ -6,4 +6,9 @@
 - name: 生成ca证书
   include_tasks: ca.yaml
   tags:
-  - ca
+  - tls_ca
+
+- name: 生成etcd证书
+  include_tasks: etcd.yaml
+  tags:
+  - tls_etcd

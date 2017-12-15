@@ -1,5 +1,5 @@
 bin_dir: /usr/local/bin
-base_dir: "~"
+base_dir: "/home/ifnoelse"
 res_dir: "{{base_dir}}/res"
 tmp_dir: "{{base_dir}}/tmp"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"

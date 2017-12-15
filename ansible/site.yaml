@@ -16,7 +16,7 @@
 
 - name: "测试任务"
   hosts: test
-  gather_facts: no
+  gather_facts: yes
   roles:
   - test
   tags:
