@@ -1,0 +1,36 @@
+- name: 创建证书相关目录
+  become: true
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - /etc/etcd/ssl/
+  - /etc/flanneld/ssl/
+  - /etc/kubernetes/ssl
+
+- name: 分发kubernetes证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: /etc/kubernetes/ssl
+  with_items:
+  - kubernetes-key.pem
+  - kubernetes.pem
+
+- name: 分发flanneld证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: /etc/flanneld/ssl
+  with_items:
+  - flanneld-key.pem
+  - flanneld.pem
+
+- name: 分发etcd证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: /etc/etcd/ssl
+  with_items:
+  - etcd-key.pem
+  - etcd.pem
