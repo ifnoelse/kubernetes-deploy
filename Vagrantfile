@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.provision "shell", inline: <<-SHELL
         # 确保脚本有执行权限
-        # chmod 755 *.sh
+        # chmod 755 /vagrant/.setting/*.sh
 
         # 设置基本配置
         /vagrant/.setting/config.sh
