@@ -1,8 +1,12 @@
-node_1: {name: "node-1",ip: "192.168.100.101"}
-node_2: {name: "node-2",ip: "192.168.100.102"}
-node_3: {name: "node-3",ip: "192.168.100.103"}
+nodes:
+- {name: "node_1",ip: "192.168.100.101"}
+- {name: "node_2",ip: "192.168.100.102"}
+- {name: "node_3",ip: "192.168.100.103"}
+
 
 cluster_svc_ip: 168.168.0.1
+
+etcd_nodes: "{%for n in nodes %}{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 
 bin_dir: /usr/local/bin
 base_dir: "/home/ifnoelse"

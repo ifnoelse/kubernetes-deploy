@@ -1,3 +1,6 @@
+- name: show msg
+  debug: msg="hello {{etcd_nodes}}"
+
 
 #- name: 检查执行文件路径
 #  shell: "for i in {{bin_files|join(' ')}};do cp `find {{tmp_dir}} -name $i` ~/bin;done"
@@ -14,13 +17,13 @@
 #    state: file
 #  register: res
 
-- name: 检查执行文件路径
-  shell: 'for i in {ca-key.pem,ca.pem,ca-config.json};do [ -f "/home/ifnoelse/tmp/tls/$i" ] &&  echo 1 || echo 0;done'
-  register: res
+#- name: 检查执行文件路径
+#  shell: 'for i in {ca-key.pem,ca.pem,ca-config.json};do [ -f "/home/ifnoelse/tmp/tls/$i" ] &&  echo 1 || echo 0;done'
+#  register: res
 
-- name: show msg
-  debug: msg="hello {{res.stdout_lines|join('')}}"
-  when: res.stdout_lines|join('') == "111"
+#- name: show msg
+#  debug: msg="hello {{res.stdout_lines|join('')}}"
+#  when: res.stdout_lines|join('') == "111"
 
 #- name: 复制文件测试
 #  become: true
