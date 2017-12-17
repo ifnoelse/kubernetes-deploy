@@ -1,0 +1,9 @@
+- name: 删除证书相关目录
+  become: true
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items:
+  - /etc/etcd/ssl/
+  - /etc/flanneld/ssl/
+  - /etc/kubernetes/ssl

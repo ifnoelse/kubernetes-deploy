@@ -21,11 +21,3 @@
   - dist_certificate
   tags:
   - dist_certificate
-
-- name: "测试任务"
-  hosts: test
-  gather_facts: yes
-  roles:
-  - test
-  tags:
-  - test

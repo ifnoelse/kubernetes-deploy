@@ -1,0 +1,4 @@
+- name: 删除临时目录
+  file:
+    path: "{{tmp_dir}}"
+    state: absent
