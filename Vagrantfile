@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define vm_name do |node|
 
+      config.vm.box_check_update = "false"
       node.vm.box = "bento/centos-7.4"
       node.vm.hostname = vm_name
       node.vm.network "private_network", ip: vm_ip
