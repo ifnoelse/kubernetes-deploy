@@ -1,14 +1,21 @@
+#  gather_facts: no
+
 - name: "资源准备任务"
   hosts: deploy
-  gather_facts: no
   roles:
   - prepare_res
   tags:
   - prepare_res
 
+- name: "ca证书"
+  hosts: all
+  roles:
+  - ca_certificate
+  tags:
+  - ca_certificate
+
 - name: "生成证书"
-  hosts: deploy
-  gather_facts: no
+  hosts: all
   roles:
   - gen_certificate
   tags:
@@ -16,8 +23,14 @@
 
 - name: "分发证书"
   hosts: all
-  gather_facts: no
   roles:
   - dist_certificate
   tags:
   - dist_certificate
+
+- name: "安装etcd"
+  hosts: all
+  roles:
+  - install_etcd
+  tags:
+  - install_etcd

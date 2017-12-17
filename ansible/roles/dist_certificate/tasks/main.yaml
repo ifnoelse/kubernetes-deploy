@@ -4,15 +4,25 @@
     path: "{{item}}"
     state: directory
   with_items:
-  - /etc/etcd/ssl/
-  - /etc/flanneld/ssl/
-  - /etc/kubernetes/ssl
+  - "{{etcd_tls_dir}}"
+  - "{{kubernetes_tls_dir}}"
+  - "{{flanneld_tls_dir}}"
+
+- name: 分发ca证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: "{{kubernetes_tls_dir}}"
+    remote_src: yes
+  with_items:
+  - ca-key.pem
+  - ca.pem
 
 - name: 分发kubernetes证书
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: /etc/kubernetes/ssl
+    dest: "{{kubernetes_tls_dir}}/{{item}}"
   with_items:
   - kubernetes-key.pem
   - kubernetes.pem
@@ -21,7 +31,7 @@
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: /etc/flanneld/ssl
+    dest: "{{flanneld_tls_dir}}/{{item}}"
   with_items:
   - flanneld-key.pem
   - flanneld.pem
@@ -30,7 +40,8 @@
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: /etc/etcd/ssl
+    remote_src: yes
+    dest: "{{etcd_tls_dir}}//{{item}}"
   with_items:
   - etcd-key.pem
   - etcd.pem

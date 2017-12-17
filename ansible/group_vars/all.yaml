@@ -1,12 +1,15 @@
 nodes:
-- {name: "node_1",ip: "192.168.100.101"}
-- {name: "node_2",ip: "192.168.100.102"}
-- {name: "node_3",ip: "192.168.100.103"}
-
+- {name: "node-1",ip: "192.168.100.101"}
+- {name: "node-2",ip: "192.168.100.102"}
+- {name: "node-3",ip: "192.168.100.103"}
 
 cluster_svc_ip: 168.168.0.1
 
-etcd_nodes: "{%for n in nodes %}{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
+master_ip: "{{nodes[0].ip}}"
+
+node_ip: "{{ansible_enp0s8.ipv4.address}}"
+
+etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 
 bin_dir: /usr/local/bin
 base_dir: "/home/ifnoelse"
@@ -15,6 +18,10 @@ tmp_dir: "{{base_dir}}/tmp"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"
 tmp_bin_dir: "{{tmp_dir}}/bin"
 tmp_tls_dir: "{{tmp_dir}}/tls"
+
+etcd_tls_dir: /etc/etcd/ssl
+flanneld_tls_dir: /etc/flanneld/ssl
+kubernetes_tls_dir: /etc/kubernetes/ssl
 
 bin_files:
   docker:

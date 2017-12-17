@@ -1,0 +1,18 @@
+- name: 删除etcd相关目录
+  become: true
+  file:
+    path: /var/lib/etcd
+    state: absent
+
+- name: 停止etcd服务
+  become: true
+  shell: "{{item}}"
+  with_items:
+  - systemctl disable etcd
+  - systemctl stop etcd
+
+- name: 删除etcd服务文件
+  become: true
+  file:
+    path: /etc/systemd/system/etcd.service
+    state: absent

@@ -1,7 +1,20 @@
 - name: 创建etcd相关目录
+  become: true
   file:
-    path: "{{item}}"
+    path: /var/lib/etcd
     state: directory
-    with_items:
-    - /etc/etcd/ssl/
-    - /var/lib/etcd/
+
+- name: 复制etcd执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.etcd}}"
+
+- name: 生成etcd服务
+  become: true
+  template:
+    src: etcd.service.j2
+    dest: /etc/systemd/system/etcd.service

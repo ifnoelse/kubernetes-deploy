@@ -3,10 +3,10 @@
   tags:
   - install_cfssl
 
-- name: 生成ca证书
-  include_tasks: ca.yaml
-  tags:
-  - gen_ca_certificate
+#- name: 生成ca证书
+#  include_tasks: ca.yaml
+#  tags:
+#  - gen_ca_certificate
 
 - name: 生成etcd证书
   include_tasks: etcd.yaml

@@ -1,5 +1,5 @@
 - name: "删除res临时目录"
-  hosts: deploy
+  hosts: all
   gather_facts: no
   roles:
   - del_res_tmp
@@ -13,3 +13,11 @@
   - del_certificate
   tags:
   - del_certificate
+
+- name: "卸载etcd"
+  hosts: all
+  gather_facts: no
+  roles:
+  - del_etcd
+  tags:
+  - del_etcd

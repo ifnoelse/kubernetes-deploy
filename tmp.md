@@ -70,3 +70,6 @@ cfssl gencert -initca ca-csr.json | cfssljson -bare ca
 sudo mkdir -p /etc/kubernetes/ssl
 sudo cp ca* /etc/kubernetes/ssl
 ```
+
+
+etcd每个机器的证书都不一样
