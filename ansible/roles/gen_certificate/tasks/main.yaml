@@ -1,0 +1,29 @@
+- name: 安装cfssl工具
+  include_tasks: cfssl.yaml
+  tags:
+  - install_cfssl
+
+- name: 生成ca证书
+  include_tasks: ca.yaml
+  tags:
+  - gen_ca_certificate
+
+- name: 生成etcd证书
+  include_tasks: etcd.yaml
+  tags:
+  - gen_etcd_certificate
+
+- name: 生成flanneld证书
+  include_tasks: flanneld.yaml
+  tags:
+  - gen_flanneld_certificate
+
+- name: 生成kubernetes证书
+  include_tasks: kubernetes.yaml
+  tags:
+  - gen_kubernetes_certificate
+
+- name: 生成admin证书
+  include_tasks: admin.yaml
+  tags:
+  - gen_admin_certificate

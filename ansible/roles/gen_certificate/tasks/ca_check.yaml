@@ -1,0 +1,7 @@
+- name: 检查ca证书是否存在
+  shell: 'for i in {ca-key.pem,ca.pem,ca-config.json};do [ -f "{{tmp_tls_dir}}/$i" ] &&  echo 1 || echo 0;done'
+  register: result
+
+- name: 调用ca证书生成任务
+  include_tasks: ca.yaml
+  when: result.stdout_lines|join('') != "111"

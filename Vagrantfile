@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.define vm_name do |node|
 
-      config.vm.box_check_update = "false"
+      node.vm.box_check_update = false
       node.vm.box = "bento/centos-7.4"
       node.vm.hostname = vm_name
       node.vm.network "private_network", ip: vm_ip
@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.provision "shell", inline: <<-SHELL
         # 确保脚本有执行权限
-        # chmod 755 /vagrant/.setting/*.sh
+        chmod 755 /vagrant/.setting/*.sh
 
         # 设置基本配置
         /vagrant/.setting/config.sh

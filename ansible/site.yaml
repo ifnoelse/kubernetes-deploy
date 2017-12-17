@@ -2,17 +2,25 @@
   hosts: deploy
   gather_facts: no
   roles:
-  - res
+  - prepare_res
   tags:
-  - res
+  - prepare_res
 
-- name: "TLS任务"
+- name: "生成证书"
   hosts: deploy
   gather_facts: no
   roles:
-  - tls
+  - gen_certificate
   tags:
-  - tls
+  - gen_certificate
+
+- name: "分发证书"
+  hosts: all
+  gather_facts: no
+  roles:
+  - dist_certificate
+  tags:
+  - dist_certificate
 
 - name: "测试任务"
   hosts: test

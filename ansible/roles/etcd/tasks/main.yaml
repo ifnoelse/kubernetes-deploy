@@ -1,0 +1,7 @@
+- name: 创建etcd相关目录
+  file:
+    path: "{{item}}"
+    state: directory
+    with_items:
+    - /etc/etcd/ssl/
+    - /var/lib/etcd/

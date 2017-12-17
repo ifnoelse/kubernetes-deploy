@@ -1,3 +1,9 @@
+node_1: {name: "node-1",ip: "192.168.100.101"}
+node_2: {name: "node-2",ip: "192.168.100.102"}
+node_3: {name: "node-3",ip: "192.168.100.103"}
+
+cluster_svc_ip: 168.168.0.1
+
 bin_dir: /usr/local/bin
 base_dir: "/home/ifnoelse"
 res_dir: "{{base_dir}}/res"

@@ -8,8 +8,19 @@
 #
 #- include_tasks: "test_task.yaml"
 
+#- name: 检查执行文件路径
+#  file:
+#    path: /etc/foo.conf
+#    state: file
+#  register: res
+
+- name: 检查执行文件路径
+  shell: 'for i in {ca-key.pem,ca.pem,ca-config.json};do [ -f "/home/ifnoelse/tmp/tls/$i" ] &&  echo 1 || echo 0;done'
+  register: res
+
 - name: show msg
-  debug: msg="hello {{ansible_user_dir}}"
+  debug: msg="hello {{res.stdout_lines|join('')}}"
+  when: res.stdout_lines|join('') == "111"
 
 #- name: 复制文件测试
 #  become: true
