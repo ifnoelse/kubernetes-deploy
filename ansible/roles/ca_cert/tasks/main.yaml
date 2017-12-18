@@ -1,0 +1,4 @@
+- name: 生成ca证书
+  include_tasks: ca.yaml
+  tags:
+  - ca_certificate

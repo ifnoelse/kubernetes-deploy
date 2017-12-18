@@ -1,5 +1,5 @@
 - name: "测试任务"
-  hosts: test
+  hosts: all
   gather_facts: yes
   roles:
   - test

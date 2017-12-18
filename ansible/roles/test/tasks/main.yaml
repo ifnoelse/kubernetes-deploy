@@ -1,5 +1,6 @@
 - name: show msg
-  debug: msg="hello {{etcd_nodes}}"
+  debug: msg="hello {{nip}}"
+#  when: gen_ca == true
 
 
 #- name: 检查执行文件路径

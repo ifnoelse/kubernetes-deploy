@@ -18,11 +18,11 @@
   args:
     chdir: "{{tmp_tls_dir}}"
 
-- name: 分发ca证书
-  become: true
-  copy:
-    src: "{{tmp_tls_dir}}/{{item}}"
-    dest: "{{tmp_tls_dir}}"
-  with_items:
-  - ca-key.pem
-  - ca.pem
+#- name: 分发ca证书到临时目录
+#  become: true
+#  copy:
+#    src: "{{tmp_tls_dir}}/{{item}}"
+#    dest: "{{tmp_tls_dir}}"
+#  with_items:
+#  - ca-key.pem
+#  - ca.pem

@@ -4,15 +4,15 @@
     path: "{{item}}"
     state: directory
   with_items:
-  - "{{etcd_tls_dir}}"
-  - "{{kubernetes_tls_dir}}"
-  - "{{flanneld_tls_dir}}"
+  - "{{etcd_cert_dir}}"
+  - "{{kubernetes_cert_dir}}"
+  - "{{flanneld_cert_dir}}"
 
 - name: 分发ca证书
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: "{{kubernetes_tls_dir}}"
+    dest: "{{kubernetes_cert_dir}}"
     remote_src: yes
   with_items:
   - ca-key.pem
@@ -22,7 +22,7 @@
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: "{{kubernetes_tls_dir}}/{{item}}"
+    dest: "{{kubernetes_cert_dir}}/{{item}}"
   with_items:
   - kubernetes-key.pem
   - kubernetes.pem
@@ -31,7 +31,7 @@
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
-    dest: "{{flanneld_tls_dir}}/{{item}}"
+    dest: "{{flanneld_cert_dir}}/{{item}}"
   with_items:
   - flanneld-key.pem
   - flanneld.pem
@@ -41,7 +41,7 @@
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
     remote_src: yes
-    dest: "{{etcd_tls_dir}}//{{item}}"
+    dest: "{{etcd_cert_dir}}//{{item}}"
   with_items:
   - etcd-key.pem
   - etcd.pem

@@ -8,25 +8,18 @@
   - prepare_res
 
 - name: "ca证书"
-  hosts: all
+  hosts: deploy
   roles:
-  - ca_certificate
+  - ca_cert
   tags:
-  - ca_certificate
+  - ca_cert
 
-- name: "生成证书"
-  hosts: all
+- name: "ca证书"
+  hosts: etcd
   roles:
-  - gen_certificate
+  - etcd_cert
   tags:
-  - gen_certificate
-
-- name: "分发证书"
-  hosts: all
-  roles:
-  - dist_certificate
-  tags:
-  - dist_certificate
+  - etcd_cert
 
 - name: "安装etcd"
   hosts: all
@@ -34,3 +27,24 @@
   - install_etcd
   tags:
   - install_etcd
+
+#- name: "生成证书"
+#  hosts: all
+#  roles:
+#  - gen_certificate
+#  tags:
+#  - gen_certificate
+#
+#- name: "分发证书"
+#  hosts: all
+#  roles:
+#  - dist_certificate
+#  tags:
+#  - dist_certificate
+#
+#- name: "安装etcd"
+#  hosts: all
+#  roles:
+#  - install_etcd
+#  tags:
+#  - install_etcd

@@ -3,13 +3,18 @@
   file:
     path: /var/lib/etcd
     state: absent
+# [ -f "{{tmp_tls_dir}}/$i" ] &&  echo 1 || echo 0
 
 - name: 停止etcd服务
   become: true
-  shell: "{{item}}"
-  with_items:
-  - systemctl disable etcd
-  - systemctl stop etcd
+  shell: "if [ -f '/etc/systemd/system/etcd.service' ];then systemctl disable etcd||systemctl stop etcd;fi"
+
+#- name: 停止etcd服务
+#  become: true
+#  shell: "{{item}}"
+#  with_items:
+#  - systemctl disable etcd
+#  - systemctl stop etcd
 
 - name: 删除etcd服务文件
   become: true

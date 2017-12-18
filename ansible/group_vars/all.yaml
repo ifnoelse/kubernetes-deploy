@@ -19,9 +19,16 @@ tmp_unzip_dir: "{{tmp_dir}}/unzip"
 tmp_bin_dir: "{{tmp_dir}}/bin"
 tmp_tls_dir: "{{tmp_dir}}/tls"
 
-etcd_tls_dir: /etc/etcd/ssl
-flanneld_tls_dir: /etc/flanneld/ssl
-kubernetes_tls_dir: /etc/kubernetes/ssl
+etcd_cert_dir: /etc/etcd/ssl
+flanneld_cert_dir: /etc/flanneld/ssl
+kubernetes_cert_dir: /etc/kubernetes/ssl
+ca_cert_dir: /etc/kubernetes/ssl
+
+cert_dirs:
+- "{{etcd_cert_dir}}"
+- "{{flanneld_cert_dir}}"
+- "{{kubernetes_cert_dir}}"
+- "{{ca_cert_dir}}"
 
 bin_files:
   docker:

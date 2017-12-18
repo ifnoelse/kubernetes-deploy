@@ -6,16 +6,25 @@
   tags:
   - del_res_tmp
 
-- name: "删除证书"
+- name: "删除cfssl相关工具"
   hosts: all
   gather_facts: no
   roles:
-  - del_certificate
+  - del_cfssl
   tags:
-  - del_certificate
+  - del_cfssl
+
+- name: "删除cfssl相关工具"
+  hosts: all
+  gather_facts: no
+  roles:
+  - del_cert
+  tags:
+  - del_cert
+
 
 - name: "卸载etcd"
-  hosts: all
+  hosts: etcd
   gather_facts: no
   roles:
   - del_etcd
