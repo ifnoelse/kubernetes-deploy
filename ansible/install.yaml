@@ -1,11 +1,11 @@
 #  gather_facts: no
 
-#- name: "资源准备任务"
-#  hosts: deploy
-#  roles:
-#  - prepare_res
-#  tags:
-#  - prepare_res
+- name: "资源准备任务"
+  hosts: deploy
+  roles:
+  - prepare_res
+  tags:
+  - prepare_res
 
 - name: "ca证书"
   hosts: deploy

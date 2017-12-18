@@ -1,9 +1,9 @@
-#- name: "删除res临时目录"
-#  hosts: all
-#  roles:
-#  - del_res_tmp
-#  tags:
-#  - del_res_tmp
+- name: "删除res临时目录"
+  hosts: all
+  roles:
+  - del_res_tmp
+  tags:
+  - del_res_tmp
 
 - name: "删除cfssl相关工具"
   hosts: all
@@ -12,7 +12,7 @@
   tags:
   - del_cfssl
 
-- name: "删除cfssl相关工具"
+- name: "删除证书"
   hosts: all
   roles:
   - del_cert

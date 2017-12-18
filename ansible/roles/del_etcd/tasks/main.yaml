@@ -1,12 +1,12 @@
 - name: 检测etcd服务文件是否存在
-- stat:
+  stat:
     path: /etc/systemd/system/etcd.service
   register: etcd
 
 - name: 停止etcd服务
   systemd:
     state: stopped
-    enabled: yes
+    enabled: no
     name: etcd
   when: etcd.stat.exists == true
 
