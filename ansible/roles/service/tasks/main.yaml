@@ -1,0 +1,26 @@
+- name: 启动etcd
+  become: true
+  systemd:
+    name: etcd
+    state: started
+  tags:
+  - etcd_start
+  when: cmd == "etcd_start"
+
+- name: 停止etcd
+  become: true
+  systemd:
+    name: etcd
+    state: stopped
+  tags:
+  - etcd_stop
+  when: cmd == "etcd_stop"
+
+- name: 重启etcd
+  become: true
+  systemd:
+    name: etcd
+    state: restarted
+  tags:
+  - etcd_restart
+  when: cmd == "etcd_restart"

@@ -1,0 +1,7 @@
+- name: 删除证书文件
+  become: true
+  file:
+    path: /etc/systemd/system/etcd.service
+    state: absent
+  with_items:
+  - "{{cert_dirs}}"

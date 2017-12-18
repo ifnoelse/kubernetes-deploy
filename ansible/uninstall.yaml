@@ -1,14 +1,12 @@
-- name: "删除res临时目录"
-  hosts: all
-  gather_facts: no
-  roles:
-  - del_res_tmp
-  tags:
-  - del_res_tmp
+#- name: "删除res临时目录"
+#  hosts: all
+#  roles:
+#  - del_res_tmp
+#  tags:
+#  - del_res_tmp
 
 - name: "删除cfssl相关工具"
   hosts: all
-  gather_facts: no
   roles:
   - del_cfssl
   tags:
@@ -16,7 +14,6 @@
 
 - name: "删除cfssl相关工具"
   hosts: all
-  gather_facts: no
   roles:
   - del_cert
   tags:
@@ -25,7 +22,6 @@
 
 - name: "卸载etcd"
   hosts: etcd
-  gather_facts: no
   roles:
   - del_etcd
   tags:

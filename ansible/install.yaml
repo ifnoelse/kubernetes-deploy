@@ -1,11 +1,11 @@
 #  gather_facts: no
 
-- name: "资源准备任务"
-  hosts: deploy
-  roles:
-  - prepare_res
-  tags:
-  - prepare_res
+#- name: "资源准备任务"
+#  hosts: deploy
+#  roles:
+#  - prepare_res
+#  tags:
+#  - prepare_res
 
 - name: "ca证书"
   hosts: deploy
@@ -14,7 +14,7 @@
   tags:
   - ca_cert
 
-- name: "ca证书"
+- name: "etcd证书"
   hosts: etcd
   roles:
   - etcd_cert
@@ -24,7 +24,8 @@
 - name: "安装etcd"
   hosts: all
   roles:
-  - install_etcd
+  - { role: install_etcd }
+  - { role: service, cmd: "etcd_start" }
   tags:
   - install_etcd
 
