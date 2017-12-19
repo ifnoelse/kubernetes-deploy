@@ -19,4 +19,4 @@
           --ca-file=/etc/kubernetes/ssl/ca.pem \
           --cert-file=/etc/flanneld/ssl/flanneld.pem \
           --key-file=/etc/flanneld/ssl/flanneld-key.pem \
-          set /kubernetes/network/config \"{ \"Network\": \"{{docker_ip_range}}\" }\""
+          set /kubernetes/network/config '{ \"Network\" : \"{{cluster_cidr}}\" }'"

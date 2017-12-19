@@ -5,9 +5,15 @@ nodes:
 
 cluster_svc_ip: 168.168.0.1
 
-docker_ip_range: 10.0.0.0/16
+service_node_port_range: 8400-9000
+
+service_cluster_ip_range: 168.168.0.0/16
+
+cluster_cidr: 10.0.0.0/16
 
 master_ip: "{{nodes[0].ip}}"
+
+bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 
 iface: enp0s8
 
@@ -27,16 +33,17 @@ tmp_unzip_dir: "{{tmp_dir}}/unzip"
 tmp_bin_dir: "{{tmp_dir}}/bin"
 tmp_tls_dir: "{{tmp_dir}}/tls"
 
-etcd_cert_dir: /etc/etcd/ssl
-flanneld_cert_dir: /etc/flanneld/ssl
-kubernetes_cert_dir: /etc/kubernetes/ssl
-ca_cert_dir: /etc/kubernetes/ssl
+kubernetes_conf_dir: /etc/kubernetes
+cert_etcd_dir: /etc/etcd/ssl
+cert_flanneld_dir: /etc/flanneld/ssl
+cert_kubernetes_dir: /etc/kubernetes/ssl
+cert_ca_dir: /etc/kubernetes/ssl
 
 cert_dirs:
-- "{{etcd_cert_dir}}"
-- "{{flanneld_cert_dir}}"
-- "{{kubernetes_cert_dir}}"
-- "{{ca_cert_dir}}"
+- "{{cert_etcd_dir}}"
+- "{{cert_flanneld_dir}}"
+- "{{cert_kubernetes_dir}}"
+- "{{cert_ca_dir}}"
 
 bin_files:
   docker:
@@ -54,11 +61,12 @@ bin_files:
   flannel:
   - flanneld
   - mk-docker-opts.sh
-  k8s_master:
+  kubernetes_master:
   - kube-apiserver
   - kube-controller-manager
   - kube-scheduler
   - kubectl
-  k8s_node:
+  - kubefed
+  kubernetes_node:
   - kube-proxy
   - kubelet

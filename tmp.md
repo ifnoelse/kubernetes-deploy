@@ -111,3 +111,23 @@ set /kubernetes/network/config '{ "Network": "10.0.0.0/16" }'
 sudo /usr/local/bin/etcdctl \
 --ca-file=/etc/kubernetes/ssl/ca.pem \
 get /kubernetes/network/config
+
+
+
+
+/usr/local/bin/kubectl config set-cluster kubernetes \
+  --certificate-authority=/etc/kubernetes/ssl/ca.pem \
+  --embed-certs=true \
+  --server=https://192.168.100.101:6443
+
+
+/usr/local/bin/kubectl config set-credentials admin \
+  --client-certificate=/etc/kubernetes/ssl/admin.pem \
+  --embed-certs=true \
+  --client-key=/etc/kubernetes/ssl/admin-key.pem
+
+/usr/local/bin/kubectl config set-context kubernetes \
+  --cluster=kubernetes \
+  --user=admin
+
+/usr/local/bin/kubectl config use-context kubernetes

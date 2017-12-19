@@ -21,7 +21,7 @@
   - "{{bin_files.docker}}"
   - "{{bin_files.etcd}}"
   - "{{bin_files.flannel}}"
-  - "{{bin_files.k8s_master}}"
-  - "{{bin_files.k8s_node}}"
+  - "{{bin_files.kubernetes_master}}"
+  - "{{bin_files.kubernetes_node}}"
   tags:
   - copy_res

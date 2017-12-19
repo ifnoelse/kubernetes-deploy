@@ -1,0 +1,36 @@
+- name: 检测kubernetes master服务文件是否存在
+  stat:
+    path: "/etc/systemd/system/{{item}}"
+  register: file
+  with_items:
+  - kube-apiserver.service
+  - kube-controller-manager.service
+  - kube-scheduler.service
+
+- name: 停止kubernetes master服务
+  become: true
+  systemd:
+    state: stopped
+    enabled: no
+    name: flanneld
+  with_items:
+  - "{{file.results}}"
+  when: item.stat.exists == true
+
+- name: 删除kubernetes master相关服务文件
+  become: true
+  file:
+    path: "/etc/systemd/system/{{item}}"
+    state: absent
+  with_items:
+  - kube-apiserver.service
+  - kube-controller-manager.service
+  - kube-scheduler.service
+
+- name: 删除kubernetes master执行文件
+  become: true
+  file:
+    path: "{{bin_dir}}/{{item}}"
+    state: absent
+  with_items:
+  - "{{bin_files.kubernetes_master}}"

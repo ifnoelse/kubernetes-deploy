@@ -10,23 +10,37 @@
 - name: "ca证书"
   hosts: deploy
   roles:
-  - ca_cert
+  - cert_ca
   tags:
-  - ca_cert
+  - cert_ca
 
 - name: "etcd证书"
   hosts: all
   roles:
-  - etcd_cert
+  - cert_etcd
   tags:
-  - etcd_cert
+  - cert_etcd
+
+#- name: "etcd证书"
+#  hosts: all
+#  roles:
+#  - { role: cert, csr_file: "etcd-csr.json", cert_dir: "{{cert_etcd_dir}}",cert_name: "etcd" }
+#  tags:
+#  - cert_etcd
 
 - name: "flannel证书"
   hosts: all
   roles:
-  - flannel_cert
+  - cert_flannel
   tags:
-  - flannel_cert
+  - cert_flannel
+
+- name: "kubernetes master证书"
+  hosts: all
+  roles:
+  - cert_kubernetes_master
+  tags:
+  - cert_kubernetes_master
 
 - name: "安装etcd"
   hosts: all
@@ -52,23 +66,12 @@
   tags:
   - install_docker
 
-#- name: "生成证书"
-#  hosts: all
-#  roles:
-#  - gen_certificate
-#  tags:
-#  - gen_certificate
-#
-#- name: "分发证书"
-#  hosts: all
-#  roles:
-#  - dist_certificate
-#  tags:
-#  - dist_certificate
-#
-#- name: "安装etcd"
-#  hosts: all
-#  roles:
-#  - install_etcd
-#  tags:
-#  - install_etcd
+- name: "安装kubernetes master"
+  hosts: deploy
+  roles:
+  - { role: install_kubernetes_master }
+  - { role: service, s: "kube-apiserver", c: "start" }
+  - { role: service, s: "kube-controller-manager", c: "start" }
+  - { role: service, s: "kube-scheduler", c: "start" }
+  tags:
+  - install_kubernetes_master

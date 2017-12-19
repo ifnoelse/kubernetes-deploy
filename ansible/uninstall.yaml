@@ -40,3 +40,9 @@
   tags:
   - del_etcd
 
+- name: "卸载kubernetes master"
+  hosts: all
+  roles:
+  - del_kubernetes_master
+  tags:
+  - del_kubernetes_master

@@ -1,9 +1,9 @@
 all:
   children:
-    test:
+    deploy:
       hosts:
         node-1:
-    deploy:
+    master:
       hosts:
         node-1:
     etcd:

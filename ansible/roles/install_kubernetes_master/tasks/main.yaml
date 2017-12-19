@@ -1,0 +1,30 @@
+- name: 创建kubernetes配置目录
+  become: true
+  file:
+    path: "{{kubernetes_conf_dir}}"
+    state: directory
+
+- name: 复制kubernetes_master执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.kubernetes_master}}"
+
+- name: 生成kubernetes_master相关服务
+  become: true
+  template:
+    src: "{{item}}.j2"
+    dest: "/etc/systemd/system/{{item}}"
+  with_items:
+  - kube-apiserver.service
+  - kube-controller-manager.service
+  - kube-scheduler.service
+
+- name: 生成kubernetes_master相关服务
+  become: true
+  template:
+    src: token.csv.j2
+    dest: "{{kubernetes_conf_dir}}/token.csv"
