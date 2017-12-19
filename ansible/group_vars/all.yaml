@@ -65,8 +65,8 @@ bin_files:
   - kube-apiserver
   - kube-controller-manager
   - kube-scheduler
-  - kubectl
-  - kubefed
   kubernetes_node:
   - kube-proxy
   - kubelet
+  kubernetes_client:
+  - kubectl

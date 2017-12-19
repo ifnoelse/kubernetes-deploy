@@ -1,0 +1,7 @@
+- name: 删除kubernetes master执行文件
+  become: true
+  file:
+    path: "{{bin_dir}}/{{item}}"
+    state: absent
+  with_items:
+  - "{{bin_files.kubernetes_client}}"

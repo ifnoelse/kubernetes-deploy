@@ -1,0 +1,44 @@
+- name: 创建证书相关目录
+  become: true
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - "{{cert_kubernetes_dir}}"
+  - "{{cert_ca_dir}}"
+
+- name: 获取ca证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: "{{cert_ca_dir}}"
+  with_items:
+  - ca-key.pem
+  - ca.pem
+  - ca-config.json
+
+- name: 创建admin-csr.json
+  become: true
+  template:
+    src: admin-csr.json.j2
+    dest: "{{cert_kubernetes_dir}}/admin-csr.json"
+
+- name: 生成admin证书
+  become: true
+  shell: "{{bin_dir}}/cfssl gencert -ca={{cert_ca_dir}}/ca.pem \
+          -ca-key={{cert_ca_dir}}/ca-key.pem \
+          -config={{cert_ca_dir}}/ca-config.json \
+          -profile=kubernetes admin-csr.json | {{bin_dir}}/cfssljson -bare admin"
+  args:
+    chdir: "{{cert_kubernetes_dir}}"
+
+- name: 设置证书权限
+  become: true
+  file:
+    path: "{{cert_kubernetes_dir}}/{{item}}"
+    mode: 0644
+  with_items:
+  - admin.csr
+  - admin-csr.json
+  - admin-key.pem
+  - admin.pem

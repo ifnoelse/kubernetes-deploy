@@ -41,8 +41,15 @@
   - del_etcd
 
 - name: "卸载kubernetes master"
-  hosts: all
+  hosts: master
   roles:
   - del_kubernetes_master
   tags:
   - del_kubernetes_master
+
+- name: "卸载kubernetes client"
+  hosts: client
+  roles:
+  - del_kubernetes_client
+  tags:
+  - del_kubernetes_client

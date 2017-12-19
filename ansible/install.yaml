@@ -28,6 +28,13 @@
 #  tags:
 #  - cert_etcd
 
+- name: "admin证书"
+  hosts: client
+  roles:
+  - cert_admin
+  tags:
+  - cert_admin
+
 - name: "flannel证书"
   hosts: all
   roles:
@@ -67,7 +74,7 @@
   - install_docker
 
 - name: "安装kubernetes master"
-  hosts: deploy
+  hosts: master
   roles:
   - { role: install_kubernetes_master }
   - { role: service, s: "kube-apiserver", c: "start" }
@@ -75,3 +82,10 @@
   - { role: service, s: "kube-scheduler", c: "start" }
   tags:
   - install_kubernetes_master
+
+- name: "安装kubernetes client"
+  hosts: client
+  roles:
+  - { role: install_kubernetes_client }
+  tags:
+  - install_kubernetes_client

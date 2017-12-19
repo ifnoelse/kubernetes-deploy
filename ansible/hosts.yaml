@@ -6,6 +6,9 @@ all:
     master:
       hosts:
         node-1:
+    client:
+      hosts:
+        node-1:
     etcd:
       hosts:
         node-1:
