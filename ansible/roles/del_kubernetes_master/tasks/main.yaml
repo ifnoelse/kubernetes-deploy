@@ -12,7 +12,7 @@
   systemd:
     state: stopped
     enabled: no
-    name: flanneld
+    name: "{{item.item}}" # item.item为服务文件名称，也就是上一个任务的item
   with_items:
   - "{{file.results}}"
   when: item.stat.exists == true

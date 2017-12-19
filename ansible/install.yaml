@@ -1,4 +1,10 @@
-# gather_facts: no
+#- name: "etcd证书"
+#  gather_facts: no
+#  hosts: all
+#  roles:
+#  - { role: cert, csr_file: "etcd-csr.json", cert_dir: "{{cert_etcd_dir}}",cert_name: "etcd" }
+#  tags:
+#  - cert_etcd
 
 - name: "资源准备任务"
   hosts: deploy
@@ -20,13 +26,6 @@
   - cert_etcd
   tags:
   - cert_etcd
-
-#- name: "etcd证书"
-#  hosts: all
-#  roles:
-#  - { role: cert, csr_file: "etcd-csr.json", cert_dir: "{{cert_etcd_dir}}",cert_name: "etcd" }
-#  tags:
-#  - cert_etcd
 
 - name: "admin证书"
   hosts: client
