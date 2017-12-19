@@ -102,3 +102,12 @@ sudo /usr/local/bin/etcd \
 --initial-cluster=etcd_node-1=https://192.168.100.101:2380,etcd_node-2=https://192.168.100.102:2380,etcd_node-3=https://192.168.100.103:2380 \
 --initial-cluster-state=new \
 --data-dir=/var/lib/etcd
+
+
+sudo /usr/local/bin/etcdctl \
+--ca-file=/etc/kubernetes/ssl/ca.pem \
+set /kubernetes/network/config '{ "Network": "10.0.0.0/16" }'
+
+sudo /usr/local/bin/etcdctl \
+--ca-file=/etc/kubernetes/ssl/ca.pem \
+get /kubernetes/network/config

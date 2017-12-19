@@ -5,6 +5,8 @@ nodes:
 
 cluster_svc_ip: 168.168.0.1
 
+docker_ip_range: 10.0.0.0/16
+
 master_ip: "{{nodes[0].ip}}"
 
 iface: enp0s8

@@ -26,8 +26,8 @@
 - name: 生成flannel证书
   become: true
   shell: "{{bin_dir}}/cfssl gencert -ca={{ca_cert_dir}}/ca.pem \
-                     -ca-key={{ca_cert_dir}}/ca-key.pem \
-                     -config={{ca_cert_dir}}/ca-config.json \
-                     -profile=kubernetes flanneld-csr.json | {{bin_dir}}/cfssljson -bare flanneld"
+          -ca-key={{ca_cert_dir}}/ca-key.pem \
+          -config={{ca_cert_dir}}/ca-config.json \
+          -profile=kubernetes flanneld-csr.json | {{bin_dir}}/cfssljson -bare flanneld"
   args:
     chdir: "{{flanneld_cert_dir}}"

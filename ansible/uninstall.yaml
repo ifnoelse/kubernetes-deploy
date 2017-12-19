@@ -19,6 +19,19 @@
   tags:
   - del_cert
 
+- name: "卸载docker"
+  hosts: all
+  roles:
+  - del_docker
+  tags:
+  - del_docker
+
+- name: "卸载flannel"
+  hosts: all
+  roles:
+  - del_flannel
+  tags:
+  - del_flannel
 
 - name: "卸载etcd"
   hosts: all
@@ -27,9 +40,3 @@
   tags:
   - del_etcd
 
-- name: "卸载docker"
-  hosts: all
-  roles:
-  - del_docker
-  tags:
-  - del_docker
