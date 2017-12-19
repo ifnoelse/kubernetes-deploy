@@ -1,11 +1,11 @@
 #  gather_facts: no
 
-- name: "资源准备任务"
-  hosts: deploy
-  roles:
-  - prepare_res
-  tags:
-  - prepare_res
+#- name: "资源准备任务"
+#  hosts: deploy
+#  roles:
+#  - prepare_res
+#  tags:
+#  - prepare_res
 
 - name: "ca证书"
   hosts: deploy
@@ -15,14 +15,14 @@
   - ca_cert
 
 - name: "etcd证书"
-  hosts: etcd
+  hosts: all
   roles:
   - etcd_cert
   tags:
   - etcd_cert
 
-- name: "etcd证书"
-  hosts: etcd
+- name: "flannel证书"
+  hosts: all
   roles:
   - flannel_cert
   tags:
@@ -42,6 +42,13 @@
   - { role: install_docker }
   tags:
   - install_docker
+
+- name: "安装flannel"
+  hosts: all
+  roles:
+  - { role: install_flannel }
+  tags:
+  - install_flannel
 
 #- name: "生成证书"
 #  hosts: all

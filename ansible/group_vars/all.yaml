@@ -7,6 +7,8 @@ cluster_svc_ip: 168.168.0.1
 
 master_ip: "{{nodes[0].ip}}"
 
+iface: enp0s8
+
 node_ip: "{{ansible_enp0s8.ipv4.address}}"
 
 etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"

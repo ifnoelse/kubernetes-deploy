@@ -1,20 +1,14 @@
-- name: 创建etcd相关目录
-  become: true
-  file:
-    path: /var/lib/etcd
-    state: directory
-
-- name: 复制etcd执行文件
+- name: 复制flannel执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
     dest: "{{bin_dir}}"
     mode: 0755
   with_items:
-  - "{{bin_files.etcd}}"
+  - "{{bin_files.flannel}}"
 
-- name: 生成etcd服务
+- name: 生成flannel服务
   become: true
   template:
-    src: etcd.service.j2
-    dest: /etc/systemd/system/etcd.service
+    src: flanneld.service.j2
+    dest: /etc/systemd/system/flanneld.service
