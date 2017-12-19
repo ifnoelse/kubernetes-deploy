@@ -17,11 +17,12 @@
 
 - name: 复制可执行文件
   shell: "cp `find {{tmp_unzip_dir}} -type f -name {{item}}` {{tmp_bin_dir}}"
-  with_items:
+  with_flattened:
   - "{{bin_files.docker}}"
   - "{{bin_files.etcd}}"
   - "{{bin_files.flannel}}"
   - "{{bin_files.kubernetes_master}}"
   - "{{bin_files.kubernetes_node}}"
+  - "{{bin_files.kubernetes_client}}"
   tags:
   - copy_res
