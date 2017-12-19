@@ -21,8 +21,15 @@
 
 
 - name: "卸载etcd"
-  hosts: etcd
+  hosts: all
   roles:
   - del_etcd
   tags:
   - del_etcd
+
+- name: "卸载docker"
+  hosts: all
+  roles:
+  - del_docker
+  tags:
+  - del_docker

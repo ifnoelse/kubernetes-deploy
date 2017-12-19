@@ -21,13 +21,27 @@
   tags:
   - etcd_cert
 
+- name: "etcd证书"
+  hosts: etcd
+  roles:
+  - flannel_cert
+  tags:
+  - flannel_cert
+
 - name: "安装etcd"
   hosts: all
   roles:
   - { role: install_etcd }
-  - { role: service, cmd: "etcd_start" }
+  - { role: service, s: "etcd", c: "start" }
   tags:
   - install_etcd
+
+- name: "安装docker"
+  hosts: all
+  roles:
+  - { role: install_docker }
+  tags:
+  - install_docker
 
 #- name: "生成证书"
 #  hosts: all
