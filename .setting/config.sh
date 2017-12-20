@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#升级内核
+rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+yum --enablerepo=elrepo-kernel install kernel-ml
+grub2-set-default 0
+
 # 配合国内yum源
 yum install -y wget
 mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
