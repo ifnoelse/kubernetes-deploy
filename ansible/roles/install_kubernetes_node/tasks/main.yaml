@@ -7,7 +7,7 @@
   with_items:
   - "{{bin_files.kubernetes_node}}"
 
-- name: 设置kubernetes client
+- name: 设置kubernetes node
   shell: "{{item}}"
   with_items:
   - "{{bin_dir}}/kubectl config set-cluster kubernetes \
