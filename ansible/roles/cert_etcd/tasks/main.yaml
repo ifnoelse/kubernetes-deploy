@@ -1,0 +1,33 @@
+- name: 创建证书相关目录
+  become: true
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - "{{cert_etcd_dir}}"
+  - "{{cert_ca_dir}}"
+
+- name: 获取ca证书
+  become: true
+  copy:
+    src: "{{tmp_tls_dir}}/{{item}}"
+    dest: "{{cert_ca_dir}}"
+  with_items:
+  - ca-key.pem
+  - ca.pem
+  - ca-config.json
+
+- name: 创建 etcd-csr.json
+  become: true
+  template:
+    src: etcd-csr.json.j2
+    dest: "{{cert_etcd_dir}}/etcd-csr.json"
+
+- name: 生成etcd证书
+  become: true
+  shell: "{{bin_dir}}/cfssl gencert -ca={{cert_ca_dir}}/ca.pem \
+                     -ca-key={{cert_ca_dir}}/ca-key.pem \
+                     -config={{cert_ca_dir}}/ca-config.json \
+                     -profile=kubernetes etcd-csr.json | {{bin_dir}}/cfssljson -bare etcd"
+  args:
+    chdir: "{{cert_etcd_dir}}"
