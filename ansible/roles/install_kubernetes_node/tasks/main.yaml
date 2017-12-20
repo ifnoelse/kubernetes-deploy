@@ -1,0 +1,27 @@
+- name: 复制kubernetes node执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.kubernetes_node}}"
+
+- name: 设置kubernetes client
+  shell: "{{item}}"
+  with_items:
+  - "{{bin_dir}}/kubectl config set-cluster kubernetes \
+     --embed-certs=true \
+     --server={{master_ip}} \
+     --kubeconfig=bootstrap.kubeconfig"
+
+  - "{{bin_dir}}/kubectl config set-credentials kubelet-bootstrap \
+     --token={{bootstrap_token}} \
+     --kubeconfig=bootstrap.kubeconfig"
+
+  - "{{bin_dir}}/kubectl config set-context default \
+     --cluster=kubernetes \
+     --user=kubelet-bootstrap \
+     --kubeconfig=bootstrap.kubeconfig"
+
+  - "{{bin_dir}}/kubectl config use-context default --kubeconfig=bootstrap.kubeconfig"

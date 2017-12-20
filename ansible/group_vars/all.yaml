@@ -11,6 +11,10 @@ service_cluster_ip_range: 168.168.0.0/16
 
 cluster_cidr: 10.0.0.0/16
 
+cluster_dns: 168.168.0.100
+
+cluster_domain: cluster.local.
+
 master_ip: "{{nodes[0].ip}}"
 
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
@@ -68,5 +72,6 @@ bin_files:
   kubernetes_node:
   - kube-proxy
   - kubelet
+  - kubectl
   kubernetes_client:
   - kubectl
