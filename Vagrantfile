@@ -1,9 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vms = {"192.168.100.101" => "node-1",
-       "192.168.100.102" => "node-2",
-       "192.168.100.103" => "node-3"}
+vms = {"192.168.100.101" => "node-1"}
 
 Vagrant.configure("2") do |config|
 
