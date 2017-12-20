@@ -6,49 +6,64 @@
 #  tags:
 #  - cert_etcd
 
-- name: "资源准备任务"
-  hosts: deploy
-  roles:
-  - prepare_res
-  tags:
-  - prepare_res
-
-- name: "ca证书"
-  hosts: deploy
-  roles:
-  - cert_ca
-  tags:
-  - cert_ca
-
-- name: "etcd证书"
-  hosts: all
-  roles:
-  - cert_etcd
-  tags:
-  - cert_etcd
-
+#- name: "资源准备任务"
+#  gather_facts: no
+#  hosts: deploy
+#  roles:
+#  - prepare_res
+#  tags:
+#  - prepare_res
+#
+#- name: "ca证书"
+#  gather_facts: no
+#  hosts: deploy
+#  roles:
+#  - cert_ca
+#  tags:
+#  - cert_ca
+#
+#- name: "etcd证书"
+#  gather_facts: no
+#  hosts: all
+#  roles:
+#  - cert_etcd
+#  tags:
+#  - cert_etcd
+#
 - name: "admin证书"
-  hosts: client
+  gather_facts: no
+  hosts: node
   roles:
   - cert_admin
   tags:
   - cert_admin
-
-- name: "flannel证书"
-  hosts: all
-  roles:
-  - cert_flannel
-  tags:
-  - cert_flannel
-
-- name: "kubernetes master证书"
-  hosts: all
-  roles:
-  - cert_kubernetes_master
-  tags:
-  - cert_kubernetes_master
+#
+#- name: "flannel证书"
+#  gather_facts: no
+#  hosts: all
+#  roles:
+#  - cert_flannel
+#  tags:
+#  - cert_flannel
+#
+#- name: "kubernetes master证书"
+#  gather_facts: no
+#  hosts: all
+#  roles:
+#  - cert_kubernetes_master
+#  tags:
+#  - cert_kubernetes_master
+#
+#- name: "kubernetes node证书"
+#  gather_facts: no
+#  hosts: all
+#  roles:
+#  - cert_kubernetes_node
+#  tags:
+#  - cert_kubernetes_node
 
 - name: "安装etcd"
+  gather_facts: no
   hosts: all
   roles:
   - { role: install_etcd }
@@ -57,6 +72,7 @@
   - install_etcd
 
 - name: "安装flannel"
+  gather_facts: no
   hosts: all
   roles:
   - { role: install_flannel }
@@ -65,6 +81,7 @@
   - install_flannel
 
 - name: "安装docker"
+  gather_facts: no
   hosts: all
   roles:
   - { role: install_docker }
@@ -73,6 +90,7 @@
   - install_docker
 
 - name: "安装kubernetes master"
+  gather_facts: no
   hosts: master
   roles:
   - { role: install_kubernetes_master }
@@ -82,8 +100,17 @@
   tags:
   - install_kubernetes_master
 
+- name: "安装kubernetes node"
+  gather_facts: no
+  hosts: node
+  roles:
+  - { role: install_kubernetes_node }
+  tags:
+  - install_kubernetes_node
+
 - name: "安装kubernetes client"
-  hosts: client
+  gather_facts: no
+  hosts: node
   roles:
   - { role: install_kubernetes_client }
   tags:

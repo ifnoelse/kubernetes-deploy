@@ -17,11 +17,13 @@ cluster_domain: cluster.local.
 
 master_ip: "{{nodes[0].ip}}"
 
+kube_apiserver: "https://{{master_ip}}:6443"
+
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 
 iface: enp0s8
 
-node_ip: "{{ansible_enp0s8.ipv4.address}}"
+#node_ip: "{{ansible_enp0s8.ipv4.address}}"
 
 etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 
@@ -38,6 +40,7 @@ tmp_bin_dir: "{{tmp_dir}}/bin"
 tmp_tls_dir: "{{tmp_dir}}/tls"
 
 kubernetes_conf_dir: /etc/kubernetes
+
 cert_etcd_dir: /etc/etcd/ssl
 cert_flanneld_dir: /etc/flanneld/ssl
 cert_kubernetes_dir: /etc/kubernetes/ssl

@@ -7,12 +7,28 @@
   with_items:
   - "{{bin_files.kubernetes_node}}"
 
-- name: 设置kubernetes node
+- name: 创建kubernetes node相关目录
+  become: true
+  file:
+    path: /var/lib/kubelet
+    state: directory
+
+- name: 生成kubernetes node相关服务
+  become: true
+  template:
+    src: "{{item}}.j2"
+    dest: "/etc/systemd/system/{{item}}"
+  with_items:
+  - kubelet.service
+
+- name: 创建 kubelet bootstrapping kubeconfig 文件
+  become: true
   shell: "{{item}}"
   with_items:
   - "{{bin_dir}}/kubectl config set-cluster kubernetes \
+     --certificate-authority={{cert_ca_dir}}/ca.pem \
      --embed-certs=true \
-     --server={{master_ip}} \
+     --server={{kube_apiserver}} \
      --kubeconfig=bootstrap.kubeconfig"
 
   - "{{bin_dir}}/kubectl config set-credentials kubelet-bootstrap \
@@ -25,3 +41,27 @@
      --kubeconfig=bootstrap.kubeconfig"
 
   - "{{bin_dir}}/kubectl config use-context default --kubeconfig=bootstrap.kubeconfig"
+  args:
+    chdir: "{{kubernetes_conf_dir}}"
+
+#- name: 创建 kube-proxy kubeconfig 文件
+#  shell: "{{item}}"
+#  with_items:
+#  - "{{bin_dir}}/kubectl config set-cluster kubernetes \
+#     --certificate-authority={{cert_ca_dir}}/ca.pem \
+#     --embed-certs=true \
+#     --server={{kube_apiserver}} \
+#     --kubeconfig=kube-proxy.kubeconfig"
+#
+#  - "{{bin_dir}}/kubectl config set-credentials kube-proxy \
+#     --client-certificate={{cert_kubernetes_dir}}/kube-proxy.pem \
+#     --client-key={{cert_kubernetes_dir}}/kube-proxy-key.pem \
+#     --embed-certs=true \
+#     --kubeconfig=kube-proxy.kubeconfig"
+#
+#  - "{{bin_dir}}/kubectl config set-context default \
+#     --cluster=kubernetes \
+#     --user=kube-proxy \
+#     --kubeconfig=kube-proxy.kubeconfig"
+#
+#  - "{{bin_dir}}/kubectl config use-context default --kubeconfig=kube-proxy.kubeconfig"

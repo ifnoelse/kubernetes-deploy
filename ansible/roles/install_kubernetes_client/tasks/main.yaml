@@ -7,13 +7,23 @@
   with_items:
   - "{{bin_files.kubernetes_client}}"
 
+- name: 链接kubernetes client执行文件
+  become: true
+  file:
+    src: "{{bin_dir}}/{{item}}"
+    dest: "/usr/bin/{{item}}"
+    state: link
+  with_items:
+  - "{{bin_files.kubernetes_client}}"
+
 - name: 设置kubernetes client
+  become: true
   shell: "{{item}}"
   with_items:
   - "{{bin_dir}}/kubectl config set-cluster kubernetes \
        --certificate-authority={{cert_ca_dir}}/ca.pem \
        --embed-certs=true \
-       --server=https://{{master_ip}}:6443"
+       --server={{kube_apiserver}}"
 
   - "{{bin_dir}}/kubectl config set-credentials admin \
        --client-certificate={{cert_kubernetes_dir}}/admin.pem \

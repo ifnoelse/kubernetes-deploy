@@ -131,3 +131,7 @@ get /kubernetes/network/config
   --user=admin
 
 /usr/local/bin/kubectl config use-context kubernetes
+
+
+https https https
+malformed HTTP response "\x15\x03\x01\x00\x02\x02\x16

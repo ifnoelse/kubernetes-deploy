@@ -1,7 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vms = {"192.168.100.101" => "node-1"}
+vms = {"192.168.100.101" => "node-1",
+       "192.168.100.102" => "node-2",
+       "192.168.100.103" => "node-3"}
 
 Vagrant.configure("2") do |config|
 
@@ -10,7 +12,7 @@ Vagrant.configure("2") do |config|
     config.vm.define vm_name do |node|
 
       node.vm.box_check_update = false
-      node.vm.box = "centos-7.4"
+      node.vm.box = "bento/centos-7.4"
       node.vm.hostname = vm_name
       node.vm.network "private_network", ip: vm_ip
       # config.vm.synced_folder "../data", "/vagrant_data"

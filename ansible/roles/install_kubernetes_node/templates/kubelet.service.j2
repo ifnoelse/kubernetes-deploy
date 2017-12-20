@@ -6,14 +6,14 @@ Requires=docker.service
 
 [Service]
 WorkingDirectory=/var/lib/kubelet
-ExecStart=/root/local/bin/kubelet \
+ExecStart={{bin_dir}}/kubelet \
 --address={{node_ip}} \
 --hostname-override={{node_ip}} \
 --pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest \
 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig \
 --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \
 --require-kubeconfig \
---cert-dir=/etc/kubernetes/ssl \
+--cert-dir={{cert_ca_dir}} \
 --cluster-dns={{cluster_dns}} \
 --cluster-domain={{cluster_domain}} \
 --hairpin-mode promiscuous-bridge \
