@@ -1,4 +1,4 @@
-- name: 复制docker执行文件
+- name: 复制 docker 执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
@@ -7,8 +7,14 @@
   with_items:
   - "{{bin_files.docker}}"
 
-- name: 生成docker服务
+- name: 生成 docker 服务
   become: true
   template:
     src: docker.service.j2
     dest: /etc/systemd/system/docker.service
+
+- name: 设置 docker registry-mirrors
+  become: true
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
