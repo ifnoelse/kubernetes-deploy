@@ -1,3 +1,11 @@
+- name: "etcd证书"
+  gather_facts: no
+  hosts: all
+  roles:
+  - { role: cert, csr_file: "etcd-csr.json", cert_dir: "{{cert_etcd_dir}}",cert_name: "etcd" }
+  tags:
+  - cert_etcd
+
 ``` bash
 sudo mkdir -p /root/local/bin
 sudo cp /vagrant/environment.sh /root/local/bin

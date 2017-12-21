@@ -20,21 +20,21 @@
   - del_cert
 
 - name: "卸载docker"
-  hosts: all
+  hosts: node
   roles:
   - del_docker
   tags:
   - del_docker
 
 - name: "卸载flannel"
-  hosts: all
+  hosts: node
   roles:
   - del_flannel
   tags:
   - del_flannel
 
 - name: "卸载etcd"
-  hosts: all
+  hosts: etcd
   roles:
   - del_etcd
   tags:
@@ -46,6 +46,13 @@
   - del_kubernetes_master
   tags:
   - del_kubernetes_master
+
+- name: "卸载kubernetes node"
+  hosts: node
+  roles:
+  - del_kubernetes_node
+  tags:
+  - del_kubernetes_node
 
 - name: "卸载kubernetes client"
   hosts: client

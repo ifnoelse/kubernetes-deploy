@@ -1,70 +1,62 @@
-#- name: "etcd证书"
-#  gather_facts: no
-#  hosts: all
-#  roles:
-#  - { role: cert, csr_file: "etcd-csr.json", cert_dir: "{{cert_etcd_dir}}",cert_name: "etcd" }
-#  tags:
-#  - cert_etcd
+- name: "资源准备任务"
+  gather_facts: no
+  hosts: deploy
+  roles:
+  - prepare_res
+  tags:
+  - prepare_res
 
-#- name: "资源准备任务"
-#  gather_facts: no
-#  hosts: deploy
-#  roles:
-#  - prepare_res
-#  tags:
-#  - prepare_res
-#
-#- name: "ca证书"
-#  gather_facts: no
-#  hosts: deploy
-#  roles:
-#  - cert_ca
-#  tags:
-#  - cert_ca
-#
-#- name: "etcd证书"
-#  gather_facts: no
-#  hosts: all
-#  roles:
-#  - cert_etcd
-#  tags:
-#  - cert_etcd
-#
+- name: "ca证书"
+  gather_facts: no
+  hosts: deploy
+  roles:
+  - cert_ca
+  tags:
+  - cert_ca
+
+- name: "etcd证书"
+  gather_facts: no
+  hosts: etcd
+  roles:
+  - cert_etcd
+  tags:
+  - cert_etcd
+
 - name: "admin证书"
   gather_facts: no
-  hosts: node
+  hosts: client
   roles:
   - cert_admin
   tags:
   - cert_admin
-#
-#- name: "flannel证书"
-#  gather_facts: no
-#  hosts: all
-#  roles:
-#  - cert_flannel
-#  tags:
-#  - cert_flannel
-#
-#- name: "kubernetes master证书"
-#  gather_facts: no
-#  hosts: all
-#  roles:
-#  - cert_kubernetes_master
-#  tags:
-#  - cert_kubernetes_master
-#
-#- name: "kubernetes node证书"
-#  gather_facts: no
-#  hosts: all
-#  roles:
-#  - cert_kubernetes_node
-#  tags:
-#  - cert_kubernetes_node
+
+- name: "flannel证书"
+  gather_facts: no
+  hosts: node
+  roles:
+  - cert_flannel
+  tags:
+  - cert_flannel
+
+- name: "kubernetes master证书"
+  gather_facts: no
+  hosts: master
+  roles:
+  - cert_kubernetes_master
+  tags:
+  - cert_kubernetes_master
+
+- name: "kubernetes node证书"
+  gather_facts: no
+  hosts: node
+  roles:
+  - cert_kubernetes_node
+  tags:
+  - cert_kubernetes_node
 
 - name: "安装etcd"
   gather_facts: no
-  hosts: all
+  hosts: etcd
   roles:
   - { role: install_etcd }
   - { role: service, s: "etcd", c: "start" }
@@ -73,7 +65,7 @@
 
 - name: "安装flannel"
   gather_facts: no
-  hosts: all
+  hosts: node
   roles:
   - { role: install_flannel }
   - { role: service, s: "flanneld", c: "start" }
@@ -82,7 +74,7 @@
 
 - name: "安装docker"
   gather_facts: no
-  hosts: all
+  hosts: node
   roles:
   - { role: install_docker }
   - { role: service, s: "docker", c: "start" }
@@ -110,7 +102,7 @@
 
 - name: "安装kubernetes client"
   gather_facts: no
-  hosts: node
+  hosts: client
   roles:
   - { role: install_kubernetes_client }
   tags:

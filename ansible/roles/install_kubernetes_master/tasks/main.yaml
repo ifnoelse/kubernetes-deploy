@@ -13,6 +13,18 @@
   with_items:
   - "{{bin_files.kubernetes_master}}"
 
+- name: 生成token.csv
+  become: true
+  template:
+    src: token.csv.j2
+    dest: "{{kubernetes_conf_dir}}/token.csv"
+
+- name: 生成basic-auth.csv
+  become: true
+  template:
+    src: basic-auth.csv.j2
+    dest: "{{cert_kubernetes_dir}}/basic-auth.csv"
+
 - name: 生成kubernetes master相关服务
   become: true
   template:
@@ -22,9 +34,3 @@
   - kube-apiserver.service
   - kube-controller-manager.service
   - kube-scheduler.service
-
-- name: 生成kubernetes master相关服务
-  become: true
-  template:
-    src: token.csv.j2
-    dest: "{{kubernetes_conf_dir}}/token.csv"

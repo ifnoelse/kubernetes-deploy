@@ -1,0 +1,39 @@
+- name: 检测 kubernetes node 服务文件是否存在
+  stat:
+    path: "/etc/systemd/system/{{item}}"
+  register: file
+  with_items:
+  - kubelet.service
+
+- name: 停止 kubernetes node 服务
+  become: true
+  systemd:
+    state: stopped
+    enabled: no
+    name: "{{item.item}}" # item.item为服务文件名称，也就是上一个任务的item
+  with_items:
+  - "{{file.results}}"
+  when: item.stat.exists == true
+
+- name: 删除 kubernetes node 相关服务文件
+  become: true
+  file:
+    path: "/etc/systemd/system/{{item}}"
+    state: absent
+  with_items:
+  - kubelet.service
+
+
+- name: 删除 kubelet bootstrapping kubeconfig 文件
+  become: true
+  file:
+    path: "{{kubernetes_conf_dir}}/kubelet.kubeconfig"
+    state: absent
+
+- name: 删除 kubernetes node 执行文件
+  become: true
+  file:
+    path: "{{bin_dir}}/{{item}}"
+    state: absent
+  with_items:
+  - "{{bin_files.kubernetes_node}}"
