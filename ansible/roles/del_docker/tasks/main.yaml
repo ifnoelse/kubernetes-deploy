@@ -25,6 +25,12 @@
   with_items:
   - "{{bin_files.docker}}"
 
+- name: 删除 docker 配置目录
+  become: true
+  file:
+    path: /etc/docker
+    state: absent
+
 - name: 删除 docker 数据目录
   become: true
   file:

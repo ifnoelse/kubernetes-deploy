@@ -47,7 +47,7 @@
   become: true
   file:
     path: "{{item}}"
-    state: directory
+    state: absent
   with_items:
   - /var/lib/kubelet
   - /var/lib/kube-proxy

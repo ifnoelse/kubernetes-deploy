@@ -39,7 +39,7 @@
   become: true
   file:
     path: "{{cert_kubernetes_dir}}/{{item}}"
-    state: directory
+    state: absent
   with_items:
   - token.csv
   - basic-auth.csv

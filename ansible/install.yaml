@@ -118,10 +118,10 @@
   tags:
   - install_kubernetes_node
 
-#- name: "添加集群节点"
-#  gather_facts: no
-#  hosts: cm
-#  roles:
-#  - { role: cm, task: "node_csr_approve" }
-#  tags:
-#  - add_cluster_nodes
+- name: "添加集群节点"
+  gather_facts: no
+  hosts: cm
+  roles:
+  - { role: cm, task: "node_csr_approve" }
+  tags:
+  - add_cluster_nodes
