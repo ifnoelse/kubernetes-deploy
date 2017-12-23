@@ -1,11 +1,8 @@
-- name: 复制kubernetes node执行文件
+- name: 创建kubernetes配置目录
   become: true
-  copy:
-    src: "{{tmp_bin_dir}}/{{item}}"
-    dest: "{{bin_dir}}"
-    mode: 0755
-  with_items:
-  - "{{bin_files.kubernetes_node}}"
+  file:
+    path: "{{kubernetes_conf_dir}}"
+    state: directory
 
 - name: 创建kubernetes node相关目录
   become: true
@@ -15,6 +12,15 @@
   with_items:
   - /var/lib/kubelet
   - /var/lib/kube-proxy
+
+- name: 复制kubernetes node执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.kubernetes_node}}"
 
 - name: 生成kubernetes node相关服务
   become: true

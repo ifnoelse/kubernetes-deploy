@@ -1,4 +1,4 @@
-- name: 检测 kubernetes node 服务文件是否存在
+- name: "检测 {{item}}.service" 文件是否存在"
   stat:
     path: "/etc/systemd/system/{{item}}.service"
   register: file
@@ -16,7 +16,7 @@
   - "{{file.results}}"
   when: item.stat.exists == true
 
-- name: 删除 kubernetes node 相关服务文件
+- name: "删除 kubernetes node 相关服务文件：{{item}}"
   become: true
   file:
     path: "/etc/systemd/system/{{item}}.service"
@@ -25,17 +25,29 @@
   - kubelet
   - kube-proxy
 
-
-- name: 删除 kubelet bootstrapping kubeconfig 文件
+- name: "删除 kubeconfig：{{item}}"
   become: true
   file:
-    path: "{{kubernetes_conf_dir}}/kubelet.kubeconfig"
+    path: "{{kubernetes_conf_dir}}/{{item}}"
     state: absent
+  with_items:
+  - bootstrap.kubeconfig
+  - kubelet.kubeconfig
+  - kube-proxy.kubeconfig
 
-- name: 删除 kubernetes node 执行文件
+- name: "删除 kubernetes node 执行文件：{{item}}"
   become: true
   file:
     path: "{{bin_dir}}/{{item}}"
     state: absent
   with_items:
   - "{{bin_files.kubernetes_node}}"
+
+- name: "删除数据目录：{{item}}"
+  become: true
+  file:
+    path: "{{item}}"
+    state: directory
+  with_items:
+  - /var/lib/kubelet
+  - /var/lib/kube-proxy
