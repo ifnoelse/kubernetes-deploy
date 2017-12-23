@@ -1,76 +1,76 @@
-#- name: "资源准备任务"
-#  gather_facts: no
-#  hosts: deploy
-#  roles:
-#  - prepare_res
-#  tags:
-#  - prepare_res
-#
-#- name: "ca 证书"
-#  gather_facts: no
-#  hosts: deploy
-#  roles:
-#  - cert_ca
-#  tags:
-#  - cert_ca
-#
-#- name: "etcd 证书"
-#  gather_facts: no
-#  hosts: etcd
-#  roles:
-#  - cert_etcd
-#  tags:
-#  - cert_etcd
-#
-#- name: "admin 证书"
-#  gather_facts: no
-#  hosts: client
-#  roles:
-#  - cert_admin
-#  tags:
-#  - cert_admin
-#
-#- name: "flannel 证书"
-#  gather_facts: no
-#  hosts: node
-#  roles:
-#  - cert_flannel
-#  tags:
-#  - cert_flannel
-#
-#- name: "kubernetes master 证书"
-#  gather_facts: no
-#  hosts: master
-#  roles:
-#  - cert_kubernetes_master
-#  tags:
-#  - cert_kubernetes_master
-#
-#- name: "kubernetes node 证书"
-#  gather_facts: no
-#  hosts: node
-#  roles:
-#  - cert_kubernetes_node
-#  tags:
-#  - cert_kubernetes_node
-#
-#- name: "安装 etcd"
-#  gather_facts: no
-#  hosts: etcd
-#  roles:
-#  - { role: install_etcd }
-#  - { role: service, s: "etcd", c: "start" }
-#  tags:
-#  - install_etcd
-#
-#- name: "安装 flannel"
-#  gather_facts: no
-#  hosts: node
-#  roles:
-#  - { role: install_flannel }
-#  - { role: service, s: "flanneld", c: "start" }
-#  tags:
-#  - install_flannel
+- name: "资源准备任务"
+  gather_facts: no
+  hosts: deploy
+  roles:
+  - prepare_res
+  tags:
+  - prepare_res
+
+- name: "ca 证书"
+  gather_facts: no
+  hosts: deploy
+  roles:
+  - cert_ca
+  tags:
+  - cert_ca
+
+- name: "etcd 证书"
+  gather_facts: no
+  hosts: etcd
+  roles:
+  - cert_etcd
+  tags:
+  - cert_etcd
+
+- name: "admin 证书"
+  gather_facts: no
+  hosts: client
+  roles:
+  - cert_admin
+  tags:
+  - cert_admin
+
+- name: "flannel 证书"
+  gather_facts: no
+  hosts: node
+  roles:
+  - cert_flannel
+  tags:
+  - cert_flannel
+
+- name: "kubernetes master 证书"
+  gather_facts: no
+  hosts: master
+  roles:
+  - cert_kubernetes_master
+  tags:
+  - cert_kubernetes_master
+
+- name: "kubernetes node 证书"
+  gather_facts: no
+  hosts: node
+  roles:
+  - cert_kubernetes_node
+  tags:
+  - cert_kubernetes_node
+
+- name: "安装 etcd"
+  gather_facts: no
+  hosts: etcd
+  roles:
+  - { role: install_etcd }
+  - { role: service, s: "etcd", c: "start" }
+  tags:
+  - install_etcd
+
+- name: "安装 flannel"
+  gather_facts: no
+  hosts: node
+  roles:
+  - { role: install_flannel }
+  - { role: service, s: "flanneld", c: "start" }
+  tags:
+  - install_flannel
 
 - name: "安装 docker"
   gather_facts: no
@@ -118,10 +118,10 @@
   tags:
   - install_kubernetes_node
 
-- name: "添加集群节点"
-  gather_facts: no
-  hosts: cm
-  roles:
-  - { role: cm, task: "bootstrap_clusterrolebinding" }
-  tags:
-  - add_cluster_nodes
+#- name: "添加集群节点"
+#  gather_facts: no
+#  hosts: cm
+#  roles:
+#  - { role: cm, task: "node_csr_approve" }
+#  tags:
+#  - add_cluster_nodes

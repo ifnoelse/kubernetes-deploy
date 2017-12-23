@@ -1,4 +1,5 @@
 - name: "删除res临时目录"
+  gather_facts: no
   hosts: all
   roles:
   - del_res_tmp
@@ -6,6 +7,7 @@
   - del_res_tmp
 
 - name: "删除cfssl相关工具"
+  gather_facts: no
   hosts: all
   roles:
   - del_cfssl
@@ -13,6 +15,7 @@
   - del_cfssl
 
 - name: "删除证书"
+  gather_facts: no
   hosts: all
   roles:
   - del_cert
@@ -20,6 +23,7 @@
   - del_cert
 
 - name: "卸载docker"
+  gather_facts: no
   hosts: node
   roles:
   - del_docker
@@ -27,6 +31,7 @@
   - del_docker
 
 - name: "卸载flannel"
+  gather_facts: no
   hosts: node
   roles:
   - del_flannel
@@ -34,6 +39,7 @@
   - del_flannel
 
 - name: "卸载etcd"
+  gather_facts: no
   hosts: etcd
   roles:
   - del_etcd
@@ -41,22 +47,25 @@
   - del_etcd
 
 - name: "卸载kubernetes master"
+  gather_facts: no
   hosts: master
   roles:
   - del_kubernetes_master
   tags:
   - del_kubernetes_master
 
-- name: "卸载kubernetes node"
-  hosts: node
-  roles:
-  - del_kubernetes_node
-  tags:
-  - del_kubernetes_node
-
 - name: "卸载kubernetes client"
+  gather_facts: no
   hosts: client
   roles:
   - del_kubernetes_client
   tags:
   - del_kubernetes_client
+
+- name: "卸载kubernetes node"
+  gather_facts: no
+  hosts: node
+  roles:
+  - del_kubernetes_node
+  tags:
+  - del_kubernetes_node
