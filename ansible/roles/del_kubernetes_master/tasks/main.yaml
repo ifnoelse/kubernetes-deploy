@@ -38,8 +38,8 @@
 - name: 删除 token.csv、basic-auth.csv
   become: true
   file:
-    path: "{{kubernetes_conf_dir}}"
+    path: "{{cert_kubernetes_dir}}/{{item}}"
     state: directory
   with_items:
-  - "{{kubernetes_conf_dir}}/token.csv"
-  - "{{cert_kubernetes_dir}}/basic-auth.csv"
+  - token.csv
+  - basic-auth.csv

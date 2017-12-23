@@ -13,7 +13,7 @@ ExecStart={{ bin_dir }}/kube-apiserver \
 --anonymous-auth=false \
 --basic-auth-file={{ cert_kubernetes_dir }}/basic-auth.csv \
 --enable-bootstrap-token-auth \
---token-auth-file={{kubernetes_conf_dir}}/token.csv \
+--token-auth-file={{cert_kubernetes_dir}}/token.csv \
 --service-cluster-ip-range={{ service_cluster_ip_range }} \
 --service-node-port-range={{ service_node_port_range }} \
 --tls-cert-file={{ cert_kubernetes_dir }}/kubernetes.pem \
