@@ -1,3 +1,9 @@
+- name: 创建 docker 相关目录
+  become: true
+  file:
+    path: /etc/docker
+    state: directory
+
 - name: 复制 docker 执行文件
   become: true
   copy:

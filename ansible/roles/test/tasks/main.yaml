@@ -1,6 +1,9 @@
-- name: show msg
-  debug: msg="hello {{node_ip}}"
-#  when: gen_ca == true
+#- name: show msg
+#  debug: msg="hello {{gen_ca}}"
+#
+#- name: show msg
+#  debug: msg="hello {{node_ip}}"
+#  when: gen_ca == "true"
 
 
 #- name: 检查执行文件路径
@@ -10,7 +13,12 @@
 #- name: Include variables
 #  include_vars: "test_vars.yaml"
 #
-#- include_tasks: "test_task.yaml"
+
+- name: "block test"
+  block:
+  - include_tasks: "{{task}}.yaml"
+  rescue:
+  - debug: msg='I caught an error'
 
 #- name: 检查执行文件路径
 #  file:

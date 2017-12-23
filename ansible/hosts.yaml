@@ -3,6 +3,9 @@ all:
     deploy:
       hosts:
         node-1:
+    cm:
+      hosts:
+        node-1:
     master:
       hosts:
         node-1:
