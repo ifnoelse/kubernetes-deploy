@@ -1,4 +1,4 @@
-- name: 删除kubernetes master执行文件
+- name: 删除 kubernetes master 执行文件
   become: true
   file:
     path: "{{bin_dir}}/{{item}}"

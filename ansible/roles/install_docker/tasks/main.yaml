@@ -1,4 +1,4 @@
-- name: 创建 docker 相关目录
+- name: 创建 docker 配置目录
   become: true
   file:
     path: /etc/docker

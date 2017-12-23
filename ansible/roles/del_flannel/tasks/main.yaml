@@ -1,9 +1,9 @@
-- name: 检测flanneld服务文件是否存在
+- name: 检测 flanneld 服务文件是否存在
   stat:
     path: /etc/systemd/system/flanneld.service
   register: file
 
-- name: 停止flannel服务
+- name: 停止 flannel 服务
   become: true
   systemd:
     state: stopped
@@ -11,13 +11,13 @@
     name: flanneld
   when: file.stat.exists == true
 
-- name: 删除flanneld相关文件
+- name: 删除 flanneld 服务文件
   become: true
   file:
     path: /etc/systemd/system/flanneld.service
     state: absent
 
-- name: 删除flannel执行文件
+- name: 删除 flannel 执行文件
   become: true
   file:
     path: "{{bin_dir}}/{{item}}"
@@ -25,7 +25,7 @@
   with_items:
   - "{{bin_files.flannel}}"
 
-- name: 删除flannel数据相关目录
+- name: 删除 flannel 数据目录
   become: true
   file:
     path: /run/flannel

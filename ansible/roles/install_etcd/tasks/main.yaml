@@ -1,10 +1,10 @@
-- name: 创建etcd相关目录
+- name: 创建 etcd 数据目录
   become: true
   file:
     path: /var/lib/etcd
     state: directory
 
-- name: 复制etcd执行文件
+- name: 复制 etcd 执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
@@ -13,7 +13,7 @@
   with_items:
   - "{{bin_files.etcd}}"
 
-- name: 生成etcd服务
+- name: 生成 etcd 服务
   become: true
   template:
     src: etcd.service.j2

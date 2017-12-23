@@ -1,9 +1,9 @@
-- name: 检测docker服务文件是否存在
+- name: 检测 docker 服务文件是否存在
   stat:
     path: /etc/systemd/system/docker.service
   register: file
 
-- name: 停止docker服务
+- name: 停止 docker 服务
   become: true
   systemd:
     state: stopped
@@ -11,13 +11,13 @@
     name: docker
   when: file.stat.exists == true
 
-- name: 删除docker服务文件
+- name: 删除 docker 服务文件
   become: true
   file:
     path: /etc/systemd/system/docker.service
     state: absent
 
-- name: 删除docker执行文件
+- name: 删除 docker 执行文件
   become: true
   file:
     path: "{{bin_dir}}/{{item}}"
@@ -25,7 +25,7 @@
   with_items:
   - "{{bin_files.docker}}"
 
-- name: 删除docker数据相关目录
+- name: 删除 docker 数据目录
   become: true
   file:
     path: /var/lib/docker
