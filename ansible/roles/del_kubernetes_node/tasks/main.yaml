@@ -1,9 +1,10 @@
 - name: 检测 kubernetes node 服务文件是否存在
   stat:
-    path: "/etc/systemd/system/{{item}}"
+    path: "/etc/systemd/system/{{item}}.service"
   register: file
   with_items:
-  - kubelet.service
+  - kubelet
+  - kube-proxy
 
 - name: 停止 kubernetes node 服务
   become: true
@@ -18,10 +19,11 @@
 - name: 删除 kubernetes node 相关服务文件
   become: true
   file:
-    path: "/etc/systemd/system/{{item}}"
+    path: "/etc/systemd/system/{{item}}.service"
     state: absent
   with_items:
-  - kubelet.service
+  - kubelet
+  - kube-proxy
 
 
 - name: 删除 kubelet bootstrapping kubeconfig 文件

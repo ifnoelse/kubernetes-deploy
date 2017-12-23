@@ -1,9 +1,3 @@
-- name: 创建kubernetes配置目录
-  become: true
-  file:
-    path: "{{kubernetes_conf_dir}}"
-    state: directory
-
 - name: 复制kubernetes master执行文件
   become: true
   copy:
@@ -13,19 +7,19 @@
   with_items:
   - "{{bin_files.kubernetes_master}}"
 
-- name: 生成token.csv
+- name: 生成 token.csv
   become: true
   template:
     src: token.csv.j2
-    dest: "{{kubernetes_conf_dir}}/token.csv"
+    dest: "{{cert_kubernetes_dir}}/token.csv"
 
-- name: 生成basic-auth.csv
+- name: 生成 basic-auth.csv
   become: true
   template:
     src: basic-auth.csv.j2
     dest: "{{cert_kubernetes_dir}}/basic-auth.csv"
 
-- name: 生成kubernetes master相关服务
+- name: 生成 kubernetes master 相关服务
   become: true
   template:
     src: "{{item}}.j2"
