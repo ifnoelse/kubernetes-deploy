@@ -1,4 +1,4 @@
-- name: "{{c}} {{s}}"
+- name: "{{name}} {{state}}"
   become: true
   systemd:
     enabled: "{{enabled}}"

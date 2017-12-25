@@ -24,7 +24,6 @@ Vagrant.configure("2") do |config|
       end
 
       node.vm.provision "shell", inline: <<-SHELL
-        # 确保脚本有执行权限
         chmod 755 /vagrant/.setting/*.sh
 
         # 设置基本配置
@@ -39,8 +38,9 @@ Vagrant.configure("2") do |config|
         # 设置用户ssh key登陆
         /vagrant/.setting/ssh_auth.sh ifnoelse
 
-        # 修改hostname
-        echo "#{vm_name}">/etc/hostname
+        # 修改hostname       echo "#{vm_name}">/etc/hostname
+
+        echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bash_profile
 
         # 添加本地hosts解析
         for i in "#{vms.map{|k,v|"#{k}    #{v}"}.join('" "')}";do echo $i>>/etc/hosts;done

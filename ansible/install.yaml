@@ -32,7 +32,7 @@
 
 - name: "flannel 证书"
   gather_facts: no
-  hosts: node
+  hosts: master:node
   roles:
   - cert_flannel
   tags:
@@ -65,7 +65,7 @@
 
 - name: "安装 flannel"
   gather_facts: no
-  hosts: node
+  hosts: master:node
   roles:
   - { role: install_flannel }
   - { role: systemd, name: "flanneld", state: "started",enabled: "yes" }
@@ -118,7 +118,7 @@
   tags:
   - install_kubernetes_node
 
-- name: "授权节点证书请求"
+- name: "授权节点"
   gather_facts: no
   hosts: cm
   roles:

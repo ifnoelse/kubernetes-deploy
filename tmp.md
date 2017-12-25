@@ -144,6 +144,8 @@ get /kubernetes/network/config
 https https https
 malformed HTTP response "\x15\x03\x01\x00\x02\x02\x16
 
+export PATH=$PATH:/usr/local/bin
 
+https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 wget https://192.168.100.101:6443 --ca-certificate ca.pem --certificate admin.pem --private-key admin-key.pem -q -O -
