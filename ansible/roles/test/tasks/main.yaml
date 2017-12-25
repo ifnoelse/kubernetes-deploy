@@ -2,7 +2,10 @@
 #  debug: msg="hello {{gen_ca}}"
 #
 - name: show msg
-  debug: msg="hello {{ccc}}"
+  debug: msg="hello {{ etcd_endpoints }}"
+
+#- name: show msg
+#  debug: msg="hello {{ groups['master'] }}"
 
 
 #- name: 检查执行文件路径

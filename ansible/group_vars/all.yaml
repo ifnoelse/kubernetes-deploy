@@ -1,8 +1,3 @@
-nodes:
-- {name: "node-1",ip: "192.168.100.101"}
-- {name: "node-2",ip: "192.168.100.102"}
-- {name: "node-3",ip: "192.168.100.103"}
-
 cluster_svc_ip: 168.168.0.1
 
 service_node_port_range: 8400-9000
@@ -15,10 +10,10 @@ cluster_dns: 168.168.0.100
 
 cluster_domain: cluster.local.
 
-master_ip: "{{nodes[0].ip}}"
+master_ip: "{{hostvars[groups['master']|first]['node_ip']}}"
 
 kube_apiserver: "https://{{master_ip}}:6443"
-apiserver_count: 1
+
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 
 basic_auth_user: "admin"
@@ -26,12 +21,9 @@ basic_auth_pass: "admin"
 
 iface: enp0s8
 
-#node_ip: "{{ansible_enp0s8.ipv4.address}}"
-ccc: "{%for n in groups['etcd'] %}{{n}}{% endfor %}"
+etcd_nodes: "{%for n in groups['etcd'] %}etcd_{{hostvars[n]['node_name']}}=https://{{hostvars[n]['node_ip']}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 
-etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
-
-etcd_endpoints: "{%for n in nodes %}https://{{n.ip}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
+etcd_endpoints: "{%for n in groups['etcd'] %}https://{{hostvars[n]['node_ip']}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
 
 flannel_etcd_prefix: /kubernetes/network
 
