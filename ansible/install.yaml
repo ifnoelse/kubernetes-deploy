@@ -59,7 +59,7 @@
   hosts: etcd
   roles:
   - { role: install_etcd }
-  - { role: service, s: "etcd", c: "start" }
+  - { role: systemd, name: "etcd", state: "started",enabled: "yes" }
   tags:
   - install_etcd
 
@@ -68,7 +68,7 @@
   hosts: node
   roles:
   - { role: install_flannel }
-  - { role: service, s: "flanneld", c: "start" }
+  - { role: systemd, name: "flanneld", state: "started",enabled: "yes" }
   tags:
   - install_flannel
 
@@ -77,7 +77,7 @@
   hosts: node
   roles:
   - { role: install_docker }
-  - { role: service, s: "docker", c: "start" }
+  - { role: systemd, name: "docker", state: "started",enabled: "yes" }
   tags:
   - install_docker
 
@@ -86,9 +86,9 @@
   hosts: master
   roles:
   - { role: install_kubernetes_master }
-  - { role: service, s: "kube-apiserver", c: "start" }
-  - { role: service, s: "kube-controller-manager", c: "start" }
-  - { role: service, s: "kube-scheduler", c: "start" }
+  - { role: systemd, name: "kube-apiserver", state: "started",enabled: "yes" }
+  - { role: systemd, name: "kube-controller-manager", state: "started",enabled: "yes" }
+  - { role: systemd, name: "kube-scheduler", state: "started",enabled: "yes" }
   tags:
   - install_kubernetes_master
 
@@ -113,8 +113,8 @@
   hosts: node
   roles:
   - { role: install_kubernetes_node }
-  - { role: service, s: "kubelet", c: "start" }
-  - { role: service, s: "kube-proxy", c: "start" }
+  - { role: systemd, name: "kubelet", state: "started",enabled: "yes" }
+  - { role: systemd, name: "kube-proxy", state: "started",enabled: "yes" }
   tags:
   - install_kubernetes_node
 
