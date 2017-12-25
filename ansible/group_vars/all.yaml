@@ -33,8 +33,10 @@ etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not l
 etcd_endpoints: "{%for n in nodes %}https://{{n.ip}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
 
 flannel_etcd_prefix: /kubernetes/network
+
 bin_dir: /usr/local/bin
-base_dir: "/home/ifnoelse"
+
+base_dir: /home/ifnoelse
 res_dir: "{{base_dir}}/res"
 tmp_dir: "{{base_dir}}/tmp"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"

@@ -118,10 +118,10 @@
   tags:
   - install_kubernetes_node
 
-- name: "添加集群节点"
+- name: "授权节点证书请求"
   gather_facts: no
   hosts: cm
   roles:
   - { role: cm, task: "node_csr_approve" }
   tags:
-  - add_cluster_nodes
+  - node_csr_approve
