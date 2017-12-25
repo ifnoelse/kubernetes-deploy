@@ -1,5 +1,5 @@
 - name: "测试任务"
-  hosts: client:node
+  hosts: client
   gather_facts: yes
   roles:
   - test

@@ -2,7 +2,7 @@
 #  debug: msg="hello {{gen_ca}}"
 #
 - name: show msg
-  debug: msg="hello {{node_ip}}"
+  debug: msg="hello {{ccc}}"
 
 
 #- name: 检查执行文件路径

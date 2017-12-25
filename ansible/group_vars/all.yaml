@@ -27,6 +27,7 @@ basic_auth_pass: "admin"
 iface: enp0s8
 
 #node_ip: "{{ansible_enp0s8.ipv4.address}}"
+ccc: "{%for n in groups['etcd'] %}{{n}}{% endfor %}"
 
 etcd_nodes: "{%for n in nodes %}etcd_{{n.name}}=https://{{n.ip}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 
