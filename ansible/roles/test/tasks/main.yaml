@@ -2,7 +2,7 @@
 #  debug: msg="hello {{gen_ca}}"
 #
 - name: show msg
-  debug: msg="hello {{ etcd_endpoints }}"
+  debug: msg="hello {{ etcd_nodes }}"
 
 #- name: show msg
 #  debug: msg="hello {{ groups['master'] }}"

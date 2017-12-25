@@ -11,7 +11,7 @@ bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 basic_auth_user: "admin"
 basic_auth_pass: "admin"
 
-etcd_nodes: "{%for n in groups['etcd'] %}etcd_{{hostvars[n]['node_name']}}=https://{{hostvars[n]['node_ip']}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
+etcd_nodes: "{%for n in groups['etcd'] %}etcd-{{hostvars[n]['node_name']}}=https://{{hostvars[n]['node_ip']}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 etcd_endpoints: "{%for n in groups['etcd'] %}https://{{hostvars[n]['node_ip']}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
 
 iface: enp0s8
