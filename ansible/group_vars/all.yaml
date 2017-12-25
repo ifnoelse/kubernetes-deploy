@@ -1,35 +1,24 @@
-cluster_svc_ip: 168.168.0.1
-
 service_node_port_range: 8400-9000
-
+cluster_svc_ip: 168.168.0.1
 service_cluster_ip_range: 168.168.0.0/16
-
 cluster_cidr: 10.0.0.0/16
-
 cluster_dns: 168.168.0.100
-
 cluster_domain: cluster.local.
-
 master_ip: "{{hostvars[groups['master']|first]['node_ip']}}"
-
 kube_apiserver: "https://{{master_ip}}:6443"
-
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 
 basic_auth_user: "admin"
 basic_auth_pass: "admin"
 
-iface: enp0s8
-
 etcd_nodes: "{%for n in groups['etcd'] %}etcd_{{hostvars[n]['node_name']}}=https://{{hostvars[n]['node_ip']}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
-
 etcd_endpoints: "{%for n in groups['etcd'] %}https://{{hostvars[n]['node_ip']}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
 
+iface: enp0s8
 flannel_etcd_prefix: /kubernetes/network
 
-bin_dir: /usr/local/bin
-
 base_dir: /home/ifnoelse
+bin_dir: /usr/local/bin
 res_dir: "{{base_dir}}/res"
 tmp_dir: "{{base_dir}}/tmp"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"
@@ -42,12 +31,6 @@ cert_etcd_dir: /etc/etcd/ssl
 cert_flanneld_dir: /etc/flanneld/ssl
 cert_kubernetes_dir: /etc/kubernetes/ssl
 cert_ca_dir: /etc/kubernetes/ssl
-
-cert_dirs:
-- "{{cert_etcd_dir}}"
-- "{{cert_flanneld_dir}}"
-- "{{cert_kubernetes_dir}}"
-- "{{cert_ca_dir}}"
 
 bin_files:
   docker:
