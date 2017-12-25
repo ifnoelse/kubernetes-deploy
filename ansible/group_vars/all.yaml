@@ -4,6 +4,7 @@ service_cluster_ip_range: 168.168.0.0/16
 cluster_cidr: 10.0.0.0/16
 cluster_dns: 168.168.0.100
 cluster_domain: cluster.local.
+
 master_ip: "{{hostvars[groups['master']|first]['node_ip']}}"
 kube_apiserver: "https://{{master_ip}}:6443"
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
