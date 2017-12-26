@@ -9,7 +9,7 @@ WorkingDirectory=/var/lib/kubelet
 ExecStart={{bin_dir}}/kubelet \
   --address={{node_ip}} \
   --hostname-override={{node_ip}} \
-  --pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest \
+  --pod-infra-container-image={{pod_infra_container_image}} \
   --experimental-bootstrap-kubeconfig={{kubernetes_conf_dir}}/bootstrap.kubeconfig \
   --kubeconfig={{kubernetes_conf_dir}}/kubelet.kubeconfig \
   --require-kubeconfig \
