@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /tomcat
+        backend:
+          serviceName: tomcat
+          servicePort: 8080
