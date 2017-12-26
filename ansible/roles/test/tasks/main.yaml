@@ -1,8 +1,15 @@
-#- name: show msg
-#  debug: msg="hello {{gen_ca}}"
-#
+#- name: test
+#  template:
+#    src: "node-vars.yaml.j2"
+#    dest: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
+
 - name: show msg
-  debug: msg="hello {{ etcd_nodes }}"
+  debug: msg="hello {{hostvars[inventory_hostname]}}"
+#
+#- name: show msg
+#  debug: msg="echo {{ansible_enp0s8.ipv4.address}}"
+#
+#- shell: "pwd"
 
 #- name: show msg
 #  debug: msg="hello {{ groups['master'] }}"

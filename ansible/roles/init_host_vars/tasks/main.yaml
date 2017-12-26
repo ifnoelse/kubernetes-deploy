@@ -1,0 +1,10 @@
+- name: 检测 host 变量文件是否存在
+  stat:
+    path: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
+  register: file
+
+- name: 初始化 host 变量
+  template:
+    src: "node-vars.yaml.j2"
+    dest: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
+  when: file.stat.exists == false

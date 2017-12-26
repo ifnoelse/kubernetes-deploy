@@ -2,6 +2,6 @@
   hosts: client
   gather_facts: yes
   roles:
-  - test
+  - init_host_vars
   tags:
   - test
