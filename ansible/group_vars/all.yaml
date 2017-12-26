@@ -1,8 +1,8 @@
 base_dir: /home/ifnoelse #安装文件所在目录，也就是res文件夹所在目录
 bin_dir: /usr/local/bin #程序安装目录
 
-service_node_port_range: 8400-9000 #集群中service服务的端口范围
-cluster_svc_ip: 168.168.0.1 #集群中service服务ip段的第一个ip地址，用于设置kubernetes证书的hosts
+service_node_port_range: 5000-9000 #集群中service 可以映射的node上的端口范围
+cluster_svc_ip: 168.168.0.1 #集群中service ip段的第一个ip地址，用于设置kubernetes证书的hosts
 service_cluster_ip_range: 168.168.0.0/16 #集群中service服务的范围
 cluster_cidr: 10.0.0.0/16 #集群中docker容器的地址范围
 cluster_dns: 168.168.0.100 #集群dns服务器地址
