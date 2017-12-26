@@ -149,3 +149,11 @@ export PATH=$PATH:/usr/local/bin
 https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 
 wget https://192.168.100.101:6443 --ca-certificate ca.pem --certificate admin.pem --private-key admin-key.pem -q -O -
+
+
+openssl pkcs12 -export -inkey /etc/kubernetes/ssl/admin-key.pem -in /etc/kubernetes/ssl/admin.pem -out admin.p12
+kubectl -n kube-system get secret
+kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep kubernetes-dashboard-token|awk '{print $1}'`
+kubectl -n kube-system get secret|grep kubernetes-dashboard-token|awk '{print $1}'
+
+https://github.com/kubernetes/heapster/releases

@@ -1,8 +1,11 @@
-service_node_port_range: 8400-9000
-cluster_svc_ip: 168.168.0.1
-service_cluster_ip_range: 168.168.0.0/16
-cluster_cidr: 10.0.0.0/16
-cluster_dns: 168.168.0.100
+base_dir: /home/ifnoelse #安装文件所在目录，也就是res文件夹所在目录
+bin_dir: /usr/local/bin #程序安装目录
+
+service_node_port_range: 8400-9000 #集群中service服务的端口范围
+cluster_svc_ip: 168.168.0.1 #集群中service服务ip段的第一个ip地址，用于设置kubernetes证书的hosts
+service_cluster_ip_range: 168.168.0.0/16 #集群中service服务的范围
+cluster_cidr: 10.0.0.0/16 #集群中docker容器的地址范围
+cluster_dns: 168.168.0.100 #集群dns服务器地址
 cluster_domain: cluster.local.
 
 master_ip: "{{hostvars[groups['master']|first]['node_ip']}}"
@@ -15,11 +18,9 @@ basic_auth_pass: "admin"
 etcd_nodes: "{%for n in groups['etcd'] %}etcd-{{hostvars[n]['node_name']}}=https://{{hostvars[n]['node_ip']}}:2380{% if not loop.last %},{% endif %}{% endfor %}"
 etcd_endpoints: "{%for n in groups['etcd'] %}https://{{hostvars[n]['node_ip']}}:2379{% if not loop.last %},{% endif %}{% endfor %}"
 
-iface: enp0s8
+iface: enp0s8 #集群节点通信的网卡名称
 flannel_etcd_prefix: /kubernetes/network
 
-base_dir: /home/ifnoelse
-bin_dir: /usr/local/bin
 res_dir: "{{base_dir}}/res"
 tmp_dir: "{{base_dir}}/tmp"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"
