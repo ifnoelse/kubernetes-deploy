@@ -26,6 +26,8 @@
 | node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
+> 以上节点通过vagrant准备即可，Vagrantfile在项目根目录下
+
 ### 一键部署
 
 **1 下载部署代码**
