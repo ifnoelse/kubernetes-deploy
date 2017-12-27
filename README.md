@@ -55,7 +55,7 @@ res文件夹内的内容如下：
 - flannel-v0.9.1-linux-amd64.tar.gz
 - kubernetes-server-linux-amd64.tar.gz
 
-> 1、res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b
+> 1、res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b <br />
 > 2、res中的文件可以自行到官网下载
 
 **4 一键安装kubernetes集群**
