@@ -1,7 +1,24 @@
 # Kubernetes
+
 ## 集群环境
+
 ### 软件版本
+| 软件名称        | 版本           |
+| ------------- |:-------------:|
+| centos      | 7.4.1708 |
+| docker      | 17.09.1   |
+| kubernetes      | 1.8.6 |
+| flannel      | 0.9.1    |
+| etcd      | 3.2.11    |
+
 ### 节点
+
+| 服务器名      | ip           | 安装的组件           |
+| ------------- | ------------- |-------------|
+| node-1      | 192.168.100.101 |kubernetes_master，kubernetes_client，flannel，etcd|
+| node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
+| node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
+
 ## 一键部署
 
 **1. 下载部署代码**
@@ -43,7 +60,7 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ~]$ kubectl get nodes
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    5m        v1.8.5
-192.168.100.103   Ready     <none>    5m        v1.8.5
+192.168.100.102   Ready     <none>    5m        v1.8.6
+192.168.100.103   Ready     <none>    5m        v1.8.6
 
 ```
