@@ -104,7 +104,7 @@ sudo /usr/local/bin/etcd \
 --peer-trusted-ca-file=/etc/kubernetes/ssl/ca.pem \
 --initial-advertise-peer-urls=https://192.168.100.102:2380 \
 --listen-peer-urls=https://192.168.100.102:2380 \
---listen-client-urls=https://192.168.100.102:2379,http://127.0.0.1:2379 \
+--listen-client-urls=https://192.168.100.102:2379,http://1···  27.0.0.1:2379 \
 --advertise-client-urls=https://192.168.100.102:2379 \
 --initial-cluster-token=etcd-cluster-1 \
 --initial-cluster=etcd_node-1=https://192.168.100.101:2380,etcd_node-2=https://192.168.100.102:2380,etcd_node-3=https://192.168.100.103:2380 \
