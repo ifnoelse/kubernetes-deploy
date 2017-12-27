@@ -1,4 +1,4 @@
-tmp_dir: /vagrant/tmp #安装过程中的临时目录，用来存放解压之后的文件就证书等
+tmp_dir: /home/ifnoelse/tmp #安装过程中的临时目录，用来存放解压之后的文件就证书等
 res_dir: /vagrant/res #安装文件所在目录，也就是res文件夹所在目录
 bin_dir: /usr/local/bin #程序安装目录
 

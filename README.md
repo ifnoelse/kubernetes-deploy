@@ -15,7 +15,7 @@ cd kubernetes-deploy
 vagrant up
 ```
 
-**2. 复制res文件夹到kubernetes-deploy目录**
+**3. 复制res文件夹到kubernetes-deploy目录**
 
 res文件夹内的内容如下：
 - cfssl-certinfo_linux-amd64
@@ -28,7 +28,9 @@ res文件夹内的内容如下：
 
 >res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b
 
-**2. 安装kubernetes集群**
+**4. 安装kubernetes集群**
+
+登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
 cd /vagrant/ansible
 ansible-playbook -i hosts.yaml install.yaml
