@@ -35,3 +35,12 @@ res文件夹内的内容如下：
 cd /vagrant/ansible
 ansible-playbook -i hosts.yaml install.yaml
 ```
+
+**5. 验证安装结果**
+``` bash
+[ifnoelse@node-1 ~]$ kubectl get nodes
+NAME              STATUS    ROLES     AGE       VERSION
+192.168.100.102   Ready     <none>    5m        v1.8.5
+192.168.100.103   Ready     <none>    5m        v1.8.5
+
+```
