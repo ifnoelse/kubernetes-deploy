@@ -2,7 +2,7 @@
 
 ## 介绍
 
-本项目通过Ansible自动化脚本完成kubernetes集群的一键部署，降低安装成本，提高生产效率
+本项目通过Ansible自动化脚本完成 Kubernetes 集群的一键部署，降低安装成本，提高生产效率
 
 ##  快速体验
 
@@ -26,7 +26,7 @@
 | node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
-> 以上节点通过vagrant准备即可，Vagrantfile在项目根目录下
+> 以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下
 
 ### 一键部署
 
@@ -35,7 +35,9 @@
 ``` bash
 git clone https://github.com/ifnoelse/kubernetes-deploy.git
 ```
->由于ide或者git工具有可能会自动转换换行符为用户PC平台的默认换行符，所以一定要确认git上拿下来的文件换行符为LF，也就是linux/unix下的标准换行符，以避免相关脚本在linux机器上无法执行
+>由于 ide 或者 git 工具有可能会自动转换换行符为用户 PC 平台的默认换行符，
+所以一定要确认 git 上拿下来的文件换行符为 LF，也就是 linux/unix 下的标准换行符，
+以避免相关脚本在 linux 机器上无法执行
 
 **2 启动虚拟机**
 
@@ -44,7 +46,7 @@ cd kubernetes-deploy
 vagrant up
 ```
 
-**3 复制res文件夹到kubernetes-deploy目录**
+**3 复制 res 文件夹到 kubernetes-deploy 目录**
 
 res文件夹内的内容如下：
 - cfssl-certinfo_linux-amd64
@@ -58,7 +60,7 @@ res文件夹内的内容如下：
 > 1、res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b <br />
 > 2、res 中的文件可以自行到官网下载
 
-**4 一键安装kubernetes集群**
+**4 一键安装 kubernetes 集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
@@ -66,7 +68,7 @@ cd /vagrant/ansible
 ansible-playbook -i hosts.yaml install.yaml
 ```
 
-> 虚拟机启动之后已经装好了ansible
+> 虚拟机启动之后已经装好了 Ansible
 
 **5 验证安装结果**
 ``` bash
@@ -77,7 +79,7 @@ NAME              STATUS    ROLES     AGE       VERSION
 
 ```
 
-**6 一键卸载kubernetes集群**
+**6 一键卸载 Kubernetes 集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
