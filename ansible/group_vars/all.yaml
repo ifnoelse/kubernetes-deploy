@@ -1,5 +1,10 @@
-base_dir: /home/ifnoelse #安装文件所在目录，也就是res文件夹所在目录
+tmp_dir: /vagrant/tmp #安装过程中的临时目录，用来存放解压之后的文件就证书等
+res_dir: /vagrant/res #安装文件所在目录，也就是res文件夹所在目录
 bin_dir: /usr/local/bin #程序安装目录
+
+tmp_unzip_dir: "{{tmp_dir}}/unzip"
+tmp_bin_dir: "{{tmp_dir}}/bin"
+tmp_tls_dir: "{{tmp_dir}}/tls"
 
 service_node_port_range: 5000-9000 #集群中service 可以映射的node上的端口范围
 cluster_svc_ip: 168.168.0.1 #集群中service ip段的第一个ip地址，用于设置kubernetes证书的hosts
@@ -23,12 +28,6 @@ etcd_endpoints: "{%for n in groups['etcd'] %}https://{{hostvars[n]['node_ip']}}:
 
 iface: enp0s8 #集群节点通信的网卡名称
 flannel_etcd_prefix: /kubernetes/network
-
-res_dir: "{{base_dir}}/res"
-tmp_dir: "{{base_dir}}/tmp"
-tmp_unzip_dir: "{{tmp_dir}}/unzip"
-tmp_bin_dir: "{{tmp_dir}}/bin"
-tmp_tls_dir: "{{tmp_dir}}/tls"
 
 kubernetes_conf_dir: /etc/kubernetes
 
