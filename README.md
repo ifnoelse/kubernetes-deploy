@@ -1,6 +1,12 @@
 # Kubernetes 部署
 
-## 集群环境
+## 介绍
+
+本项目通过Ansible自动化脚本完成kubernetes集群的一键部署，降低安装成本，提高生产效率
+
+##  快速体验
+
+### 集群环境
 
 **软件版本**
 
@@ -20,7 +26,7 @@
 | node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
-## 一键部署
+### 一键部署
 
 **1 下载部署代码**
 
@@ -57,6 +63,8 @@ cd /vagrant/ansible
 ansible-playbook -i hosts.yaml install.yaml
 ```
 
+> 虚拟机启动之后已经装好了ansible
+
 **5 验证安装结果**
 ``` bash
 [ifnoelse@node-1 ~]$ kubectl get nodes
@@ -65,3 +73,5 @@ NAME              STATUS    ROLES     AGE       VERSION
 192.168.100.103   Ready     <none>    5m        v1.8.6
 
 ```
+
+> 集群已经开启TLS双向认证及RBAC授权
