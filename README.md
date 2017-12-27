@@ -5,7 +5,7 @@
 **1. 下载部署代码**
 
 ``` bash
-    git clone https://github.com/ifnoelse/kubernetes-deploy.git
+git clone https://github.com/ifnoelse/kubernetes-deploy.git
 ```
 
 **2. 启动虚拟机**
