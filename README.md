@@ -9,7 +9,7 @@
 ``` bash
 git clone https://github.com/ifnoelse/kubernetes-deploy.git
 ```
->由于ide或者git工具有可能会自动转换换行符为用户PC平台的默认换行符，所以一定要确认git上拿下来的文件换行符为LF，也就是linux/Unix下的标准换行符，以避免相关脚本在linux机器上无法执行
+>由于ide或者git工具有可能会自动转换换行符为用户PC平台的默认换行符，所以一定要确认git上拿下来的文件换行符为LF，也就是linux/unix下的标准换行符，以避免相关脚本在linux机器上无法执行
 
 **2. 启动虚拟机**
 
