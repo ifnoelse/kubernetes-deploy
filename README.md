@@ -57,7 +57,7 @@ res文件夹内的内容如下：
 
 >res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b
 
-**4 安装kubernetes集群**
+**4 一键安装kubernetes集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
@@ -76,4 +76,10 @@ NAME              STATUS    ROLES     AGE       VERSION
 
 ```
 
-> 集群已经开启TLS双向认证及RBAC授权
+**6 一键卸载kubernetes集群**
+
+登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
+``` bash
+cd /vagrant/ansible
+ansible-playbook -i hosts.yaml uninstall.yaml
+```
