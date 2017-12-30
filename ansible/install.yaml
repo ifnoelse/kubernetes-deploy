@@ -110,9 +110,9 @@
 
 - name: "设置 bootstrap clusterrolebinding"
   gather_facts: no
-  hosts: cm
+  hosts: kubernetes_cluster_manager
   roles:
-  - { role: cm, task: "bootstrap_clusterrolebinding" }
+  - { role: kubernetes_cluster_manager, task: "bootstrap_clusterrolebinding" }
   tags:
   - bootstrap_clusterrolebinding
 
@@ -128,8 +128,8 @@
 
 - name: "授权节点"
   gather_facts: no
-  hosts: cm
+  hosts: kubernetes_cluster_manager
   roles:
-  - { role: cm, task: "node_csr_approve" }
+  - { role: kubernetes_cluster_manager, task: "node_csr_approve" }
   tags:
   - node_csr_approve
