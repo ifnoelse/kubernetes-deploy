@@ -150,6 +150,7 @@ https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recomme
 
 wget https://192.168.100.101:6443 --ca-certificate ca.pem --certificate admin.pem --private-key admin-key.pem -q -O -
 
+openssl pkcs12 -export -inkey /etc/kubernetes/ssl/admin-key.pem -in /etc/kubernetes/ssl/admin.pem -passin pass: -out admin.p12 -passout pass:
 
 openssl pkcs12 -export -inkey /etc/kubernetes/ssl/admin-key.pem -in /etc/kubernetes/ssl/admin.pem -out admin.p12
 kubectl -n kube-system get secret
