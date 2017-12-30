@@ -133,4 +133,3 @@
   - { role: kubernetes_component_manager,op: apply, components: [kube-dns,dashboard,heapster,ingress-nginx] }
   tags:
   - install_kubernetes_component
-
