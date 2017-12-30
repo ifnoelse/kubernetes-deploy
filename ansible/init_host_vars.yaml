@@ -1,0 +1,7 @@
+- name: "初始化 host 变量"
+  hosts: all
+  gather_facts: yes
+  roles:
+  - init_host_vars
+  tags:
+  - init_host_vars

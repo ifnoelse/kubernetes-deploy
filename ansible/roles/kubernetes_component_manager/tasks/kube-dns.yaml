@@ -1,0 +1,5 @@
+- name: "{{op}} kube_dns"
+  become: true
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/kube-dns/{{item}}"
+  with_items:
+  - kube-dns.yaml

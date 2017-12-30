@@ -1,0 +1,11 @@
+- name: "{{op}} ingress nginx"
+  become: true
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/ingress/ingress-nginx/{{item}}"
+  with_items:
+  - ingress-nginx-namespace.yaml
+  - default-backend.yaml
+  - nginx-configmap.yaml
+  - ingress-nginx-controller.yaml
+  - ingress-nginx-rbac.yaml
+  - tcp-services-configmap.yaml
+  - udp-services-configmap.yaml

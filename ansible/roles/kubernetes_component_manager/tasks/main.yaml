@@ -1,0 +1,5 @@
+- include_tasks: "{{component}}.yaml"
+  with_items:
+  - "{{components}}"
+  loop_control:
+    loop_var: component

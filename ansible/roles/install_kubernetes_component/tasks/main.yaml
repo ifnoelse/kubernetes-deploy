@@ -1,2 +1,0 @@
-- name: "执行 {{task}}"
-  include_tasks: "{{task}}.yaml"

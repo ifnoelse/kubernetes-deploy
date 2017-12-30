@@ -1,4 +1,0 @@
-- name: 检测 bootstrap clusterrolebinding 是否存在
-  become: true
-  shell: "{{bin_dir}}/kubectl get clusterrolebinding  kubelet-bootstrap|awk '{if (NR>1) {print $1}}'"
-  register: res

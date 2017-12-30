@@ -1,11 +1,3 @@
-- name: "初始化 host 变量"
-  hosts: all
-  gather_facts: yes
-  roles:
-  - init_host_vars
-  tags:
-  - init_host_vars
-
 - name: "资源准备任务"
   gather_facts: no
   hosts: deploy
@@ -67,7 +59,7 @@
   hosts: etcd
   roles:
   - { role: install_etcd }
-  - { role: systemd, name: "etcd", state: "started",enabled: "yes" }
+  - { role: systemd, name: etcd, state: started,enabled: yes }
   tags:
   - install_etcd
 
@@ -76,7 +68,7 @@
   hosts: master:node
   roles:
   - { role: install_flannel }
-  - { role: systemd, name: "flanneld", state: "started",enabled: "yes" }
+  - { role: systemd, name: flanneld, state: started,enabled: yes }
   tags:
   - install_flannel
 
@@ -85,7 +77,7 @@
   hosts: node
   roles:
   - { role: install_docker }
-  - { role: systemd, name: "docker", state: "started",enabled: "yes" }
+  - { role: systemd, name: docker, state: started,enabled: yes }
   tags:
   - install_docker
 
@@ -94,9 +86,9 @@
   hosts: master
   roles:
   - { role: install_kubernetes_master }
-  - { role: systemd, name: "kube-apiserver", state: "started",enabled: "yes" }
-  - { role: systemd, name: "kube-controller-manager", state: "started",enabled: "yes" }
-  - { role: systemd, name: "kube-scheduler", state: "started",enabled: "yes" }
+  - { role: systemd, name: kube-apiserver, state: started,enabled: yes }
+  - { role: systemd, name: kube-controller-manager, state: started,enabled: yes }
+  - { role: systemd, name: kube-scheduler, state: started,enabled: yes }
   tags:
   - install_kubernetes_master
 
@@ -110,9 +102,9 @@
 
 - name: "设置 bootstrap clusterrolebinding"
   gather_facts: no
-  hosts: kubernetes_cluster_manager
+  hosts: cluster_manager
   roles:
-  - { role: kubernetes_cluster_manager, task: "bootstrap_clusterrolebinding" }
+  - { role: cluster_manager, task: bootstrap_clusterrolebinding }
   tags:
   - bootstrap_clusterrolebinding
 
@@ -121,15 +113,24 @@
   hosts: node
   roles:
   - { role: install_kubernetes_node }
-  - { role: systemd, name: "kubelet", state: "started",enabled: "yes" }
-  - { role: systemd, name: "kube-proxy", state: "started",enabled: "yes" }
+  - { role: systemd, name: kubelet, state: started,enabled: yes }
+  - { role: systemd, name: kube-proxy, state: started,enabled: yes }
   tags:
   - install_kubernetes_node
 
 - name: "授权节点"
   gather_facts: no
-  hosts: kubernetes_cluster_manager
+  hosts: cluster_manager
   roles:
-  - { role: kubernetes_cluster_manager, task: "node_csr_approve" }
+  - { role: cluster_manager, task: node_csr_approve }
   tags:
   - node_csr_approve
+
+- name: "kubernetes 组件管理"
+  gather_facts: no
+  hosts: cluster_manager
+  roles:
+  - { role: kubernetes_component_manager,op: apply, components: [kube-dns,dashboard,heapster,ingress-nginx] }
+  tags:
+  - install_kubernetes_component
+

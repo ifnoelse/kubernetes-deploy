@@ -1,0 +1,8 @@
+- name: "{{op}} heapster"
+  become: true
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/heapster/{{item}}"
+  with_items:
+  - grafana.yaml
+  - heapster.yaml
+  - influxdb.yaml
+  - heapster-rbac.yaml

@@ -3,7 +3,7 @@ all:
     deploy:
       hosts:
         node-1:
-    cm:
+    cluster_manager:
       hosts:
         node-1:
     master:

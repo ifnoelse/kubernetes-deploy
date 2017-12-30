@@ -1,0 +1,6 @@
+- name: "{{op}} dashboard"
+  become: true
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/dashboard/{{item}}"
+  with_items:
+  - kubernetes-dashboard.yaml
+  - dashboard-token-admin.yaml
