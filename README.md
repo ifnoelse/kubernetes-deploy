@@ -46,8 +46,9 @@
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
 > 1、以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下 <br />
-> 2、所有的节点之间已经针对用户 ifnoelse 做了免秘钥登录
-> 3、所有的节点已经关闭了防火墙与IPv6
+> 2、所有的节点之间已经针对用户 ifnoelse 做了免秘钥登录 <br />
+> 3、所有的节点已经关闭了防火墙、IPv6 及 selinux <br />
+> 4、所有的节点名称与 ip 的本地解析已经在 /etc/hosts 中配置好了
 
 ### 一键部署
 
