@@ -136,10 +136,19 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 
 **6 访问dashboard**
 
-1. 访问 apiserver 所需的证书及登录 dashboard 所需的 token 在 tmp_dashboard_dir（默认为：/home/ifnoelse/tmp/dashboard）目录中
+1. 访问 apiserver 所需的证书及登录 dashboard 所需的 token 在 tmp_dashboard_dir 目录中
 2. 将客户端证书导入浏览器
 3. 访问地址：https://192.168.100.101:6443/ui
 4. 通过 token 登录 dashboard
+
+> 1、tmp_dashboard_dir 路径在 group_vars/all.yaml 中定义
+> 2、tmp_dashboard_dir 的默认值为 /home/ifnoelse/tmp/dashboard
+
+**7 访问 grafana**
+
+访问地址：https://192.168.100.101:6443/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
+
+> 访问 grafana 同样需要导入客户端证书，如果已经导入过了，这里就不需要再次导入了
 
 **7 一键卸载 Kubernetes 集群**
 
