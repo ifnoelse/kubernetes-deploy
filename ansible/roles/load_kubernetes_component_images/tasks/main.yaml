@@ -1,0 +1,21 @@
+- name: 创建镜像临时目录
+  file:
+    path: "{{tmp_images_dir}}"
+    state: directory
+
+- name: 获取镜像列表
+  shell: "ls {{playbook_dir}}/../images|grep .tar|xargs -l"
+  register: file_list
+
+- name: 获取镜像文件
+  file:
+    src: "{{playbook_dir}}/../images/{{item}}"
+    dest: "{{tmp_images_dir}}"
+  with_items:
+  - "{{file_list.stdout_lines}}"
+
+- name: "导入 kubernetes 组件镜像"
+  become: true
+  shell: "{{bin_dir}}/docker load -i {{tmp_images_dir}}/{{item}}"
+  with_items:
+  - "{{file_list.stdout_lines}}"

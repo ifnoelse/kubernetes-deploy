@@ -25,6 +25,9 @@
   - kubelet
   - kube-proxy
 
+- name: umount kubelet 挂载的目录
+  shell: "mount | grep '/var/lib/kubelet'| awk '{print $3}'|xargs umount"
+
 - name: 删除 kubeconfig 文件
   become: true
   file:

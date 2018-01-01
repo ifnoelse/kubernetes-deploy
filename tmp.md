@@ -160,3 +160,5 @@ kubectl -n kube-system get secret|grep kubernetes-dashboard-token|awk '{print $1
 https://github.com/kubernetes/heapster/releases
 
 openssl pkcs12 -export -cacerts -inkey ca-key.pem -in ca.pem -out ca.p12
+
+sudo /usr/local/bin/docker images|awk '{print "sudo /usr/local/bin/docker save -o",$1":"$2".tar",$1":"$2}'

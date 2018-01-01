@@ -126,7 +126,13 @@
   tags:
   - node_csr_approve
 
-- name: "kubernetes 组件管理"
+- name: "导入 kubernetes 组件镜像"
+  become: true
+  shell: "{{bin_dir}}/docker load -i {{playbook_dir}}/../images/{{item}}"
+  with_fileglob:
+  - "{{playbook_dir}}/../images/*"
+
+- name: "安装 kubernetes 组件"
   gather_facts: no
   hosts: cluster_manager
   roles:

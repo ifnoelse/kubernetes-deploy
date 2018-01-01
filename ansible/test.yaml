@@ -1,0 +1,7 @@
+- name: "资源准备任务"
+  gather_facts: no
+  hosts: node
+  roles:
+  - load_kubernetes_component_images
+  tags:
+  - load_kubernetes_component_images

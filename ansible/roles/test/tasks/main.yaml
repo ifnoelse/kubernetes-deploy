@@ -4,7 +4,7 @@
 #    dest: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
 
 - name: show msg
-  debug: msg="hello {{hostvars}}"
+  debug: msg="hello..."
 #
 #- name: show msg
 #  debug: msg="echo {{ansible_enp0s8.ipv4.address}}"
