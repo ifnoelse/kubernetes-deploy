@@ -33,9 +33,10 @@
   register: mount_files
 
 - name: unmount kubelet 挂载的目录
+  become: true
   mount:
     path: "{{item}}"
-    state: present
+    state: unmounted
   with_items:
   - "{{mount_files.stdout_lines}}"
 
