@@ -99,11 +99,22 @@ ansible-playbook -i hosts.yaml install.yaml
 > 虚拟机启动之后已经装好了 Ansible
 
 **5 验证安装结果**
+
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
 192.168.100.102   Ready     <none>    9m        v1.9.0
 192.168.100.103   Ready     <none>    9m        v1.9.0
+```
+
+``` bash
+[ifnoelse@node-1 ansible]$ kubectl get pod -n kube-system
+NAME                                    READY     STATUS    RESTARTS   AGE
+heapster-678768bcf6-f62w9               1/1       Running   0          1m
+kube-dns-6d79d9cb88-x9795               3/3       Running   0          1m
+kubernetes-dashboard-57bd4cc6bd-xbvsb   1/1       Running   0          1m
+monitoring-grafana-9ccfb7667-c2vnf      1/1       Running   0          1m
+monitoring-influxdb-7b99b84cf-wgmsl     1/1       Running   0          1m
 ```
 
 **6 一键卸载 Kubernetes 集群**
