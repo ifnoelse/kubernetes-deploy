@@ -57,7 +57,7 @@
 ``` bash
 git clone https://github.com/ifnoelse/kubernetes-deploy.git
 ```
-> 由于 ide 或者 git 工具有可能会自动转换换行符为用户 PC 平台的默认换行符，
+> 重要：由于 ide 或者 git 工具有可能会自动将换行符转换为用户 PC 平台上的默认换行符，
 所以一定要确认 git 上拿下来的文件换行符为 LF，也就是 linux/unix 下的标准换行符，
 以避免相关脚本在 linux 机器上无法执行
 
