@@ -4,6 +4,14 @@
 
 本项目通过 Ansible 自动化脚本完成 Kubernetes 集群的一键部署，降低安装成本，提高生产效率
 
+## 截图
+
+**dashboard**
+![](docs/img/dashboard_node.png)
+
+**monitoring grafana**
+![](docs/img/monitoring_grafana.png)
+
 ##  快速体验
 
 ### 集群环境
