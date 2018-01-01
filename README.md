@@ -46,19 +46,21 @@ cd kubernetes-deploy
 vagrant up
 ```
 
-**3 复制 res 文件夹到 kubernetes-deploy 目录**
+**3 下载安装文件**
 
-res文件夹内的内容如下：
-- cfssl-certinfo_linux-amd64
-- cfssljson_linux-amd64
-- cfssl_linux-amd64
-- docker-17.09.1-ce.tgz
-- etcd-v3.2.11-linux-amd64.tar.gz
-- flannel-v0.9.1-linux-amd64.tar.gz
-- kubernetes-server-linux-amd64.tar.gz
+1. 复制 res 文件夹到 kubernetes-deploy 目录
 
-> 1、res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b <br />
-> 2、res 中的文件可以自行到官网下载
+    res文件夹内的内容如下：
+    - cfssl-certinfo_linux-amd64
+    - cfssljson_linux-amd64
+    - cfssl_linux-amd64
+    - docker-17.09.1-ce.tgz
+    - etcd-v3.2.11-linux-amd64.tar.gz
+    - flannel-v0.9.1-linux-amd64.tar.gz
+    - kubernetes-server-linux-amd64.tar.gz
+
+    > 1、res 文件夹下载地址: 链接：https://pan.baidu.com/s/1eRWTWbC 密码：8f3b <br />
+    > 2、res 中的文件可以自行到官网下载
 
 **4 一键安装 kubernetes 集群**
 
