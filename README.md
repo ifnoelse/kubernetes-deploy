@@ -6,10 +6,10 @@
 
 ## 截图
 
-**dashboard**
+**Dashboard**
 ![](docs/img/dashboard_node.png)
 
-**monitoring grafana**
+**Monitoring Grafana**
 ![](docs/img/monitoring_grafana.png)
 
 ##  快速体验
