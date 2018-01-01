@@ -76,8 +76,8 @@ res文件夹内的内容如下：
 - flannel-v0.9.1-linux-amd64.tar.gz
 - kubernetes-server-v1.9.0-linux-amd64.tar.gz
 
-  > 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
-  > 2、res 中的文件可以自行到官网下载
+> 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
+> 2、res 中的文件可以自行到官网下载
     
 3.2 复制 images 文件夹到 kubernetes-deploy 目录（可选步骤）
 
