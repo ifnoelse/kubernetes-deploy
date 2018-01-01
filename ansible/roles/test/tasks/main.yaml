@@ -3,8 +3,10 @@
 #    src: "node-vars.yaml.j2"
 #    dest: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
 
-- name: show msg
-  debug: msg="hello..."
+- name: 复制文件测试
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/dashboard"
+    dest: "{{tmp_dir}}/kubernetes"
 #
 #- name: show msg
 #  debug: msg="echo {{ansible_enp0s8.ipv4.address}}"

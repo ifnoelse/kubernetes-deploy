@@ -13,7 +13,7 @@ install_kubernetes_components:
 - heapster
 - ingress-nginx
 
-tmp_dashboard: "{{tmp_dir}}/dashboard"
+tmp_dashboard_dir: "{{tmp_dir}}/dashboard"
 tmp_unzip_dir: "{{tmp_dir}}/unzip"
 tmp_bin_dir: "{{tmp_dir}}/bin"
 tmp_tls_dir: "{{tmp_dir}}/tls"

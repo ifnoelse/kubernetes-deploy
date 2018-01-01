@@ -1,5 +1,10 @@
-- name: "{{op}} kube_dns"
+- name: 获取 kube-dns 定义文件
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/kube-dns"
+    dest: "{{tmp_dir}}/kubernetes"
+
+- name: "{{op}} kube dns"
   become: true
-  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/kube-dns/{{item}}"
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{tmp_dir}}/kubernetes/kube-dns/{{item}}"
   with_items:
   - kube-dns.yaml

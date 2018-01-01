@@ -1,11 +1,16 @@
-- name: 创建 dashboard 临时数据目录
+- name: 创建 dashboard 临时目录
   file:
-    path: "{{tmp_dashboard}}"
+    path: "{{tmp_dashboard_dir}}"
     state: directory
+
+- name: 获取 dashboard 定义文件
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/dashboard"
+    dest: "{{tmp_dir}}/kubernetes"
 
 - name: "{{op}} dashboard"
   become: true
-  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/dashboard/{{item}}"
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{tmp_dir}}/kubernetes/dashboard/{{item}}"
   with_items:
   - kubernetes-dashboard.yaml
   - dashboard-token-admin.yaml
@@ -13,10 +18,10 @@
 - name: 获取 dashboard token
   shell: "kubectl -n kube-system describe secret \
   `kubectl -n kube-system get secret|grep kubernetes-dashboard-token|awk '{print $1}'` \
-  |grep token:|awk '{print $2}' > {{tmp_dashboard}}/token.txt"
+  |grep token:|awk '{print $2}' > {{tmp_dashboard_dir}}/token.txt"
 
 - name: 导出 dashboard 访问证书
   become: true
   shell: "openssl pkcs12 -export -inkey {{cert_kubernetes_dir}}/admin-key.pem \
   -in {{cert_kubernetes_dir}}/admin.pem -passin pass:
-  -out {{tmp_dashboard}}/admin.p12 -passout pass:"
+  -out {{tmp_dashboard_dir}}/admin.p12 -passout pass:"

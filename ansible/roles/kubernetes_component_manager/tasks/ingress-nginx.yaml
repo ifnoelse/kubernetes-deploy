@@ -1,6 +1,11 @@
-- name: "{{op}} ingress nginx"
+- name: 获取 ingress-nginx 定义文件
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/ingress"
+    dest: "{{tmp_dir}}/kubernetes"
+
+- name: "{{op}} ingress-nginx"
   become: true
-  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/ingress/ingress-nginx/{{item}}"
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{tmp_dir}}/kubernetes/ingress/ingress-nginx/{{item}}"
   with_items:
   - ingress-nginx-namespace.yaml
   - default-backend.yaml

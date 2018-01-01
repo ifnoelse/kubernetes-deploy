@@ -1,6 +1,11 @@
+- name: 获取 heapster 定义文件
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/heapster"
+    dest: "{{tmp_dir}}/kubernetes"
+
 - name: "{{op}} heapster"
   become: true
-  shell: "{{bin_dir}}/kubectl {{op}} -f {{playbook_dir}}/../kubernetes/heapster/{{item}}"
+  shell: "{{bin_dir}}/kubectl {{op}} -f {{tmp_dir}}/kubernetes/heapster/{{item}}"
   with_items:
   - grafana.yaml
   - heapster.yaml

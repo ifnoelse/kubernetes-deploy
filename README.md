@@ -126,7 +126,9 @@ monitoring-grafana is running at http://localhost:8080/api/v1/namespaces/kube-sy
 monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
 ```
 
-**6 一键卸载 Kubernetes 集群**
+**6 验证安装结果**
+
+**7 一键卸载 Kubernetes 集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
