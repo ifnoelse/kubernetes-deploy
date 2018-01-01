@@ -26,6 +26,8 @@
 | flannel      | 0.9.1    |
 | etcd      | 3.2.12    |
 
+**kubernetes 组件版本**
+
 | kubernetes 组件        | 版本           |
 | ------------- |:-------------:|
 | dashboard      | 1.8.1 |
