@@ -136,7 +136,7 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 
 **6 访问dashboard**
 
-1. 访问 apiserver 所需的证书及登录 dashboard 所需的 token 在 cluster_manager 机器的 tmp_dashboard_dir 目录中
+1. 访问 dashboard 所需的证书及 token 在 cluster_manager 机器的 tmp_dashboard_dir 目录中
     
     ``` bash
     [ifnoelse@node-1 dashboard]$ pwd;ls -l
@@ -146,7 +146,7 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
     -rw-rw-r--. 1 ifnoelse ifnoelse  909 Jan  1 19:17 token.txt
     ```
 
-2. 将客户端证书导入浏览器
+2. 将客户端证书 admin.p12 导入浏览器
 3. 访问地址：https://192.168.100.101:6443/ui
 4. 通过 token 登录 dashboard
 
