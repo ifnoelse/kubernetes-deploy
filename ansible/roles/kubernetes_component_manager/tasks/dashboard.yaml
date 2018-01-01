@@ -21,7 +21,6 @@
   |grep token:|awk '{print $2}' > {{tmp_dashboard_dir}}/token.txt"
 
 - name: 导出 dashboard 访问证书
-  become: true
   shell: "openssl pkcs12 -export -inkey {{cert_kubernetes_dir}}/admin-key.pem \
   -in {{cert_kubernetes_dir}}/admin.pem -passin pass:
   -out {{tmp_dashboard_dir}}/admin.p12 -passout pass:"
