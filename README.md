@@ -117,6 +117,15 @@ monitoring-grafana-9ccfb7667-c2vnf      1/1       Running   0          1m
 monitoring-influxdb-7b99b84cf-wgmsl     1/1       Running   0          1m
 ```
 
+``` bash
+[ifnoelse@node-1 ansible]$ kubectl cluster-info
+Kubernetes master is running at http://localhost:8080
+Heapster is running at http://localhost:8080/api/v1/namespaces/kube-system/services/heapster/proxy
+KubeDNS is running at http://localhost:8080/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+monitoring-grafana is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
+monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
+```
+
 **6 一键卸载 Kubernetes 集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
