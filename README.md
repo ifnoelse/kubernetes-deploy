@@ -25,7 +25,7 @@
 | heapster      | 1.5.0 |
 | nginx-ingress      | 0.9.0    |
 
-> 国内镜像库：https://hub.docker.com/u/ifnoelse/
+> kubernetes 相关镜像：https://hub.docker.com/u/ifnoelse/
 
 **机器节点**
 
