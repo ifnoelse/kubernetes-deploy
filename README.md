@@ -79,7 +79,7 @@ res文件夹内的内容如下：
 - kubernetes-server-v1.9.0-linux-amd64.tar.gz
 
 > 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
-> 2、res 中的文件可以自行到官网下载
+> 2、res 中的文件也可以自行到官网下载，之后将压缩包放入 res 目录即可，文件名叫什么都可以
     
 3.2 复制 images 文件夹到 kubernetes-deploy 目录（可选步骤）
 
