@@ -159,7 +159,7 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 
 > 访问 grafana 同样需要导入客户端证书，如果已经导入过了，这里就不需要再次导入了
 
-**7 一键卸载 Kubernetes 集群**
+**8 一键卸载 Kubernetes 集群**
 
 登录虚拟机（用户名：ifnoelse，密码：ifnoelse）执行以下命令
 ``` bash
