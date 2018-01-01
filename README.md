@@ -141,7 +141,7 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 3. 访问地址：https://192.168.100.101:6443/ui
 4. 通过 token 登录 dashboard
 
-> 1、cluster_manager 服务器在 hosts.yaml 中定义，默认值为 node-1
+> 1、cluster_manager 服务器在 hosts.yaml 中定义，默认值为 node-1 <br />
 > 2、tmp_dashboard_dir 路径在 group_vars/all.yaml 中定义，默认值为 /home/ifnoelse/tmp/dashboard
 
 **7 访问 grafana**
