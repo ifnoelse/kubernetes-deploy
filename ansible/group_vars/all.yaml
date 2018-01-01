@@ -4,7 +4,7 @@ bin_dir: /usr/local/bin #程序安装目录
 
 # 由于相关进行比较慢，如果这个选项设置为 ture，在 kubernetes/images 目录下的镜像文件会被导入到 node 节点的本地镜像库中
 # 这样创建相关镜像时就不用从网上下载了
-load_images: false
+load_images: true
 
 # 见安装成功之后需要安装的组件，在这里设置好之后自动安装相应组件
 install_kubernetes_components:
@@ -31,7 +31,7 @@ kube_apiserver: "https://{{master_ip}}:6443"
 bootstrap_token: 41f7e4ba8b7be874fcff18bf5cf41a7c
 
 # registry.access.redhat.com/rhel7/pod-infrastructure:latest
-pod_infra_container_image: registry.access.redhat.com/rhel7/pod-infrastructure:latest
+pod_infra_container_image: ifnoelse/pause-amd64:3.0
 
 basic_auth_user: "admin"
 basic_auth_pass: "admin"
