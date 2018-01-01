@@ -8,7 +8,7 @@
   register: file_list
 
 - name: 获取镜像文件
-  file:
+  copy:
     src: "{{playbook_dir}}/../images/{{item}}"
     dest: "{{tmp_images_dir}}"
   with_items:

@@ -100,11 +100,10 @@ ansible-playbook -i hosts.yaml install.yaml
 
 **5 验证安装结果**
 ``` bash
-[ifnoelse@node-1 ~]$ kubectl get nodes
+[ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    5m        v1.8.6
-192.168.100.103   Ready     <none>    5m        v1.8.6
-
+192.168.100.102   Ready     <none>    9m        v1.9.0
+192.168.100.103   Ready     <none>    9m        v1.9.0
 ```
 
 **6 一键卸载 Kubernetes 集群**
