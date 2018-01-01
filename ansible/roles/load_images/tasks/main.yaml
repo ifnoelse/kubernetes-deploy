@@ -1,0 +1,2 @@
+- include_tasks: "load_images.yaml"
+  when: load_images == true

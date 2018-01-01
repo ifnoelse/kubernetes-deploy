@@ -126,16 +126,18 @@
   tags:
   - node_csr_approve
 
-- name: "导入 kubernetes 组件镜像"
-  become: true
-  shell: "{{bin_dir}}/docker load -i {{playbook_dir}}/../images/{{item}}"
-  with_fileglob:
-  - "{{playbook_dir}}/../images/*"
+- name: "安装 kubernetes 组件"
+  gather_facts: no
+  hosts: node
+  roles:
+  - { role: load_images}
+  tags:
+  - load_images
 
 - name: "安装 kubernetes 组件"
   gather_facts: no
   hosts: cluster_manager
   roles:
-  - { role: kubernetes_component_manager,op: apply, components: [kube-dns,dashboard,heapster,ingress-nginx] }
+  - { role: kubernetes_component_manager,op: apply, components: "{{install_kubernetes_components}}" }
   tags:
-  - install_kubernetes_component
+  - install_kubernetes_components
