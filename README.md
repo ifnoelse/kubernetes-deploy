@@ -134,7 +134,12 @@ monitoring-grafana is running at http://localhost:8080/api/v1/namespaces/kube-sy
 monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
 ```
 
-**6 验证安装结果**
+**6 访问dashboard**
+
+1. 访问 apiserver 所需的证书及登录 dashboard 所需的 token 在 tmp_dashboard_dir（默认为：/home/ifnoelse/tmp/dashboard）目录中
+2. 将客户端证书导入浏览器
+3. 访问地址：https://192.168.100.101:6443/ui
+4. 通过 token 登录 dashboard
 
 **7 一键卸载 Kubernetes 集群**
 
