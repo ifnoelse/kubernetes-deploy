@@ -59,34 +59,34 @@ vagrant up
 
 3.1 复制 res 文件夹到 kubernetes-deploy 目录
 
-    res文件夹内的内容如下：
-    - cfssl-certinfo_linux-amd64
-    - cfssljson_linux-amd64
-    - cfssl_linux-amd64
-    - docker-17.12.0-ce.tgz
-    - etcd-v3.2.12-linux-amd64.tar.gz
-    - flannel-v0.9.1-linux-amd64.tar.gz
-    - kubernetes-server-v1.9.0-linux-amd64.tar.gz
+res文件夹内的内容如下：
+- cfssl-certinfo_linux-amd64
+- cfssljson_linux-amd64
+- cfssl_linux-amd64
+- docker-17.12.0-ce.tgz
+- etcd-v3.2.12-linux-amd64.tar.gz
+- flannel-v0.9.1-linux-amd64.tar.gz
+- kubernetes-server-v1.9.0-linux-amd64.tar.gz
 
-    > 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
-    > 2、res 中的文件可以自行到官网下载
+> 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
+> 2、res 中的文件可以自行到官网下载
     
 3.2 复制 images 文件夹到 kubernetes-deploy 目录（可选步骤）
 
-    images文件夹内的内容如下：
-    - defaultbackend_1.4.tar
-    - heapster-amd64_v1.5.0.tar
-    - heapster-grafana-amd64_v4.4.3.tar
-    - heapster-influxdb-amd64_v1.3.3.tar
-    - k8s-dns-dnsmasq-nanny-amd64_1.14.7.tar
-    - k8s-dns-kube-dns-amd64_1.14.7.tar
-    - k8s-dns-sidecar-amd64_1.14.7.tar
-    - kubernetes-dashboard-amd64_v1.8.1.tar
-    - nginx-ingress-controller_0.9.0.tar
-    - pause-amd64_3.0.tar
+images文件夹内的内容如下：
+- defaultbackend_1.4.tar
+- heapster-amd64_v1.5.0.tar
+- heapster-grafana-amd64_v4.4.3.tar
+- heapster-influxdb-amd64_v1.3.3.tar
+- k8s-dns-dnsmasq-nanny-amd64_1.14.7.tar
+- k8s-dns-kube-dns-amd64_1.14.7.tar
+- k8s-dns-sidecar-amd64_1.14.7.tar
+- kubernetes-dashboard-amd64_v1.8.1.tar
+- nginx-ingress-controller_0.9.0.tar
+- pause-amd64_3.0.tar
 
-    > 1、images 文件夹下载地址：https://pan.baidu.com/s/1cAXRsE 密码：ot65 <br />
-    > 2、如果希望从本导入相关镜像，比如 dashboard 等 kubernetes 相关组件的镜像，则需要下载images文件，不导入也可以，安装相关组件时会从网上自动下载，如果网络不好可能比较慢
+> 1、images 文件夹下载地址：https://pan.baidu.com/s/1cAXRsE 密码：ot65 <br />
+> 2、如果希望从本导入相关镜像，比如 dashboard 等 kubernetes 相关组件的镜像，则需要下载images文件，不导入也可以，安装相关组件时会从网上自动下载，如果网络不好可能比较慢
 
 **4 一键安装 kubernetes 集群**
 
