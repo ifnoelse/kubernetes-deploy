@@ -3,18 +3,20 @@
 #    src: "node-vars.yaml.j2"
 #    dest: "{{playbook_dir}}/host_vars/{{inventory_hostname}}.yaml"
 
-- name: 复制文件测试
-  copy:
-    src: "{{playbook_dir}}/../kubernetes/dashboard"
-    dest: "{{tmp_dir}}/kubernetes"
+#- name: 复制文件测试
+#  copy:
+#    src: "{{playbook_dir}}/../kubernetes/dashboard"
+#    dest: "{{tmp_dir}}/kubernetes"
 #
 #- name: show msg
 #  debug: msg="echo {{ansible_enp0s8.ipv4.address}}"
 #
-#- shell: "pwd"
+- shell: "ls /home"
+  register: res
 
-#- name: show msg
-#  debug: msg="hello {{ groups['master'] }}"
+
+- name: show msg
+  debug: msg="hello {{res}}"
 
 
 #- name: 检查执行文件路径

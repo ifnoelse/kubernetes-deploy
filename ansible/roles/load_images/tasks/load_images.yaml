@@ -4,7 +4,7 @@
     state: directory
 
 - name: 获取镜像列表
-  shell: "ls {{playbook_dir}}/../images|grep .tar|xargs -l"
+  shell: "ls {{playbook_dir}}/../images|grep .tar"
   register: file_list
 
 - name: 获取镜像文件
