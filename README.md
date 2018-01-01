@@ -45,7 +45,9 @@
 | node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
-> 以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下
+> 1、以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下 <br />
+> 2、所有的节点之间已经针对用户 ifnoelse 做了免秘钥登录
+> 3、所有的节点已经关闭了防火墙与IPv6
 
 ### 一键部署
 
@@ -54,7 +56,7 @@
 ``` bash
 git clone https://github.com/ifnoelse/kubernetes-deploy.git
 ```
->由于 ide 或者 git 工具有可能会自动转换换行符为用户 PC 平台的默认换行符，
+> 由于 ide 或者 git 工具有可能会自动转换换行符为用户 PC 平台的默认换行符，
 所以一定要确认 git 上拿下来的文件换行符为 LF，也就是 linux/unix 下的标准换行符，
 以避免相关脚本在 linux 机器上无法执行
 
@@ -106,7 +108,8 @@ cd /vagrant/ansible
 ansible-playbook -i hosts.yaml install.yaml
 ```
 
-> 虚拟机启动之后已经装好了 Ansible
+> 1、虚拟机启动之后已经装好了 Ansible <br />
+> 2、可以通过修改 hosts.yaml 来设置安装节点，hosts 中的节点信息可以是域名或者 ip
 
 **5 验证安装结果**
 

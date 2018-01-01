@@ -40,8 +40,6 @@ Vagrant.configure("2") do |config|
 
         # 修改hostname       echo "#{vm_name}">/etc/hostname
 
-        echo 'export PATH=$PATH:/usr/local/bin' >> /etc/profile
-
         # 添加本地hosts解析
         for i in "#{vms.map{|k,v|"#{k}    #{v}"}.join('" "')}";do echo $i>>/etc/hosts;done
 
