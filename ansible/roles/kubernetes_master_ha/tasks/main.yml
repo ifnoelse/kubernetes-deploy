@@ -1,0 +1,38 @@
+- name: 安装 haproxy
+  become: true
+  yum: name=haproxy state=latest
+
+- name: 配置 haproxy
+  become: true
+  template: src=haproxy.cfg.j2 dest=/etc/haproxy/haproxy.cfg
+
+- name: yum安装 keepalived
+  become: true
+  yum: name=keepalived state=latest
+
+# CentOS 需要安装psmisc 才能使用命令killall，它在keepalive的监测脚本中使用到
+- name: yum安装 psmisc
+  become: true
+  yum: name=psmisc state=latest
+
+- name: 配置 keepalived 主节点
+  template: src=keepalived-master.conf.j2 dest=/etc/keepalived/keepalived.conf
+  become: true
+  when: lb_role == "master"
+
+- name: 配置 keepalived 备节点
+  become: true
+  template: src=keepalived-backup.conf.j2 dest=/etc/keepalived/keepalived.conf
+  when: lb_role == "backup"
+
+- name: daemon-reload for haproxy.service
+  become: true
+  shell: systemctl daemon-reload
+
+- name: 重启haproxy服务
+  become: true
+  shell: systemctl enable haproxy && systemctl restart haproxy
+
+- name: 重启keepalived服务
+  become: true
+  shell: systemctl enable keepalived && systemctl restart keepalived

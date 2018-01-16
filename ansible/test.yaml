@@ -1,7 +1,7 @@
 - name: "资源准备任务"
   gather_facts: no
-  hosts: client
+  hosts: master
   roles:
-  - test
+  - kubernetes_master_ha
   tags:
-  - test
+  - kubernetes_master_ha

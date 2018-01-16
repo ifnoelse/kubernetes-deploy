@@ -3,7 +3,9 @@
 
 vms = {"192.168.100.101" => "node-1",
        "192.168.100.102" => "node-2",
-       "192.168.100.103" => "node-3"}
+       "192.168.100.103" => "node-3",
+       "192.168.100.104" => "node-4",
+       "192.168.100.105" => "node-5"}
 
 Vagrant.configure("2") do |config|
 
@@ -19,7 +21,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.provider "virtualbox" do |v|
         # v.name = vm_name
-        v.memory = 2048
+        v.memory = 1048
         v.cpus = 1
       end
 

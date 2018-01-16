@@ -18,3 +18,19 @@
   template:
     src: etcd.service.j2
     dest: /etc/systemd/system/etcd.service
+
+- name: 启动 etcd 服务
+  become: true
+  systemd:
+    enabled: yes
+    daemon_reload: yes
+    name: etcd
+    state: started
+
+- name: 设置 docker 网段参数
+  become: true
+  shell: "/usr/local/bin/etcdctl \
+  --ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cert-file=/etc/flanneld/ssl/flanneld.pem \
+  --key-file=/etc/flanneld/ssl/flanneld-key.pem \
+  set /kubernetes/network/config '{ \"Network\" : \"{{cluster_cidr}}\" }'"

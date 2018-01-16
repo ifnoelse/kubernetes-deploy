@@ -1,5 +1,13 @@
 - name: "资源准备任务"
   gather_facts: no
+  hosts: lb
+  roles:
+  - kubernetes_master_ha
+  tags:
+  - kubernetes_master_ha
+
+- name: "资源准备任务"
+  gather_facts: no
   hosts: deploy
   roles:
   - prepare_res

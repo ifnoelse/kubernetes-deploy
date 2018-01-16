@@ -12,11 +12,3 @@
   template:
     src: flanneld.service.j2
     dest: /etc/systemd/system/flanneld.service
-
-- name: 设置docker网段
-  become: true
-  shell: "/usr/local/bin/etcdctl \
-          --ca-file=/etc/kubernetes/ssl/ca.pem \
-          --cert-file=/etc/flanneld/ssl/flanneld.pem \
-          --key-file=/etc/flanneld/ssl/flanneld-key.pem \
-          set /kubernetes/network/config '{ \"Network\" : \"{{cluster_cidr}}\" }'"
