@@ -6,7 +6,7 @@ bin_dir: /usr/local/bin #程序安装目录
 # 这样创建相关镜像时就不用从网上下载了
 load_images: true
 
-# 见安装成功之后需要安装的组件，在这里设置好之后自动安装相应组件
+# 安装成功之后需要安装的组件，在这里设置好之后自动安装相应组件
 install_kubernetes_components:
 - kube-dns
 - dashboard

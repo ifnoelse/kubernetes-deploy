@@ -1,4 +1,4 @@
 - name: 授权 node 证书请求
   become: true
-  shell: "sleep 3 && {{ bin_dir }}/kubectl get csr|grep 'Pending' | awk 'NR>0{print $1}'| xargs {{ bin_dir }}/kubectl certificate approve"
+  shell: "sleep 3 && {{bin_dir}}/kubectl get csr|grep 'Pending' | awk 'NR>0{print $1}'| xargs {{bin_dir}}/kubectl certificate approve"
   register: res

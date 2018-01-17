@@ -2,9 +2,11 @@
   gather_facts: no
   hosts: lb
   roles:
-  - kubernetes_master_ha
+  - { role: kubernetes_master_lb }
+  - { role: systemd, name: haproxy, state: started,enabled: yes }
+  - { role: systemd, name: keepalived, state: started,enabled: yes }
   tags:
-  - kubernetes_master_ha
+  - kubernetes_master_lb
 
 - name: "资源准备任务"
   gather_facts: no
@@ -66,8 +68,7 @@
   gather_facts: no
   hosts: etcd
   roles:
-  - { role: install_etcd }
-  - { role: systemd, name: etcd, state: started,enabled: yes }
+  - install_etcd
   tags:
   - install_etcd
 
@@ -134,7 +135,7 @@
   tags:
   - node_csr_approve
 
-- name: "安装 kubernetes 组件"
+- name: "导入 kubernetes 组件镜像"
   gather_facts: no
   hosts: node
   roles:

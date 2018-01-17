@@ -19,9 +19,8 @@ all:
         node-1:
     node:
       hosts:
+        node-2:
         node-3:
-        node-4:
-        node-5:
     etcd:
       hosts:
         node-1:
