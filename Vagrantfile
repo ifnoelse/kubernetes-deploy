@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
 
         # rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       SHELL
-      # node.ssh.private_key_path = ".setting/private_key"
+      # node.ssh.private_key_path = ".setting/id_rsa"
       # node.ssh.username = "ifnoelse"
     end
   end
