@@ -1,0 +1,8 @@
+- name: 复制kubernetes master执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.kubernetes_master}}"

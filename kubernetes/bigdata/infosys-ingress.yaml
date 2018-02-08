@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gz-infosys-web-ingress
+  namespace: bigdata
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /gz-infosys-web
+        backend:
+          serviceName: gz-infosys-web-service
+          servicePort: 8080

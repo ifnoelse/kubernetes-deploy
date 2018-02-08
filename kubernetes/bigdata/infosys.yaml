@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gz-infosys-web
+  namespace: bigdata
+  labels:
+    app: gz-infosys-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gz-infosys-web
+  template:
+    metadata:
+      labels:
+        app: gz-infosys-web
+    spec:
+      containers:
+      - name: gz-infosys-web
+        image: harbor.huan.tv/infosys/gz-infosys-web:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 500m
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+        - name: TZ
+          value: Asia/Shanghai
+        - name: JAVA_OPTS
+          value: "-Xmx512m"
+        volumeMounts:
+        - name: tz-config
+          mountPath: /etc/localtime
+      imagePullSecrets:
+      - name: harbor-secret
+      volumes:
+      - name: tz-config
+        hostPath:
+          path: /usr/share/zoneinfo/Asia/Shanghai

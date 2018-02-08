@@ -1,0 +1,11 @@
+- name: 创建 docker 证书目录
+  become: true
+  file:
+    path: "/etc/docker/certs.d/harbor.huan.tv"
+    state: directory
+
+- name: 分发 harbor.huan.tv 证书
+  become: true
+  copy:
+    src: harbor.huan.tv.crt
+    dest: /etc/docker/certs.d/harbor.huan.tv

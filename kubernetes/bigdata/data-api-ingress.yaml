@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: data-api-ingress
+  namespace: bigdata
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /data-api
+        backend:
+          serviceName: data-api-service
+          servicePort: 3000

@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: webapp-ingress
+  namespace: bigdata
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /webapp
+        backend:
+          serviceName: webapp
+          servicePort: 8080
