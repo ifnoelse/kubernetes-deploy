@@ -6,14 +6,14 @@ all:
     cluster_manager:
       hosts:
         node-1:
-    lb:
-      hosts:
-        node-1:
-        node-2:
+#    lb:
+#      hosts:
+#        node-1:
+#        node-2:
     master:
       hosts:
         node-1:
-        node-2:
+#        node-2:
     client:
       hosts:
         node-1:
