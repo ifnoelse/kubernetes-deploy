@@ -22,16 +22,16 @@
 | ------------- |:-------------:|
 | centos      | 7.4.1708 |
 | docker      | 17.12.0   |
-| kubernetes      | 1.9.1 |
-| flannel      | 0.9.1    |
-| etcd      | 3.2.14    |
+| kubernetes      | 1.9.2 |
+| flannel      | 0.10.1    |
+| etcd      | 3.3.0    |
 
 **kubernetes 组件版本**
 
 | kubernetes 组件        | 版本           |
 | ------------- |:-------------:|
-| dashboard      | 1.8.1 |
-| kube-dns      | 1.14.7   |
+| dashboard      | 1.8.2 |
+| kube-dns      | 1.14.8   |
 | heapster      | 1.5.0 |
 | nginx-ingress      | 0.9.0    |
 
