@@ -10,8 +10,8 @@
     path: "{{item}}"
     state: directory
   with_items:
-  - /var/lib/kubelet
-  - /var/lib/kube-proxy
+  - "{{data_base_dir}}/kubelet"
+  - "{{data_base_dir}}/kube-proxy"
 
 - name: 复制kubernetes node执行文件
   become: true

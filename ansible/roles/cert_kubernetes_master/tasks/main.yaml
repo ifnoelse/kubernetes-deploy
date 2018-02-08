@@ -31,3 +31,15 @@
           -profile=kubernetes kubernetes-csr.json | {{bin_dir}}/cfssljson -bare kubernetes"
   args:
     chdir: "{{cert_kubernetes_dir}}"
+
+- name: 生成 token.csv
+  become: true
+  template:
+    src: token.csv.j2
+    dest: "{{cert_kubernetes_dir}}/token.csv"
+
+- name: 生成 basic-auth.csv
+  become: true
+  template:
+    src: basic-auth.csv.j2
+    dest: "{{cert_kubernetes_dir}}/basic-auth.csv"

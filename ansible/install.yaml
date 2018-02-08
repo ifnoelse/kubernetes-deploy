@@ -1,4 +1,4 @@
-- name: "资源准备任务"
+- name: "安装 kubernetes master load balance"
   gather_facts: no
   hosts: lb
   roles:
@@ -42,7 +42,7 @@
 
 - name: "flannel 证书"
   gather_facts: no
-  hosts: master:node
+  hosts: master:node:etcd
   roles:
   - cert_flannel
   tags:
@@ -122,18 +122,26 @@
   hosts: node
   roles:
   - { role: install_kubernetes_node }
-  - { role: systemd, name: kubelet, state: started,enabled: yes }
-  - { role: systemd, name: kube-proxy, state: started,enabled: yes }
+  - { role: systemd, name: kubelet, state: restarted,enabled: yes }
+  - { role: systemd, name: kube-proxy, state: restarted,enabled: yes }
   tags:
   - install_kubernetes_node
 
-- name: "授权节点"
+- name: "授权节点加入集群"
   gather_facts: no
   hosts: cluster_manager
   roles:
   - { role: cluster_manager, task: node_csr_approve }
   tags:
   - node_csr_approve
+
+- name: "设置 ingress controller 节点标签"
+  gather_facts: no
+  hosts: cluster_manager
+  roles:
+  - { role: cluster_manager, task: label_ingress_controller }
+  tags:
+  - label_ingress_controller
 
 - name: "导入 kubernetes 组件镜像"
   gather_facts: no

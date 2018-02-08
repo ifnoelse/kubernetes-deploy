@@ -24,3 +24,8 @@
   shell: "openssl pkcs12 -export -inkey {{cert_kubernetes_dir}}/admin-key.pem \
   -in {{cert_kubernetes_dir}}/admin.pem -passin pass:
   -out {{tmp_dashboard_dir}}/admin.p12 -passout pass:"
+
+- name: 导出 CA 证书
+  shell: "openssl pkcs12 -export -cacerts -inkey {{cert_kubernetes_dir}}/ca-key.pem \
+  -in {{cert_kubernetes_dir}}/ca.pem -passin pass:
+  -out {{tmp_dashboard_dir}}/ca.p12 -passout pass:"

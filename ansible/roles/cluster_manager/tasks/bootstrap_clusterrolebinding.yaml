@@ -1,9 +1,7 @@
 - name: 检测 bootstrap clusterrolebinding 是否存在
-  become: true
-  shell: "{{bin_dir}}/kubectl get clusterrolebinding  kubelet-bootstrap|awk '{if (NR>1) {print $1}}'"
+  shell: "sleep 20 && {{bin_dir}}/kubectl get clusterrolebinding  kubelet-bootstrap|awk '{if (NR>1) {print $1}}'"
   register: res
 
 - name: 创建 bootstrap clusterrolebinding
-  become: true
-  shell: "{{bin_dir}}/kubectl create clusterrolebinding kubelet-bootstrap --clusterrole=system:node-bootstrapper --user=kubelet-bootstrap"
+  shell: "sleep 20 && {{bin_dir}}/kubectl create clusterrolebinding kubelet-bootstrap --clusterrole=system:node-bootstrapper --user=kubelet-bootstrap"
   when: res.stdout != "kubelet-bootstrap"

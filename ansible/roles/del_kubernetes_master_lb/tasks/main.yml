@@ -1,0 +1,25 @@
+- name: 检测 haproxy 与 keepalived 服务文件是否存在
+  stat:
+    path: "/etc/systemd/system/{{item}}.service"
+  register: file
+  with_items:
+  - haproxy
+  - keepalived
+
+- name: 停止 haproxy 与 keepalived 服务
+  become: true
+  systemd:
+    state: stopped
+    enabled: no
+    name: "{{item.item}}" # item.item为服务文件名称，也就是上一个任务的item
+  with_items:
+  - "{{file.results}}"
+  when: item.stat.exists == true
+
+- name: 卸载 haproxy
+  become: true
+  yum: name=haproxy state=absent
+
+- name: 卸载 keepalived
+  become: true
+  yum: name=keepalived state=absent

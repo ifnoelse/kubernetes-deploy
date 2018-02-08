@@ -34,5 +34,5 @@
 - name: 删除 docker 数据目录
   become: true
   file:
-    path: /var/lib/docker
+    path: "{{data_base_dir}}/docker"
     state: absent

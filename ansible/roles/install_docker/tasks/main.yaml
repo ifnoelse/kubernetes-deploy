@@ -1,3 +1,9 @@
+- name: 创建 docker 数据目录
+  become: true
+  file:
+    path: "{{data_base_dir}}/docker"
+    state: directory
+
 - name: 创建 docker 配置目录
   become: true
   file:

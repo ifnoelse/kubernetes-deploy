@@ -1,7 +1,7 @@
 - name: 创建 etcd 数据目录
   become: true
   file:
-    path: /var/lib/etcd
+    path: "{{data_base_dir}}/etcd"
     state: directory
 
 - name: 复制 etcd 执行文件

@@ -28,5 +28,5 @@
 - name: 删除etcd数据相关目录
   become: true
   file:
-    path: /var/lib/etcd
+    path: "{{data_base_dir}}/etcd"
     state: absent

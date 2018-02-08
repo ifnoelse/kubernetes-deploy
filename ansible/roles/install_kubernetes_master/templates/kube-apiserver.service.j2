@@ -6,7 +6,7 @@ After=network.target
 [Service]
 ExecStart={{bin_dir}}/kube-apiserver \
   --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,NodeRestriction \
-  --bind-address={{node_ip}} \
+  --bind-address=0.0.0.0 \
   --insecure-bind-address=127.0.0.1 \
   --authorization-mode=Node,RBAC \
   --kubelet-https=true \
@@ -29,7 +29,7 @@ ExecStart={{bin_dir}}/kube-apiserver \
   --audit-log-maxage=30 \
   --audit-log-maxbackup=3 \
   --audit-log-maxsize=100 \
-  --audit-log-path=/var/lib/audit.log \
+  --audit-log-path={{data_base_dir}}/log/audit.log \
   --event-ttl=1h \
   --v=2
 Restart=on-failure

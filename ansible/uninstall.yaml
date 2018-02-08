@@ -1,4 +1,4 @@
-- name: "卸载kubernetes node"
+- name: "卸载 kubernetes node"
   gather_facts: no
   hosts: node
   roles:
@@ -6,7 +6,7 @@
   tags:
   - del_kubernetes_node
 
-- name: "卸载kubernetes client"
+- name: "卸载 kubernetes client"
   gather_facts: no
   hosts: client
   roles:
@@ -14,7 +14,7 @@
   tags:
   - del_kubernetes_client
 
-- name: "卸载kubernetes master"
+- name: "卸载 kubernetes master"
   gather_facts: no
   hosts: master
   roles:
@@ -22,7 +22,7 @@
   tags:
   - del_kubernetes_master
 
-- name: "卸载docker"
+- name: "卸载 docker"
   gather_facts: no
   hosts: node
   roles:
@@ -30,9 +30,9 @@
   tags:
   - del_docker
 
-- name: "卸载flannel"
+- name: "卸载 flannel"
   gather_facts: no
-  hosts: node
+  hosts: node:master
   roles:
   - del_flannel
   tags:
@@ -46,7 +46,15 @@
   tags:
   - del_etcd
 
-- name: "删除res临时目录"
+- name: "卸载etcd"
+  gather_facts: no
+  hosts: lb
+  roles:
+  - del_kubernetes_master_lb
+  tags:
+  - del_kubernetes_master_lb
+
+- name: "删除 res 临时目录"
   gather_facts: no
   hosts: all
   roles:
@@ -54,7 +62,7 @@
   tags:
   - del_res_tmp
 
-- name: "删除cfssl相关工具"
+- name: "删除 cfssl 相关工具"
   gather_facts: no
   hosts: all
   roles:

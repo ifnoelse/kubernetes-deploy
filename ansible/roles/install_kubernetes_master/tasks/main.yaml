@@ -1,3 +1,9 @@
+- name: 创建 log 目录
+  become: true
+  file:
+    path: "{{data_base_dir}}/log"
+    state: directory
+
 - name: 复制kubernetes master执行文件
   become: true
   copy:
@@ -6,18 +12,6 @@
     mode: 0755
   with_items:
   - "{{bin_files.kubernetes_master}}"
-
-- name: 生成 token.csv
-  become: true
-  template:
-    src: token.csv.j2
-    dest: "{{cert_kubernetes_dir}}/token.csv"
-
-- name: 生成 basic-auth.csv
-  become: true
-  template:
-    src: basic-auth.csv.j2
-    dest: "{{cert_kubernetes_dir}}/basic-auth.csv"
 
 - name: 生成 kubernetes master 相关服务
   become: true

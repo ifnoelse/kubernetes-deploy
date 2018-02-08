@@ -7,9 +7,9 @@ Documentation=https://github.com/coreos
 
 [Service]
 Type=notify
-WorkingDirectory=/var/lib/etcd/
+WorkingDirectory={{data_base_dir}}/etcd/
 ExecStart={{bin_dir}}/etcd \
-  --name=etcd-{{node_name}} \
+  --name={{node_name}} \
   --cert-file={{cert_etcd_dir}}/etcd.pem \
   --key-file={{cert_etcd_dir}}/etcd-key.pem \
   --peer-cert-file={{cert_etcd_dir}}/etcd.pem \
@@ -23,7 +23,7 @@ ExecStart={{bin_dir}}/etcd \
   --initial-cluster-token=etcd-cluster-010 \
   --initial-cluster={{etcd_nodes}} \
   --initial-cluster-state=new \
-  --data-dir=/var/lib/etcd
+  --data-dir={{data_base_dir}}/etcd
 Restart=on-failure
 RestartSec=5
 LimitNOFILE=65536

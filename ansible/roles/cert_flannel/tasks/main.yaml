@@ -7,7 +7,7 @@
   - "{{cert_flanneld_dir}}"
   - "{{cert_ca_dir}}"
 
-- name: 获取ca证书
+- name: 获取 ca 证书
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
@@ -23,7 +23,7 @@
     src: flanneld-csr.json.j2
     dest: "{{cert_flanneld_dir}}/flanneld-csr.json"
 
-- name: 生成flannel证书
+- name: 生成 flannel 证书
   become: true
   shell: "{{bin_dir}}/cfssl gencert -ca={{cert_ca_dir}}/ca.pem \
           -ca-key={{cert_ca_dir}}/ca-key.pem \
