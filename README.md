@@ -41,8 +41,8 @@
 
 | 服务器名      | ip           | 安装的组件           |
 | ------------- | ------------- |-------------|
-| node-1      | 192.168.100.101 |kubernetes_master，kubernetes_client，flannel，etcd|
-| node-2      | 192.168.100.102 |kubernetes_node，flannel，etcd，docker|
+| node-1      | 192.168.100.101 |haproxy,keepalived，kubernetes_master，kubernetes_client，flannel，etcd|
+| node-2      | 192.168.100.102 |haproxy,keepalived，kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
 > 1、以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下 <br />
@@ -117,8 +117,8 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    9m        v1.9.0
-192.168.100.103   Ready     <none>    9m        v1.9.0
+192.168.100.102   Ready     <none>    9m        v1.9.2
+192.168.100.103   Ready     <none>    9m        v1.9.2
 ```
 
 ``` bash
@@ -153,7 +153,7 @@ total 8
 ```
 
 2. 将客户端证书 admin.p12 导入浏览器
-3. 访问地址：https://192.168.100.101:6443/ui
+3. 访问地址：https://192.168.100.100:8443/ui
 4. 通过 token 登录 dashboard
 
 > 1、cluster_manager 服务器在 hosts.yaml 中定义，默认值为 node-1 <br />
@@ -161,7 +161,7 @@ total 8
 
 **7 访问 grafana**
 
-访问地址：https://192.168.100.101:6443/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
+访问地址：https://192.168.100.100:8443/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
 
 > 访问 grafana 同样需要导入客户端证书，如果已经导入过了，这里就不需要再次导入了
 
