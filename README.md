@@ -153,8 +153,11 @@ total 8
 ```
 
 2. 将客户端证书 admin.p12 导入浏览器
-3. 访问地址：https://192.168.100.100:8443/ui
-4. 通过 token 登录 dashboard
+![](docs/img/admin.png)
+3. 将根证书 admin.p12 导入浏览器（可选）
+![](docs/img/ca.png)
+4. 访问地址：https://192.168.100.100:8443/ui
+5. 通过 token 登录 dashboard
 
 > 1、cluster_manager 服务器在 hosts.yaml 中定义，默认值为 node-1 <br />
 > 2、tmp_dashboard_dir 路径在 group_vars/all.yaml 中定义，默认值为 /home/ifnoelse/tmp/dashboard
