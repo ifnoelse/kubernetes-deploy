@@ -43,8 +43,8 @@ cluster_cidr: 10.0.0.0/16 #集群中docker容器的地址范围
 cluster_dns: 168.168.0.100 #集群dns服务器地址
 cluster_domain: cluster.local.
 
-master_vip: 192.168.100.101
-master_vport: 6443
+master_vip: 192.168.100.100
+master_vport: 8443
 
 kube_apiserver: "https://{{master_vip}}:{{master_vport}}"
 bootstrap_token: eca60c47ced3e14760cb4c7ba1172e66

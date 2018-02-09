@@ -1,12 +1,12 @@
-#- name: "安装 kubernetes master load balance"
-#  gather_facts: no
-#  hosts: lb
-#  roles:
-#  - { role: kubernetes_master_lb }
-#  - { role: systemd, name: haproxy, state: started,enabled: yes }
-#  - { role: systemd, name: keepalived, state: started,enabled: yes }
-#  tags:
-#  - kubernetes_master_lb
+- name: "安装 kubernetes master load balance"
+  gather_facts: no
+  hosts: lb
+  roles:
+  - { role: kubernetes_master_lb }
+  - { role: systemd, name: haproxy, state: started,enabled: yes }
+  - { role: systemd, name: keepalived, state: started,enabled: yes }
+  tags:
+  - kubernetes_master_lb
 
 - name: "资源准备任务"
   gather_facts: no

@@ -1,4 +1,4 @@
-- name: 复制kubernetes client执行文件
+- name: 复制 kubernetes client 执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
@@ -7,7 +7,7 @@
   with_items:
   - "{{bin_files.kubernetes_client}}"
 
-- name: 设置kubernetes client
+- name: 设置 kubernetes client
   become: true
   shell: "{{item}}"
   with_items:

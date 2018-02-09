@@ -1,4 +1,4 @@
-- name: 复制flannel执行文件
+- name: 复制 flannel 执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
@@ -7,7 +7,7 @@
   with_items:
   - "{{bin_files.flannel}}"
 
-- name: 生成flannel服务
+- name: 生成 flannel 服务
   become: true
   template:
     src: flanneld.service.j2

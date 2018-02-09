@@ -4,7 +4,7 @@
     path: "{{data_base_dir}}/log"
     state: directory
 
-- name: 复制kubernetes master执行文件
+- name: 复制 kubernetes master 执行文件
   become: true
   copy:
     src: "{{tmp_bin_dir}}/{{item}}"
