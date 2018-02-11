@@ -22,8 +22,8 @@
 | ------------- |:-------------:|
 | centos      | 7.4.1708 |
 | docker      | 17.12.0   |
-| kubernetes      | 1.9.2 |
-| flannel      | 0.10.1    |
+| kubernetes      | 1.9.3 |
+| flannel      | 0.10.0    |
 | etcd      | 3.3.0    |
 
 **kubernetes 组件版本**
@@ -32,8 +32,8 @@
 | ------------- |:-------------:|
 | dashboard      | 1.8.2 |
 | kube-dns      | 1.14.8   |
-| heapster      | 1.5.0 |
-| nginx-ingress      | 0.9.0    |
+| heapster      | 1.5.1 |
+| nginx-ingress      | 0.10.2    |
 
 > kubernetes 相关镜像：https://hub.docker.com/u/ifnoelse/
 
@@ -88,14 +88,14 @@ res文件夹内的内容如下：
 
 images文件夹内的内容如下：
 - defaultbackend_1.4.tar
-- heapster-amd64_v1.5.0.tar
+- heapster-amd64_v1.5.1.tar
 - heapster-grafana-amd64_v4.4.3.tar
 - heapster-influxdb-amd64_v1.3.3.tar
 - k8s-dns-dnsmasq-nanny-amd64_1.14.8.tar
 - k8s-dns-kube-dns-amd64_1.14.8.tar
 - k8s-dns-sidecar-amd64_1.14.8.tar
 - kubernetes-dashboard-amd64_v1.8.2.tar
-- nginx-ingress-controller_0.9.0.tar
+- nginx-ingress-controller_0.10.2.tar
 - pause-amd64_3.0.tar
 
 > 1、images 文件夹下载地址：https://pan.baidu.com/s/1cAXRsE 密码：ot65 <br />
@@ -117,8 +117,8 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    9m        v1.9.2
-192.168.100.103   Ready     <none>    9m        v1.9.2
+192.168.100.102   Ready     <none>    9m        v1.9.3
+192.168.100.103   Ready     <none>    9m        v1.9.3
 ```
 
 ``` bash
