@@ -12,7 +12,11 @@
 **Monitoring Grafana**
 ![](docs/img/monitoring_grafana.png)
 
-##  快速体验
+## 节点部署
+
+![](docs/img/ha.svg)
+
+## 快速体验
 
 ### 集群环境
 
