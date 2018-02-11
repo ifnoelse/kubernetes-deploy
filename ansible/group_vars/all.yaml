@@ -13,8 +13,8 @@ load_images: true
 load_image_list:
 - pause-amd64_3.0.tar
 - defaultbackend_1.4.tar
-- nginx-ingress-controller_0.9.0.tar
-- heapster-amd64_v1.5.0.tar
+- nginx-ingress-controller_0.10.2.tar
+- heapster-amd64_v1.5.1.tar
 - heapster-grafana-amd64_v4.4.3.tar
 - heapster-influxdb-amd64_v1.3.3.tar
 - k8s-dns-dnsmasq-nanny-amd64_1.14.8.tar
