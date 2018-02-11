@@ -117,8 +117,8 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    9m        v1.9.3
-192.168.100.103   Ready     <none>    9m        v1.9.3
+192.168.100.102   Ready     <none>    4m        v1.9.3
+192.168.100.103   Ready     <none>    4m        v1.9.3
 ```
 
 ``` bash
@@ -146,17 +146,18 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 
 ``` bash
 [ifnoelse@node-1 dashboard]$ pwd;ls -l
-/home/ifnoelse/tmp/dashboard
-total 8
--rw-rw-r--. 1 ifnoelse ifnoelse 2597 Jan  1 19:17 admin.p12
--rw-rw-r--. 1 ifnoelse ifnoelse  909 Jan  1 19:17 token.txt
+/home/ifnoelse/kubernetes-deploy/install_files/dashboard
+total 12
+-rw-rw-r--. 1 ifnoelse ifnoelse 2597 Feb 11 13:12 admin.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse 2533 Feb 11 13:12 ca.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse  909 Feb 11 13:12 token.txt
 ```
 
 2. 将客户端证书 admin.p12 导入浏览器
 
 ![](docs/img/admin.png)
 
-3. 将根证书 admin.p12 导入浏览器（可选）
+3. 将根证书 ca.p12 导入浏览器（可选）
 
 ![](docs/img/ca.png)
 

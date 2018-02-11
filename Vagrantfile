@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
 
         sed -i '1d' /etc/hosts
 
-        if [ "node-1" == "#{vm_name}" ];then wget -q -O - https://bootstrap.pypa.io/get-pip.py|python;pip install ansible;fi
+        if [ "node-1" == "#{vm_name}" ];then yum install -y ansible;fi
 
         # rpm -ivh http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       SHELL
