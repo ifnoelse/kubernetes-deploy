@@ -7,12 +7,14 @@
 ## 截图
 
 **Dashboard**
+
 ![](docs/img/dashboard_node.png)
 
 **Monitoring Grafana**
+
 ![](docs/img/monitoring_grafana.png)
 
-## 节点部署
+## 部署图
 
 ![](docs/img/ha.svg)
 
