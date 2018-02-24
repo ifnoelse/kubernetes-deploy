@@ -1,4 +1,4 @@
-- name: 创建TLS临时目录
+- name: 创建 TLS 临时目录
   file:
     path: "{{tmp_tls_dir}}"
     state: directory
@@ -13,7 +13,7 @@
     src: ca-csr.json.j2
     dest: "{{tmp_tls_dir}}/ca-csr.json"
 
-- name: 生成ca证书
+- name: 生成 ca 证书
   shell: "openssl genrsa -out ca-key.pem 2048 && openssl req -new -x509 -days 36500 -key ca-key.pem -out ca.pem -subj '/C=CN/ST=BeiJing/L=BeiJing/O=k8s/OU=System/CN=kubernetes'"
   args:
     chdir: "{{tmp_tls_dir}}"
