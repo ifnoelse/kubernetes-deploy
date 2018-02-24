@@ -7,7 +7,7 @@
   - "{{cert_etcd_dir}}"
   - "{{cert_ca_dir}}"
 
-- name: 获取ca证书
+- name: 获取 ca 证书
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
@@ -23,7 +23,7 @@
     src: etcd-csr.json.j2
     dest: "{{cert_etcd_dir}}/etcd-csr.json"
 
-- name: 生成etcd证书
+- name: 生成 etcd 证书
   become: true
   shell: "{{bin_dir}}/cfssl gencert -ca={{cert_ca_dir}}/ca.pem \
                      -ca-key={{cert_ca_dir}}/ca-key.pem \
