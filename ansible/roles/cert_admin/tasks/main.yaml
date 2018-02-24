@@ -7,7 +7,7 @@
   - "{{cert_kubernetes_dir}}"
   - "{{cert_ca_dir}}"
 
-- name: 获取ca证书
+- name: 获取 ca 证书
   become: true
   copy:
     src: "{{tmp_tls_dir}}/{{item}}"
@@ -17,13 +17,13 @@
   - ca.pem
   - ca-config.json
 
-- name: 创建admin-csr.json
+- name: 创建 admin-csr.json
   become: true
   template:
     src: admin-csr.json.j2
     dest: "{{cert_kubernetes_dir}}/admin-csr.json"
 
-- name: 生成admin证书
+- name: 生成 admin 证书
   become: true
   shell: "{{bin_dir}}/cfssl gencert -ca={{cert_ca_dir}}/ca.pem \
           -ca-key={{cert_ca_dir}}/ca-key.pem \
