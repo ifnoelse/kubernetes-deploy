@@ -48,7 +48,7 @@
 | 服务器名      | ip           | 安装的组件           |
 | ------------- | ------------- |-------------|
 | node-1      | 192.168.100.101 |haproxy，keepalived，kubernetes_master，kubernetes_client，flannel，etcd|
-| node-2      | 192.168.100.102 |haproxy，keepalived，kubernetes_node，flannel，etcd，docker|
+| node-2      | 192.168.100.102 |haproxy，keepalived，kubernetes_master，kubernetes_node，flannel，etcd，docker|
 | node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
 
 > 1、以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下 <br />
