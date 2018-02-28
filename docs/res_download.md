@@ -21,5 +21,5 @@
   - 官网下载地址：https://github.com/coreos/flannel/releases
   - 链接：https://pan.baidu.com/s/1kVgn2ib 密码：dsss
 - Kubernetes
-  - 官网下载地址：https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.8.md#downloads-for-v185
+  - 官网下载地址：https://github.com/kubernetes/kubernetes/releases
   - 链接：https://pan.baidu.com/s/1kVgn2ib 密码：dsss

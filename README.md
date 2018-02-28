@@ -27,10 +27,10 @@
 | 软件名称        | 版本           |
 | ------------- |:-------------:|
 | centos      | 7.4.1708 |
-| docker      | 17.12.0   |
+| docker      | 17.12.1   |
 | kubernetes      | 1.9.3 |
 | flannel      | 0.10.0    |
-| etcd      | 3.3.0    |
+| etcd      | 3.3.1    |
 
 **kubernetes 组件版本**
 
@@ -82,8 +82,8 @@ res文件夹内的内容如下：
 - cfssl-certinfo_linux-amd64
 - cfssljson_linux-amd64
 - cfssl_linux-amd64
-- docker-17.12.0-ce.tgz
-- etcd-v3.3.0-linux-amd64.tar.gz
+- docker-17.12.1-ce.tgz
+- etcd-v3.3.1-linux-amd64.tar.gz
 - flannel-v0.10.0-linux-amd64.tar.gz
 - kubernetes-server-v1.9.3-linux-amd64.tar.gz
 
