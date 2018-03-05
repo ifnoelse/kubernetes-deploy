@@ -39,7 +39,7 @@
 | dashboard      | 1.8.3 |
 | kube-dns      | 1.14.8   |
 | heapster      | 1.5.1 |
-| nginx-ingress      | 0.10.2    |
+| nginx-ingress      | 0.11.0    |
 | helm      | 2.8.1  |
 
 > kubernetes 相关镜像：https://hub.docker.com/u/ifnoelse/
