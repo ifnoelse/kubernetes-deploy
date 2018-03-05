@@ -36,10 +36,11 @@
 
 | kubernetes 组件        | 版本           |
 | ------------- |:-------------:|
-| dashboard      | 1.8.2 |
+| dashboard      | 1.8.3 |
 | kube-dns      | 1.14.8   |
 | heapster      | 1.5.1 |
 | nginx-ingress      | 0.10.2    |
+| helm      | 2.8.1  |
 
 > kubernetes 相关镜像：https://hub.docker.com/u/ifnoelse/
 
@@ -47,9 +48,9 @@
 
 | 服务器名      | ip           | 安装的组件           |
 | ------------- | ------------- |-------------|
-| node-1      | 192.168.100.101 |haproxy，keepalived，kubernetes_master，kubernetes_client，flannel，etcd|
-| node-2      | 192.168.100.102 |haproxy，keepalived，kubernetes_master，kubernetes_node，flannel，etcd，docker|
-| node-3      | 192.168.100.103 |kubernetes_node，flannel，etcd，docker|
+| node-1      | 192.168.100.101 |haproxy，keepalived，kubernetes master，kubernetes client，flannel，etcd，helm client|
+| node-2      | 192.168.100.102 |haproxy，keepalived，kubernetes master，kubernetes node，flannel，etcd，docker|
+| node-3      | 192.168.100.103 |kubernetes node，flannel，etcd，docker|
 
 > 1、以上节点通过 Vagrant 准备即可，Vagrantfile 在项目根目录下 <br />
 > 2、所有的节点之间已经针对用户 ifnoelse 做了免秘钥登录 <br />
@@ -100,8 +101,8 @@ images文件夹内的内容如下：
 - k8s-dns-dnsmasq-nanny-amd64_1.14.8.tar
 - k8s-dns-kube-dns-amd64_1.14.8.tar
 - k8s-dns-sidecar-amd64_1.14.8.tar
-- kubernetes-dashboard-amd64_v1.8.2.tar
-- nginx-ingress-controller_0.10.2.tar
+- kubernetes-dashboard-amd64_v1.8.3.tar
+- nginx-ingress-controller_0.11.0.tar
 - pause-amd64_3.0.tar
 
 > 1、images 文件夹下载地址：https://pan.baidu.com/s/1cAXRsE 密码：ot65 <br />
