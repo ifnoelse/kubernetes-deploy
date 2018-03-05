@@ -1,3 +1,11 @@
+- name: "删除 helm"
+  gather_facts: no
+  hosts: client[0]
+  roles:
+  - del_helm
+  tags:
+  - del_helm
+
 - name: "卸载 kubernetes node"
   gather_facts: no
   hosts: node

@@ -1,9 +1,9 @@
-- name: 检测etcd服务文件是否存在
+- name: 检测 etcd 服务文件是否存在
   stat:
     path: /etc/systemd/system/etcd.service
   register: file
 
-- name: 停止etcd服务
+- name: 停止 etcd 服务
   become: true
   systemd:
     state: stopped
@@ -11,13 +11,13 @@
     name: etcd
   when: file.stat.exists == true
 
-- name: 删除etcd服务文件
+- name: 删除 etcd 服务文件
   become: true
   file:
     path: /etc/systemd/system/etcd.service
     state: absent
 
-- name: 删除etcd执行文件
+- name: 删除 etcd 执行文件
   become: true
   file:
     path: "{{bin_dir}}/{{item}}"
@@ -25,7 +25,7 @@
   with_items:
   - "{{bin_files.etcd}}"
 
-- name: 删除etcd数据相关目录
+- name: 删除 etcd 数据相关目录
   become: true
   file:
     path: "{{data_base_dir}}/etcd"

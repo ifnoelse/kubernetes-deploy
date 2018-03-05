@@ -9,6 +9,9 @@ ingress_controller_node: 192.168.100.102
 
 data_base_dir: /var/lib
 
+install_helm: true
+tiller_image: ifnoelse/kubernetes-helm-tiller:v2.8.1
+
 load_images: true
 load_image_list:
 - pause-amd64_3.0.tar
@@ -21,7 +24,7 @@ load_image_list:
 - k8s-dns-kube-dns-amd64_1.14.8.tar
 - k8s-dns-sidecar-amd64_1.14.8.tar
 - kubernetes-dashboard-amd64_v1.8.2.tar
-
+- kubernetes-helm-tiller_v2.8.1.tar
 
 # 安装成功之后需要安装的组件，在这里设置好之后自动安装相应组件
 install_kubernetes_components:
@@ -69,6 +72,8 @@ cert_kubernetes_dir: /etc/kubernetes/ssl
 cert_ca_dir: /etc/kubernetes/ssl
 
 bin_files:
+  helm:
+  - helm
   docker:
   - docker
   - docker-containerd

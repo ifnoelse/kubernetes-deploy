@@ -121,7 +121,7 @@ ansible-playbook -i hosts.yaml install.yaml
 **5 验证安装结果**
 
 ``` bash
-[ifnoelse@node-1 ansible]$ kubectl get node
+[ifnoelse@node-1 ansible]$ kubectl get node 
 NAME              STATUS    ROLES     AGE       VERSION
 192.168.100.102   Ready     <none>    4m        v1.9.3
 192.168.100.103   Ready     <none>    4m        v1.9.3

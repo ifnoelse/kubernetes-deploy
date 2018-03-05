@@ -1,0 +1,32 @@
+- name: 安装 socat
+  become: true
+  yum: name=socat state=latest
+  delegate_to: "{{item}}"
+  with_items:
+  - "{{groups['node']}}"
+
+- name: 复制 helm 执行文件
+  become: true
+  copy:
+    src: "{{tmp_bin_dir}}/{{item}}"
+    dest: "{{bin_dir}}"
+    mode: 0755
+  with_items:
+  - "{{bin_files.helm}}"
+  delegate_to:
+
+- name: 获取 helm tiller 授权文件
+  copy:
+    src: "{{playbook_dir}}/../kubernetes/helm"
+    dest: "{{tmp_dir}}/kubernetes"
+
+- name: 创建 tiller 用户并授
+  become: true
+  shell: "{{bin_dir}}/kubectl apply -f {{tmp_dir}}/kubernetes/helm/{{item}}"
+  with_items:
+  - tiller-rbac.yaml
+
+- name: 部署 tiller server
+  become: true
+  shell: "{{bin_dir}}/helm init --service-account tiller --tiller-image {{tiller_image}} --skip-refresh"
+

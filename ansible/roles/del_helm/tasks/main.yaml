@@ -1,0 +1,20 @@
+- name: 安装 socat
+  become: true
+  yum: name=socat state=absent
+  delegate_to: "{{item}}"
+  with_items:
+  - "{{groups['node']}}"
+
+- name: 删除 helm 执行文件
+  become: true
+  file:
+    path: "{{bin_dir}}/{{item}}"
+    state: absent
+  with_items:
+  - "{{bin_files.helm}}"
+
+- name: 创建 tiller 用户并授
+  become: true
+  shell: "{{bin_dir}}/kubectl delete -f {{tmp_dir}}/kubernetes/helm/{{item}}"
+  with_items:
+  - tiller-rbac.yaml

@@ -158,3 +158,11 @@
   - { role: kubernetes_component_manager,op: apply, components: "{{install_kubernetes_components}}" }
   tags:
   - install_kubernetes_components
+
+- name: "安装 helm"
+  gather_facts: no
+  hosts: client[0]
+  roles:
+  - { role: install_helm }
+  tags:
+  - install_helm
