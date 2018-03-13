@@ -16,14 +16,14 @@ load_images: true
 load_image_list:
 - pause-amd64_3.0.tar
 - defaultbackend_1.4.tar
-- nginx-ingress-controller_0.10.2.tar
+- nginx-ingress-controller_0.11.0.tar
 - heapster-amd64_v1.5.1.tar
 - heapster-grafana-amd64_v4.4.3.tar
 - heapster-influxdb-amd64_v1.3.3.tar
 - k8s-dns-dnsmasq-nanny-amd64_1.14.8.tar
 - k8s-dns-kube-dns-amd64_1.14.8.tar
 - k8s-dns-sidecar-amd64_1.14.8.tar
-- kubernetes-dashboard-amd64_v1.8.2.tar
+- kubernetes-dashboard-amd64_v1.8.3.tar
 - kubernetes-helm-tiller_v2.8.1.tar
 
 # 安装成功之后需要安装的组件，在这里设置好之后自动安装相应组件
