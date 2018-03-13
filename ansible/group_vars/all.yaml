@@ -9,7 +9,7 @@ ingress_controller_node: 192.168.100.102
 
 data_base_dir: /var/lib
 
-install_helm: false
+install_helm: false # 是否安装 helm
 tiller_image: ifnoelse/kubernetes-helm-tiller:v2.8.1
 
 load_images: true
