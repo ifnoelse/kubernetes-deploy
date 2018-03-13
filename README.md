@@ -28,9 +28,9 @@
 | ------------- |:-------------:|
 | centos      | 7.4.1708 |
 | docker      | 17.12.1   |
-| kubernetes      | 1.9.3 |
+| kubernetes      | 1.9.4 |
 | flannel      | 0.10.0    |
-| etcd      | 3.3.1    |
+| etcd      | 3.3.2    |
 
 **kubernetes 组件版本**
 
@@ -84,9 +84,9 @@ res文件夹内的内容如下：
 - cfssljson_linux-amd64
 - cfssl_linux-amd64
 - docker-17.12.1-ce.tgz
-- etcd-v3.3.1-linux-amd64.tar.gz
+- etcd-v3.3.2-linux-amd64.tar.gz
 - flannel-v0.10.0-linux-amd64.tar.gz
-- kubernetes-server-v1.9.3-linux-amd64.tar.gz
+- kubernetes-server-v1.9.4-linux-amd64.tar.gz
 
 > 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
 > 2、res 中的文件也可以自行到官网下载，之后将压缩包放入 res 目录即可，文件名叫什么都可以
@@ -124,8 +124,8 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node 
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    4m        v1.9.3
-192.168.100.103   Ready     <none>    4m        v1.9.3
+192.168.100.102   Ready     <none>    4m        v1.9.4
+192.168.100.103   Ready     <none>    4m        v1.9.4
 ```
 
 ``` bash
