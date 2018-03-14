@@ -117,20 +117,20 @@ ansible-playbook -i hosts.yaml install.yaml
 **5 验证安装结果**
 
 ``` bash
-[ifnoelse@node-1 ansible]$ kubectl get node 
+[ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    4m        v1.9.4
-192.168.100.103   Ready     <none>    4m        v1.9.4
+192.168.100.102   Ready     <none>    8m        v1.9.4
+192.168.100.103   Ready     <none>    8m        v1.9.4
 ```
 
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get pod -n kube-system
-NAME                                    READY     STATUS    RESTARTS   AGE
-heapster-678768bcf6-f62w9               1/1       Running   0          1m
-kube-dns-6d79d9cb88-x9795               3/3       Running   0          1m
-kubernetes-dashboard-57bd4cc6bd-xbvsb   1/1       Running   0          1m
-monitoring-grafana-9ccfb7667-c2vnf      1/1       Running   0          1m
-monitoring-influxdb-7b99b84cf-wgmsl     1/1       Running   0          1m
+NAME                                   READY     STATUS    RESTARTS   AGE
+heapster-54f8576669-wwgfx              1/1       Running   0          4m
+kube-dns-547cdfd4fc-rfmfv              3/3       Running   0          5m
+kubernetes-dashboard-8bdc9d4f4-4wxcp   1/1       Running   0          5m
+monitoring-grafana-9ccfb7667-gbvmg     1/1       Running   0          4m
+monitoring-influxdb-7b99b84cf-6lw7w    1/1       Running   0          4m
 ```
 
 ``` bash
@@ -140,6 +140,8 @@ Heapster is running at http://localhost:8080/api/v1/namespaces/kube-system/servi
 KubeDNS is running at http://localhost:8080/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 monitoring-grafana is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-grafana/proxy
 monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-system/services/monitoring-influxdb/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
 
 **6 访问dashboard**
@@ -150,9 +152,9 @@ monitoring-influxdb is running at http://localhost:8080/api/v1/namespaces/kube-s
 [ifnoelse@node-1 dashboard]$ pwd;ls -l
 /home/ifnoelse/kubernetes-deploy/install_files/dashboard
 total 12
--rw-rw-r--. 1 ifnoelse ifnoelse 2597 Feb 11 13:12 admin.p12
--rw-rw-r--. 1 ifnoelse ifnoelse 2533 Feb 11 13:12 ca.p12
--rw-rw-r--. 1 ifnoelse ifnoelse  909 Feb 11 13:12 token.txt
+-rw-rw-r--. 1 ifnoelse ifnoelse 2597 Mar 14 17:29 admin.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse 2533 Mar 14 17:29 ca.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse  909 Mar 14 17:29 token.txt
 ```
 
 2. 将客户端证书 admin.p12 导入浏览器
