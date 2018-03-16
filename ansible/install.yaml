@@ -1,121 +1,121 @@
-- name: "安装 kubernetes master load balance"
-  gather_facts: no
-  hosts: lb
-  roles:
-  - { role: kubernetes_master_lb }
-  - { role: systemd, name: haproxy, state: started,enabled: yes }
-  - { role: systemd, name: keepalived, state: started,enabled: yes }
-  tags:
-  - kubernetes_master_lb
-
-- name: "资源准备任务"
-  gather_facts: no
-  hosts: deploy
-  roles:
-  - prepare_res
-  tags:
-  - prepare_res
-
-- name: "ca 证书"
-  gather_facts: no
-  hosts: deploy
-  roles:
-  - cert_ca
-  tags:
-  - cert_ca
-
-- name: "etcd 证书"
-  gather_facts: no
-  hosts: etcd
-  roles:
-  - cert_etcd
-  tags:
-  - cert_etcd
-
-- name: "admin 证书"
-  gather_facts: no
-  hosts: client
-  roles:
-  - cert_admin
-  tags:
-  - cert_admin
-
-- name: "flannel 证书"
-  gather_facts: no
-  hosts: master:node:etcd
-  roles:
-  - cert_flannel
-  tags:
-  - cert_flannel
-
-- name: "kubernetes master 证书"
-  gather_facts: no
-  hosts: master
-  roles:
-  - cert_kubernetes_master
-  tags:
-  - cert_kubernetes_master
-
-- name: "kubernetes node 证书"
-  gather_facts: no
-  hosts: node
-  roles:
-  - cert_kubernetes_node
-  tags:
-  - cert_kubernetes_node
-
-- name: "安装 etcd"
-  gather_facts: no
-  hosts: etcd
-  roles:
-  - install_etcd
-  tags:
-  - install_etcd
-
-- name: "安装 flannel"
-  gather_facts: no
-  hosts: master:node
-  roles:
-  - { role: install_flannel }
-  - { role: systemd, name: flanneld, state: started,enabled: yes }
-  tags:
-  - install_flannel
-
-- name: "安装 docker"
-  gather_facts: no
-  hosts: node
-  roles:
-  - { role: install_docker }
-  - { role: systemd, name: docker, state: started,enabled: yes }
-  tags:
-  - install_docker
-
-- name: "安装 kubernetes master"
-  gather_facts: no
-  hosts: master
-  roles:
-  - { role: install_kubernetes_master }
-  - { role: systemd, name: kube-apiserver, state: started,enabled: yes }
-  - { role: systemd, name: kube-controller-manager, state: started,enabled: yes }
-  - { role: systemd, name: kube-scheduler, state: started,enabled: yes }
-  tags:
-  - install_kubernetes_master
-
-- name: "安装 kubernetes client"
-  gather_facts: no
-  hosts: client
-  roles:
-  - { role: install_kubernetes_client }
-  tags:
-  - install_kubernetes_client
-
-- name: "设置 bootstrap clusterrolebinding"
-  gather_facts: no
-  hosts: cluster_manager
-  roles:
-  - { role: cluster_manager, task: bootstrap_clusterrolebinding }
-  tags:
-  - bootstrap_clusterrolebinding
+#- name: "安装 kubernetes master load balance"
+#  gather_facts: no
+#  hosts: lb
+#  roles:
+#  - { role: kubernetes_master_lb }
+#  - { role: systemd, name: haproxy, state: started,enabled: yes }
+#  - { role: systemd, name: keepalived, state: started,enabled: yes }
+#  tags:
+#  - kubernetes_master_lb
+#
+#- name: "资源准备任务"
+#  gather_facts: no
+#  hosts: deploy
+#  roles:
+#  - prepare_res
+#  tags:
+#  - prepare_res
+#
+#- name: "ca 证书"
+#  gather_facts: no
+#  hosts: deploy
+#  roles:
+#  - cert_ca
+#  tags:
+#  - cert_ca
+#
+#- name: "etcd 证书"
+#  gather_facts: no
+#  hosts: etcd
+#  roles:
+#  - cert_etcd
+#  tags:
+#  - cert_etcd
+#
+#- name: "admin 证书"
+#  gather_facts: no
+#  hosts: client
+#  roles:
+#  - cert_admin
+#  tags:
+#  - cert_admin
+#
+#- name: "flannel 证书"
+#  gather_facts: no
+#  hosts: master:node:etcd
+#  roles:
+#  - cert_flannel
+#  tags:
+#  - cert_flannel
+#
+#- name: "kubernetes master 证书"
+#  gather_facts: no
+#  hosts: master
+#  roles:
+#  - cert_kubernetes_master
+#  tags:
+#  - cert_kubernetes_master
+#
+#- name: "kubernetes node 证书"
+#  gather_facts: no
+#  hosts: node
+#  roles:
+#  - cert_kubernetes_node
+#  tags:
+#  - cert_kubernetes_node
+#
+#- name: "安装 etcd"
+#  gather_facts: no
+#  hosts: etcd
+#  roles:
+#  - install_etcd
+#  tags:
+#  - install_etcd
+#
+#- name: "安装 flannel"
+#  gather_facts: no
+#  hosts: master:node
+#  roles:
+#  - { role: install_flannel }
+#  - { role: systemd, name: flanneld, state: started,enabled: yes }
+#  tags:
+#  - install_flannel
+#
+#- name: "安装 docker"
+#  gather_facts: no
+#  hosts: node
+#  roles:
+#  - { role: install_docker }
+#  - { role: systemd, name: docker, state: started,enabled: yes }
+#  tags:
+#  - install_docker
+#
+#- name: "安装 kubernetes master"
+#  gather_facts: no
+#  hosts: master
+#  roles:
+#  - { role: install_kubernetes_master }
+#  - { role: systemd, name: kube-apiserver, state: started,enabled: yes }
+#  - { role: systemd, name: kube-controller-manager, state: started,enabled: yes }
+#  - { role: systemd, name: kube-scheduler, state: started,enabled: yes }
+#  tags:
+#  - install_kubernetes_master
+#
+#- name: "安装 kubernetes client"
+#  gather_facts: no
+#  hosts: client
+#  roles:
+#  - { role: install_kubernetes_client }
+#  tags:
+#  - install_kubernetes_client
+#
+#- name: "设置 bootstrap clusterrolebinding"
+#  gather_facts: no
+#  hosts: cluster_manager
+#  roles:
+#  - { role: cluster_manager, task: bootstrap_clusterrolebinding }
+#  tags:
+#  - bootstrap_clusterrolebinding
 
 - name: "安装 kubernetes node"
   gather_facts: no

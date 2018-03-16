@@ -26,6 +26,7 @@ spec:
         - /heapster
         - --source=kubernetes:https://kubernetes.default
         - --sink=influxdb:http://monitoring-influxdb.kube-system:8086
+        - --api-server=true
 ---
 apiVersion: v1
 kind: Service
