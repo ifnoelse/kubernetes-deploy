@@ -21,7 +21,7 @@ spec:
         ingress/controller: 'true'
       containers:
       - name: nginx-ingress-controller
-        image: ifnoelse/nginx-ingress-controller:0.11.0
+        image: ifnoelse/nginx-ingress-controller:0.12.0
         args:
           - /nginx-ingress-controller
           - --default-backend-service=$(POD_NAMESPACE)/default-http-backend
