@@ -154,8 +154,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 total 12
 -rw-rw-r--. 1 ifnoelse ifnoelse 2597 Mar 14 17:29 admin.p12
 -rw-rw-r--. 1 ifnoelse ifnoelse 2533 Mar 14 17:29 ca.p12
--rw-rw-r--. 1 ifnoelse ifnoelse  909 Mar 14 17:29 token.txt
-```
+-rw-rw-r--. 1 ifnoelse ifnoelse  909 Mar 14 17:29 token.txt``
 
 2. 将客户端证书 admin.p12 导入浏览器
 
