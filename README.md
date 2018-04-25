@@ -61,7 +61,7 @@
 
 **1 下载部署代码**
 
-[点击下载](https://github.com/mandeep/ruamel-yaml/archive/master.zip)
+[点击下载](https://github.com/ifnoelse/kubernetes-deploy/archive/master.zip)
 
 **2 启动虚拟机**
 
