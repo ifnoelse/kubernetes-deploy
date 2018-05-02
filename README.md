@@ -27,20 +27,20 @@
 | 软件名称        | 版本           |
 | ------------- |:-------------:|
 | centos      | 7.4.1708 |
-| docker      | 18.03.0   |
-| kubernetes      | 1.9.6 |
+| docker      | 18.03.1   |
+| kubernetes      | 1.10.2 |
 | flannel      | 0.10.0    |
-| etcd      | 3.3.2    |
+| etcd      | 3.3.4    |
 
 **kubernetes 组件版本**
 
 | kubernetes 组件        | 版本           |
 | ------------- |:-------------:|
 | dashboard      | 1.8.3 |
-| kube-dns      | 1.14.8   |
+| kube-dns      | 1.14.10   |
 | heapster      | 1.5.2 |
-| nginx-ingress      | 0.12.0    |
-| helm      | 2.8.2  |
+| nginx-ingress      | 0.14.0    |
+| helm      | 2.9.0  |
 
 > kubernetes 相关镜像：https://hub.docker.com/u/ifnoelse/
 
@@ -78,10 +78,10 @@ res文件夹内的内容如下：
 - cfssl-certinfo_linux-amd64
 - cfssljson_linux-amd64
 - cfssl_linux-amd64
-- docker-18.03.0-ce.tgz
-- etcd-v3.3.2-linux-amd64.tar.gz
+- docker-18.03.1-ce.tgz
+- etcd-v3.3.4-linux-amd64.tar.gz
 - flannel-v0.10.0-linux-amd64.tar.gz
-- kubernetes-server-v1.9.6-linux-amd64.tar.gz
+- kubernetes-server-v1.10.2-linux-amd64.tar.gz
 
 > 1、res 文件夹下载地址：https://pan.baidu.com/s/1kVgn2ib 密码：dsss <br />
 > 2、res 中的文件也可以自行到官网下载，之后将压缩包放入 res 目录即可，文件名叫什么都可以
@@ -93,12 +93,12 @@ images文件夹内的内容如下：
 - heapster-amd64_v1.5.2.tar
 - heapster-grafana-amd64_v4.4.3.tar
 - heapster-influxdb-amd64_v1.3.3.tar
-- k8s-dns-dnsmasq-nanny-amd64_1.14.8.tar
-- k8s-dns-kube-dns-amd64_1.14.8.tar
-- k8s-dns-sidecar-amd64_1.14.8.tar
+- k8s-dns-dnsmasq-nanny-amd64_1.14.10.tar
+- k8s-dns-kube-dns-amd64_1.14.10.tar
+- k8s-dns-sidecar-amd64_1.14.10.tar
 - kubernetes-dashboard-amd64_v1.8.3.tar
-- nginx-ingress-controller_0.12.0.tar
-- pause-amd64_3.0.tar
+- nginx-ingress-controller_0.14.0.tar
+- pause-amd64_3.1.tar
 
 > 1、images 文件夹下载地址：https://pan.baidu.com/s/1cAXRsE 密码：ot65 <br />
 > 2、如果希望从本导入相关镜像，比如 dashboard 等 kubernetes 相关组件的镜像，则需要下载images文件，不导入也可以，安装相关组件时会从网上自动下载，如果网络不好可能比较慢
@@ -119,18 +119,18 @@ ansible-playbook -i hosts.yaml install.yaml
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get node
 NAME              STATUS    ROLES     AGE       VERSION
-192.168.100.102   Ready     <none>    8m        v1.9.6
-192.168.100.103   Ready     <none>    8m        v1.9.6
+192.168.100.102   Ready     <none>    8m        v1.10.2
+192.168.100.103   Ready     <none>    8m        v1.10.2
 ```
 
 ``` bash
 [ifnoelse@node-1 ansible]$ kubectl get pod -n kube-system
-NAME                                   READY     STATUS    RESTARTS   AGE
-heapster-54f8576669-wwgfx              1/1       Running   0          4m
-kube-dns-547cdfd4fc-rfmfv              3/3       Running   0          5m
-kubernetes-dashboard-8bdc9d4f4-4wxcp   1/1       Running   0          5m
-monitoring-grafana-9ccfb7667-gbvmg     1/1       Running   0          4m
-monitoring-influxdb-7b99b84cf-6lw7w    1/1       Running   0          4m
+NAME                                    READY     STATUS    RESTARTS   AGE
+heapster-7b494f7f58-tpmc5               1/1       Running   0          7m
+kube-dns-755cc6cd9b-nk4sv               3/3       Running   0          7m
+kubernetes-dashboard-57c9c44454-rm9mv   1/1       Running   0          7m
+monitoring-grafana-7554bb49f5-t7cq4     1/1       Running   0          7m
+monitoring-influxdb-5d6f4b996c-s2jsz    1/1       Running   0          7m
 ```
 
 ``` bash
@@ -152,9 +152,9 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 [ifnoelse@node-1 dashboard]$ pwd;ls -l
 /home/ifnoelse/kubernetes-deploy/install_files/dashboard
 total 12
--rw-rw-r--. 1 ifnoelse ifnoelse 2597 Mar 14 17:29 admin.p12
--rw-rw-r--. 1 ifnoelse ifnoelse 2533 Mar 14 17:29 ca.p12
--rw-rw-r--. 1 ifnoelse ifnoelse  909 Mar 14 17:29 token.txt``
+-rw-rw-r--. 1 ifnoelse ifnoelse 2597 May  2 21:08 admin.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse 2533 May  2 21:08 ca.p12
+-rw-rw-r--. 1 ifnoelse ifnoelse  905 May  2 21:08 token.txt
 ```
 
 2. 将客户端证书 admin.p12 导入浏览器
@@ -165,7 +165,7 @@ total 12
 
 ![](docs/img/ca.png)
 
-4. 访问地址：https://192.168.100.100:8443/ui
+4. 访问地址：https://192.168.100.100:8443/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy
 
 5. 通过 token 登录 dashboard
 

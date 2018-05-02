@@ -24,6 +24,7 @@ ExecStart={{bin_dir}}/kube-apiserver \
   --etcd-certfile={{cert_kubernetes_dir}}/kubernetes.pem \
   --etcd-keyfile={{cert_kubernetes_dir}}/kubernetes-key.pem \
   --etcd-servers={{etcd_endpoints}} \
+  --endpoint-reconciler-type=lease \
   --enable-swagger-ui=true \
   --allow-privileged=true \
   --audit-log-maxage=30 \
