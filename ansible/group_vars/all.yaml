@@ -5,7 +5,9 @@ bin_dir: /usr/local/bin #程序安装目录
 # 由于相关进行比较慢，如果这个选项设置为 ture，在 kubernetes/images 目录下的镜像文件会被导入到 node 节点的本地镜像库中
 # 这样创建相关镜像时就不用从网上下载了
 
-ingress_controller_node: 192.168.100.102
+ingress_controller_node:
+- 192.168.100.102
+- 192.168.100.103
 
 data_base_dir: /var/lib
 

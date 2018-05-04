@@ -1,3 +1,5 @@
 - name: 授权 node 证书请求
   become: true
-  shell: "sleep 20 && {{bin_dir}}/kubectl label nodes {{ingress_controller_node}} ingress/controller=true"
+  shell: "sleep 20 && {{bin_dir}}/kubectl label nodes {{item}} ingress/controller=true"
+  with_items:
+  - "{{ingress_controller_node}}"

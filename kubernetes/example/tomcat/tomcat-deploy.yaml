@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: tomcat
-  namespace: bigdata
+  namespace: default
   labels:
     app: tomcat
 spec:
